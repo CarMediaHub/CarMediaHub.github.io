@@ -8,7 +8,7 @@ Status: v0 Draft
 
 | Reader | Start here | Main questions |
 |---|---|---|
-| User | [Project Origin](project-origin.md) and the user guide | What is CarMediaHub, what can it do, and what do I need to operate it? |
+| User | [Project Origin](project-origin.md) and [Project Goals](project-goals.md) | What is CarMediaHub, what can it do, and what do I need to operate it? |
 | Operator | Deployment and operations guides | How do I install, secure, back up, update, and diagnose my deployment? |
 | Plugin author | [Plugin Contract](plugin-contract.md) and SDK references | How do I build, isolate, test, publish, and maintain a plugin? |
 | Contributor | Governance and engineering references | How are changes reviewed, released, documented, and supported? |

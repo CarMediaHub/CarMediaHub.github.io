@@ -12,6 +12,7 @@
 | [插件契约](docs/plugin-contract_zh.md) | 插件包、生命周期、能力和 IPC 契约边界 |
 | [安全模型](docs/security_zh.md) | capability-first 默认规则和运营者责任 |
 | [项目由来](docs/project-origin_zh.md) | 车机媒体、基础服务与兼容插件为何组成同一平台 |
+| [项目目标](docs/project-goals_zh.md) | 用户结果、平台目标和非目标 |
 | [文档站地图](docs/documentation-map_zh.md) | 普通用户、运营者、开发者、贡献者和参考资料入口 |
 
 本 v0 草案不包含安装、管理、运维或 API 参考材料。

@@ -12,6 +12,7 @@ Status: v0 Draft
 | [Plugin Contract](docs/plugin-contract.md) | Package, lifecycle, capability, and IPC contract boundaries |
 | [Security Model](docs/security.md) | Capability-first defaults and operator responsibilities |
 | [Project Origin](docs/project-origin.md) | Why the platform combines vehicle media, base services, and maintained adapters |
+| [Project Goals](docs/project-goals.md) | User outcomes, platform goals, and non-goals |
 | [Documentation Map](docs/documentation-map.md) | User, operator, developer, contributor, and reference paths |
 
 This v0 draft does not include installation, management, operations, or API reference material.
