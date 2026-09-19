@@ -12,5 +12,6 @@ CarMediaHub 사용자와 플러그인 개발자를 위한 공개 문서입니다
 | [플러그인 계약](docs/plugin-contract_ko.md) | 패키지, 수명 주기, capability와 IPC 계약 |
 | [보안 모델](docs/security_ko.md) | capability-first 기본 규칙과 운영자 책임 |
 | [프로젝트 유래](docs/project-origin_ko.md) | 차량용 미디어, 기반 서비스와 호환성 플러그인을 결합하는 이유 |
+| [문서 사이트 지도](docs/documentation-map_ko.md) | 사용자, 운영자, 개발자, 기여자와 참고 자료 경로 |
 
 이 v0 초안에는 설치, 관리, 운영 또는 API 참고 자료가 포함되어 있지 않습니다.

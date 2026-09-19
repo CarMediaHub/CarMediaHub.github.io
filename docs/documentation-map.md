@@ -1,0 +1,37 @@
+# Documentation Map
+
+Status: v0 Draft
+
+`CarMediaHub.github.io` is the public window for the whole project. It serves different readers from one documentation system while keeping product promises, deployment boundaries, SDK contracts, and security rules consistent.
+
+## Reader Paths
+
+| Reader | Start here | Main questions |
+|---|---|---|
+| User | [Project Origin](project-origin.md) and the user guide | What is CarMediaHub, what can it do, and what do I need to operate it? |
+| Operator | Deployment and operations guides | How do I install, secure, back up, update, and diagnose my deployment? |
+| Plugin author | [Plugin Contract](plugin-contract.md) and SDK references | How do I build, isolate, test, publish, and maintain a plugin? |
+| Contributor | Governance and engineering references | How are changes reviewed, released, documented, and supported? |
+
+## Planned Sections
+
+```text
+Users
+  Overview -> Project Origin -> Goals and Boundaries -> Installation -> First Run
+  -> Everyday Use -> Media Playback -> Troubleshooting -> Privacy and Responsibility
+
+Operators
+  Requirements -> Docker -> Native -> Network Entry -> Services and Bindings
+  -> Authentication -> Backup and Recovery -> Upgrade -> Diagnostics
+
+Developers
+  SDK Quickstart -> Manifest -> Lifecycle -> Context and i18n -> Capabilities
+  -> Data and Jobs -> UI -> Proxy Adapters -> Native Plugins
+  -> Testing -> Packaging, Signing and Security Reports
+
+Reference
+  API -> Errors -> Events -> Configuration -> Compatibility Matrix
+  -> Known Limitations -> Versioning and Migration
+```
+
+The public site explains supported behavior and user responsibilities. Private implementation notes, deployment secrets, internal paths, and unfinished product experiments remain outside this site.
