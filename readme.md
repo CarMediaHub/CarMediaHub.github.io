@@ -2,6 +2,8 @@
 
 Public documentation for CarMediaHub users and plugin authors.
 
+Language: English · [简体中文](readme_zh.md) · [한국어](readme_ko.md)
+
 Status: v0 Draft
 
 | Topic | Description |

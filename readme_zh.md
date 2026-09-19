@@ -2,6 +2,8 @@
 
 面向 CarMediaHub 用户和插件开发者的公开文档。
 
+语言： [English](readme.md) · 简体中文 · [한국어](readme_ko.md)
+
 状态：v0 草案
 
 | 主题 | 说明 |
