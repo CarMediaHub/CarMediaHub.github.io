@@ -1,0 +1,27 @@
+# 插件契约
+
+状态：v0 草案
+
+插件包声明身份、发布者、SDK 兼容范围、运行时要求、路由、能力、资源和数据生命周期。清单是授权请求，不是自动获得权限。
+
+## 生命周期
+
+```text
+discovered -> verified -> grant pending -> configured -> prepared
+-> starting -> ready -> active -> draining -> stopped
+                              \-> failed -> quarantined
+```
+
+停止、卸载和删除插件数据是独立动作。失败或隔离的插件不获得路由和 capability 调用。
+
+## 能力模型
+
+SDK 提供受作用域限制的配置、私有数据、存储、媒体、任务、历史、分类、显示、事件、诊断、网关路由、网络、浏览器会话和受管控传输能力。敏感能力在明确声明、批准和授予前保持禁用。
+
+Worker 通过版本化本地 IPC 契约与 Core 通信。公开契约定义生命周期、上下文、能力、事件、健康、诊断、取消和错误标识。大媒体和文件使用受控流句柄，而不是消息 payload。
+
+## 包要求
+
+插件包包含清单、执行入口、可选 UI 资源、迁移、国际化资源、SBOM、校验和和签名。它不得包含用户凭据、浏览器 Profile 数据、宿主特定配置、运行日志或未经校验的可执行下载。
+
+机器可验证的 v0 清单和错误目录维护在 [`carmediahub-sdk`](https://github.com/CarMediaHub/carmediahub-sdk) 仓库。
