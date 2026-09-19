@@ -15,6 +15,8 @@ Status: v0 Draft
 
 ## Planned Sections
 
+The page-level inventory, owners, language status, and release gates are maintained in the governance repository; the public site grows from the Users, Operators, Developers, Reference, and Community sections below.
+
 ```text
 Users
   Overview -> Project Origin -> Goals and Boundaries -> Installation -> First Run
