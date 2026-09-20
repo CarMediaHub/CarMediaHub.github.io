@@ -20,6 +20,12 @@ The SDK exposes scoped capabilities for configuration, private data, storage, me
 
 Workers communicate with the Core through a versioned local IPC contract. The public contract defines lifecycle, context, capabilities, events, health, diagnostics, cancellation, and error identifiers. Large media and files use controlled stream handles rather than message payloads.
 
+## Private data API
+
+`db` grants a constrained logical data store, not a database connection. Each read and write is bound by Core to the active organization, user, and plugin installation. A plugin cannot select another user, name a schema, receive a DSN, or issue arbitrary SQL. The same contract applies whether Core uses SQLite, PostgreSQL, or an operator-managed compatible database.
+
+WDR Media uses this API for playback history. Storage roots, media conversion, and service bindings remain Core-managed capabilities, so the plugin never receives host paths, upstream cookies, or service credentials.
+
 ## Package requirements
 
 A package includes its manifest, execution entry, optional UI assets, migrations, localization resources, SBOM, checksums, and signature. It must not contain user credentials, browser profile data, host-specific configuration, runtime logs, or unverified executable downloads.
