@@ -26,6 +26,10 @@ Workers communicate with the Core through a versioned local IPC contract. The pu
 
 WDR Media uses this API for playback history. Storage roots, media conversion, and service bindings remain Core-managed capabilities, so the plugin never receives host paths, upstream cookies, or service credentials.
 
+## Adapter publication
+
+The plugin catalog separates native media applications, local-service bridges, upstream adapters, browser bridges, and community packages. A catalog entry is not an approval to run code. Packages that need browser identity, external network access, media extraction, or a high-risk upstream require an isolated runtime, explicit capability review, and dedicated leakage and rollback tests before public distribution.
+
 ## Package requirements
 
 A package includes its manifest, execution entry, optional UI assets, migrations, localization resources, SBOM, checksums, and signature. It must not contain user credentials, browser profile data, host-specific configuration, runtime logs, or unverified executable downloads.
