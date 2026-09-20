@@ -15,4 +15,13 @@
 | [项目目标](docs/project-goals_zh.md) | 用户结果、平台目标和非目标 |
 | [文档站地图](docs/documentation-map_zh.md) | 普通用户、运营者、开发者、贡献者和参考资料入口 |
 
-本 v0 草案不包含安装、管理、运维或 API 参考材料。
+## 本地开发
+
+```powershell
+pnpm install
+pnpm check
+pnpm build
+pnpm dev
+```
+
+本站是纯静态构建，构建时读取公开 Markdown，不依赖 Core、中心账号、运行时数据库或媒体中继。

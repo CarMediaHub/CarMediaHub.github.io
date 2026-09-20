@@ -1,0 +1,12 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { getDocs, displayPath } from "../../../lib/docs";
+export function getStaticPaths() { return getDocs().map((page) => ({ params: { locale: page.locale, slug: page.slug }, props: { page } })); }
+const { page } = Astro.props;
+const pageLinks = getDocs().filter((item) => item.locale === page.locale);
+---
+<SiteLayout title={page.title} description={page.description}>
+  <article class="doc"><p class="eyebrow">{page.locale.toUpperCase()} · DRAFT DOCUMENTATION</p><h1>{page.title}</h1><p class="source">Source: <code>{page.source}</code></p><Fragment set:html={page.html} /></article>
+  <nav class="pager" aria-label="Related documentation">{pageLinks.filter((item) => item.slug !== page.slug).slice(0, 3).map((item) => <a href={displayPath(item)}>{item.title} →</a>)}</nav>
+</SiteLayout>
+<style>.eyebrow{font-size:12px;letter-spacing:.12em;color:#087f5b;font-weight:700}.source{font-size:13px;color:#55605a;border-bottom:1px solid #d7ddd8;padding-bottom:14px}.pager{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px;border-top:1px solid #d7ddd8;padding-top:18px}</style>

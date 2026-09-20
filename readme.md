@@ -15,4 +15,13 @@ Status: v0 Draft
 | [Project Goals](docs/project-goals.md) | User outcomes, platform goals, and non-goals |
 | [Documentation Map](docs/documentation-map.md) | User, operator, developer, contributor, and reference paths |
 
-This v0 draft does not include installation, management, operations, or API reference material.
+## Development
+
+```powershell
+pnpm install
+pnpm check
+pnpm build
+pnpm dev
+```
+
+The site is a static build. It reads the public Markdown pages at build time and does not require Core, a central account, a runtime database or a media relay.

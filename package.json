@@ -1,0 +1,12 @@
+{
+  "name": "carmediahub.github.io",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static public documentation site for CarMediaHub.",
+  "license": "CC-BY-SA-4.0",
+  "type": "module",
+  "scripts": { "dev": "astro dev", "build": "astro build", "preview": "astro preview", "check": "astro check" },
+  "dependencies": { "@astrojs/check": "^0.9.4", "astro": "^5.7.10", "marked": "^15.0.7", "typescript": "^5.8.3" },
+  "devDependencies": { "@types/node": "^22.15.3" },
+  "engines": { "node": ">=22" }
+}
