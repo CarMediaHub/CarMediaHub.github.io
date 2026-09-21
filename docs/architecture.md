@@ -31,6 +31,8 @@ Installing a plugin does not imply a permanent process. The Supervisor starts, d
 
 The management panel distinguishes package installation from Worker health. An installed package may still be stopped, starting, backing off, disabled, or failed; the panel shows the Supervisor state and retry count without exposing host paths or secrets.
 
+The same view lists the capabilities declared by each validated Manifest for operator review. This is informational; Core still checks every capability call against the installation boundary.
+
 ## Data and identity
 
 Every operation is scoped to a deployment, organization, user, device/session, and plugin installation where applicable. The platform provides logical private data access; storage backends do not change the public SDK behavior.

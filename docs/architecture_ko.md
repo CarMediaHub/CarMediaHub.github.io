@@ -31,6 +31,8 @@ Gateway는 프로세스 내 스트림 보호를 적용합니다. 인증 세션�
 
 관리 패널은 패키지 설치 상태와 Worker 상태를 구분합니다. 설치된 패키지도 중지, 시작 중, 백오프, 비활성화 또는 실패 상태일 수 있으며 패널에는 호스트 경로나 비밀 없이 Supervisor 상태와 재시도 횟수만 표시됩니다.
 
+같은 화면에서 검증된 각 Manifest가 선언한 capabilities도 확인할 수 있습니다. 이는 정보 표시일 뿐이며 Core는 모든 capability 호출에서 설치 인스턴스 경계를 다시 확인합니다.
+
 ## 데이터와 ID
 
 모든 작업은 해당되는 경우 Deployment, Organization, User, Device/Session 및 Plugin Installation 범위를 가집니다. 플랫폼은 논리적으로 격리된 데이터 접근을 제공하며 저장소 백엔드는 공개 SDK 동작을 바꾸지 않습니다.
