@@ -15,6 +15,8 @@ Browser or in-vehicle display
 
 The Core is the single public application entry. Plugins register logical routes and use SDK capabilities; plugins do not publish public host ports or receive raw database credentials, unrestricted host paths, browser profile data, or network access.
 
+The Gateway applies process-local stream protection: each authenticated session has a concurrent stream limit and each stream has a bounded byte budget. When a stream exceeds its budget, Core cancels the Worker request and releases the lease. This protects one Core instance; it is not a replacement for operator bandwidth limits or upstream rate controls.
+
 ## Runtime groups
 
 | Group | Intended use |
