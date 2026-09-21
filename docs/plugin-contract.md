@@ -26,6 +26,8 @@ The `catalog` capability exposes `register`, `query`, and `remove` for searchabl
 
 The `display` capability exposes read-only display capabilities and a `requestMode` intent for `normal` or `fullscreen`. Core can reject fullscreen when the device does not support it; plugins never receive browser-window control.
 
+The `notifications` API is provided through the platform event capability. A plugin can publish a bounded `info`, `success`, `warning`, or `error` notification and list or mark read only notifications in its current user and installation scope. Core owns persistence and user-facing delivery; plugins cannot address another user or installation.
+
 Workers communicate with the Core through a versioned local IPC contract. The public contract defines lifecycle, context, capabilities, events, health, diagnostics, cancellation, and error identifiers. Large media and files use controlled stream handles rather than message payloads.
 
 ## Private data API
