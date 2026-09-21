@@ -54,7 +54,7 @@ The machine-readable v0 manifest and error catalog are maintained in the [`carme
 
 The official plugin collection builds installable artifacts under `dist/packages/<plugin-id>`. A package contains its manifest, compiled `worker.js` entry, optional UI, and localized READMEs. Run `pnpm build` followed by `pnpm verify:packages` in [`carmediahub-plugins`](https://github.com/CarMediaHub/carmediahub-plugins) before staging a package for Core.
 
-Network-enabled plugins use `network.request` with a service binding explicitly assigned to their plugin installation and a relative path. They cannot submit arbitrary URLs, hostnames, ports, credentials, sockets, or unrestricted headers. Unassigned Core component bindings are not exposed to plugin requests. Upstream adapters still require isolated-runtime and leakage tests before distribution.
+Network-enabled plugins use `network.request` with a service binding explicitly assigned to their plugin installation and a relative path. Operators assign that installation scope from the Core management panel; leaving the scope empty creates a Core-only binding that is not available to plugin requests. Plugins cannot submit arbitrary URLs, hostnames, ports, credentials, sockets, or unrestricted headers. Upstream adapters still require isolated-runtime and leakage tests before distribution.
 
 Redirects are handled by Core: only GET and HEAD may follow up to three redirects, and every target must remain on the binding origin. Cross-origin redirects and redirects for other methods are rejected.
 
