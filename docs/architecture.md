@@ -17,6 +17,8 @@ The Core is the single public application entry. Plugins register logical routes
 
 The Gateway applies process-local stream protection: each authenticated session has a concurrent stream limit and each stream has a bounded byte budget. When a stream exceeds its budget, Core cancels the Worker request and releases the lease. This protects one Core instance; it is not a replacement for operator bandwidth limits or upstream rate controls.
 
+The management speed test measures both directions. Upload measurement accepts only authenticated `application/octet-stream` requests between 64 KiB and 2 MiB; Core does not persist the body and returns only the received byte count.
+
 ## Runtime groups
 
 | Group | Intended use |
