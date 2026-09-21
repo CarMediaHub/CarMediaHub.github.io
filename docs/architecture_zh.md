@@ -29,6 +29,8 @@ Gateway 提供进程内流保护：每个认证会话有并发流限制，每条
 
 安装插件不代表永久常驻进程。Supervisor 根据生命周期和资源策略启动、排空、停止、更新和恢复运行时组。
 
+管理端会区分插件包安装状态和 Worker 健康状态。已安装的包仍可能处于停止、启动中、退避、停用或失败状态；面板只显示 Supervisor 状态和重试次数，不暴露宿主路径或秘密。
+
 ## 数据与身份
 
 所有操作在适用时都带有 Deployment、Organization、User、Device/Session 和 Plugin Installation 作用域。平台提供逻辑私有数据访问；存储后端不会改变公开 SDK 行为。

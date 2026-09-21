@@ -29,6 +29,8 @@ The management speed test measures both directions. Upload measurement accepts o
 
 Installing a plugin does not imply a permanent process. The Supervisor starts, drains, stops, updates, and recovers runtime groups according to lifecycle and resource policy.
 
+The management panel distinguishes package installation from Worker health. An installed package may still be stopped, starting, backing off, disabled, or failed; the panel shows the Supervisor state and retry count without exposing host paths or secrets.
+
 ## Data and identity
 
 Every operation is scoped to a deployment, organization, user, device/session, and plugin installation where applicable. The platform provides logical private data access; storage backends do not change the public SDK behavior.
