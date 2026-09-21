@@ -16,6 +16,10 @@ CarMediaHub uses a capability-first model. A plugin receives only the minimum, s
 
 Managed component binaries are staged inside the deployment rather than discovered from the host PATH. Installation requires a release record signed by an operator-trusted Ed25519 key; the record binds the component, version, platform, artifact identity, and SHA-256 digest. A staged file is rejected when any of those values or the signature do not match. Download sources, key rotation, health checks, and rollback remain deployment operations rather than plugin capabilities.
 
+## Plugin Releases
+
+Installing an isolated Worker also requires an operator-trusted Ed25519-signed plugin release record. The signed manifest declares the package identity, SDK compatibility, capabilities, routes, runtime group, and a package-relative Worker entry. The Core rejects unknown signers, modified manifests, unsafe entries, and isolated Workers without an explicit entry. Package verification is separate from granting capabilities or starting a Worker.
+
 ## Operator responsibilities
 
 Operators control access to the management interface, user accounts, devices, public entry, network path, storage, backups, and plugin grants. Any optional external service must state what leaves the operator-controlled infrastructure and why.
