@@ -50,7 +50,7 @@ WDR Media는 이 API로 재생 기록을 저장합니다. 저장소 루트, 미�
 
 공식 플러그인 모음은 `dist/packages/<plugin-id>` 아래에 설치 가능한 패키지를 생성합니다. 패키지에는 매니페스트, 컴파일된 `worker.js` 진입점, 선택적 UI와 다국어 README가 포함됩니다. [`carmediahub-plugins`](https://github.com/CarMediaHub/carmediahub-plugins)에서 `pnpm build`와 `pnpm verify:packages`를 실행한 뒤 Core staging에 패키지를 배치합니다.
 
-네트워크 플러그인은 관리자가 만든 service binding과 상대 경로를 사용하는 `network.request`만 호출할 수 있습니다. 임의 URL, 호스트명, 포트, 자격 증명, 소켓 또는 제한되지 않은 헤더를 제출할 수 없습니다. 상류 어댑터는 배포 전에 격리 런타임, 정보 유출 및 장애 테스트를 통과해야 합니다.
+네트워크 플러그인은 해당 플러그인 설치 인스턴스에 관리자가 명시적으로 할당한 service binding과 상대 경로를 사용하는 `network.request`만 호출할 수 있습니다. 임의 URL, 호스트명, 포트, 자격 증명, 소켓 또는 제한되지 않은 헤더를 제출할 수 없으며 할당되지 않은 Core 컴포넌트 binding은 플러그인 요청에 노출되지 않습니다. 상류 어댑터는 배포 전에 격리 런타임, 정보 유출 및 장애 테스트를 통과해야 합니다.
 
 리디렉션은 Core가 처리합니다. GET과 HEAD만 최대 3회까지 따를 수 있으며 모든 대상은 binding origin을 유지해야 합니다. 교차 출처 리디렉션과 다른 메서드의 리디렉션은 거부됩니다.
 
