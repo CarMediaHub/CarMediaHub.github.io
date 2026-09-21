@@ -30,6 +30,8 @@ The `notifications` API is provided through the platform event capability. A plu
 
 The `media` capability can create a short-lived playback session for an opaque media ID. Subsequent media reads must use that session; Core binds it to the user, device, installation and expiry, and revokes it when the user session or plugin installation is revoked. Plugins never receive a host path or a reusable public media URL.
 
+For media gateway routes, `HEAD` returns metadata only and does not create a playback session or read media bytes. A session is created only for an actual `GET` playback request.
+
 Media probing through `media.probe` returns controlled metadata, seekability, and structured playback modes: `direct-range`, `remux`, and `transcode`. Core currently exposes only `direct-range`; the latter modes require a future Core-owned job executor and never grant plugins FFmpeg, host paths, or arbitrary command execution.
 
 `media.requestTransform` accepts only a media ID and a bounded output profile. Core validates the media and mode, then creates a scoped, cancellable Job; it does not accept source paths, executable arguments, URLs, or shell fragments.
