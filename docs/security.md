@@ -18,7 +18,7 @@ Managed component binaries are staged inside the deployment rather than discover
 
 ## Plugin Releases
 
-Installing an isolated Worker also requires an operator-trusted Ed25519-signed plugin release record. The signed manifest declares the package identity, SDK compatibility, capabilities, routes, runtime group, and a package-relative Worker entry. The Core rejects unknown signers, modified manifests, unsafe entries, and isolated Workers without an explicit entry. Package verification is separate from granting capabilities or starting a Worker.
+Installing an isolated Worker requires an operator-trusted Ed25519-signed package release record. The signature binds the manifest, signer identity, staged artifact identity, and canonical directory digest. Core installs only the matching staged directory, rejects links and unsafe entries, and stores only a relative verified package location for restart recovery. Package verification remains separate from capability grants and Worker startup; media Range/HLS, transcoding, upgrades, and rollback are not yet provided.
 
 ## Operator responsibilities
 

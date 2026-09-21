@@ -18,7 +18,7 @@ CarMediaHub 采用 capability-first 模型。插件只获得其安装实例获�
 
 ## 插件发布物
 
-安装隔离 Worker 同样要求插件发布记录由运营者信任的 Ed25519 密钥签名。被签名的 Manifest 声明包标识、SDK 兼容性、能力、路由、运行时组以及包内相对 Worker 入口。Core 会拒绝未知签名者、被修改的 Manifest、不安全入口，以及未显式声明入口的隔离 Worker。包验证不同于能力授权或启动 Worker。
+安装隔离 Worker 要求插件包发布记录由运营者信任的 Ed25519 密钥签名。签名绑定 Manifest、签名者标识、staging artifact 标识和规范目录摘要。Core 只安装相匹配的 staging 目录，拒绝链接与不安全入口，并且仅保存用于重启恢复的相对验证包位置。包验证不同于能力授权或启动 Worker；媒体 Range/HLS、转码、升级与回滚目前尚未提供。
 
 ## 运营者责任
 
