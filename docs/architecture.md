@@ -31,6 +31,8 @@ Installing a plugin does not imply a permanent process. The Supervisor starts, d
 
 The management panel distinguishes package installation from Worker health. An installed package may still be stopped, starting, backing off, disabled, or failed; the panel shows the Supervisor state and retry count without exposing host paths or secrets.
 
+Component checks only verify that a managed file exists and matches its SHA-256 digest; they do not execute AList, rclone, FFmpeg, or discover binaries through PATH or environment variables.
+
 The same view lists the capabilities declared by each validated Manifest and the current grant set for operator review. Installation grants the declared set by default, while an operator may reduce it to a subset; Core checks every capability call against the current grant, installation, and user boundaries, and audits changes.
 
 ## Data and identity
