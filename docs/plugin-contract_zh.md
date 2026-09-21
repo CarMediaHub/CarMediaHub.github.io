@@ -58,4 +58,6 @@ WDR Media 使用该 API 保存播放记录。存储根目录、媒体转换和�
 
 重定向由 Core 处理：只有 GET 和 HEAD 最多跟随 3 次，并且每次都必须保持在 binding origin；跨源重定向以及其他方法的重定向都会被拒绝。
 
+Core 为每个 binding 限制最多 10 个活动请求，并拒绝超过 1 MiB 的响应正文。请求成功、失败、超时或取消时都会释放配额。
+
 仓库中的 `service-binding-adapter-example` 是中性的参考实现，只验证契约，不针对具体网站，也不提供公共代理。

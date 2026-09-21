@@ -58,4 +58,6 @@ Network-enabled plugins use `network.request` with a service binding explicitly 
 
 Redirects are handled by Core: only GET and HEAD may follow up to three redirects, and every target must remain on the binding origin. Cross-origin redirects and redirects for other methods are rejected.
 
+Core limits each binding to ten active requests and rejects response bodies larger than 1 MiB. The quota is released on success, failure, timeout, and cancellation.
+
 The repository includes `service-binding-adapter-example` as a neutral reference implementation. It demonstrates the contract without targeting a specific website or exposing a public proxy.
