@@ -14,6 +14,8 @@ discovered -> verified -> grant pending -> configured -> prepared
 
 Stopping, uninstalling, and deleting plugin data are separate actions. A failed or quarantined plugin does not receive routes or capability calls.
 
+Disabling a plugin removes its route, stops its Worker, and revokes related playback sessions. Re-enabling restores only the route and lazy-start eligibility; it does not start a Worker automatically or reset granted capabilities and plugin data.
+
 ## Capability model
 
 The SDK exposes scoped capabilities for configuration, private data, storage, media, jobs, history, catalog, display, events, diagnostics, gateway routing, network, browser sessions, and managed transfers. Sensitive capabilities remain disabled until explicitly declared, approved, and granted. A Worker may receive a read-only `grantedCapabilities` list after handshake for feature adaptation; Core remains authoritative and rechecks the current grant on every call, while older Brokers may omit this field.
