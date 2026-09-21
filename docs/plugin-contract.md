@@ -56,6 +56,8 @@ The official plugin collection builds installable artifacts under `dist/packages
 
 Network-enabled plugins use `network.request` with a service binding explicitly assigned to their plugin installation and a relative path. Operators assign that installation scope from the Core management panel; leaving the scope empty creates a Core-only binding that is not available to plugin requests. Plugins cannot submit arbitrary URLs, hostnames, ports, credentials, sockets, or unrestricted headers. Upstream adapters still require isolated-runtime and leakage tests before distribution.
 
+Operators can run an explicit binding health check from the management panel. Core sends a bounded `HEAD` request without following redirects or returning the response body; the result contains only reachability, HTTP status when available, and latency. A health check does not grant a plugin network capability.
+
 Redirects are handled by Core: only GET and HEAD may follow up to three redirects, and every target must remain on the binding origin. Cross-origin redirects and redirects for other methods are rejected.
 
 Core limits each binding to ten active requests and rejects response bodies larger than 1 MiB. The quota is released on success, failure, timeout, and cancellation.
