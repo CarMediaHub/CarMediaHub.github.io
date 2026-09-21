@@ -32,6 +32,8 @@ SDK 提供受作用域限制的配置、私有数据、存储、媒体、任务�
 
 媒体探测通过 `media.probe` 返回受控元数据、是否可寻址以及结构化播放模式：`direct-range`、`remux`、`transcode`。当前 Core 仅提供 `direct-range`；后两种模式需要未来由 Core 管理的任务执行器实现，不授予插件调用 FFmpeg、访问宿主路径或执行任意命令的权限。
 
+`media.requestTransform` 只接受媒体 ID 和受限的输出策略。Core 校验媒体与模式后创建受作用域约束、可取消的任务；不会接受源文件路径、可执行文件参数、URL 或 Shell 片段。
+
 Worker 通过版本化本地 IPC 契约与 Core 通信。公开契约定义生命周期、上下文、能力、事件、健康、诊断、取消和错误标识。大媒体和文件使用受控流句柄，而不是消息 payload。
 
 ## 私有数据 API

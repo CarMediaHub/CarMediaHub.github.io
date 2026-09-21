@@ -32,6 +32,8 @@ The `media` capability can create a short-lived playback session for an opaque m
 
 Media probing through `media.probe` returns controlled metadata, seekability, and structured playback modes: `direct-range`, `remux`, and `transcode`. Core currently exposes only `direct-range`; the latter modes require a future Core-owned job executor and never grant plugins FFmpeg, host paths, or arbitrary command execution.
 
+`media.requestTransform` accepts only a media ID and a bounded output profile. Core validates the media and mode, then creates a scoped, cancellable Job; it does not accept source paths, executable arguments, URLs, or shell fragments.
+
 Workers communicate with the Core through a versioned local IPC contract. The public contract defines lifecycle, context, capabilities, events, health, diagnostics, cancellation, and error identifiers. Large media and files use controlled stream handles rather than message payloads.
 
 ## Private data API
