@@ -48,6 +48,6 @@ The plugin catalog separates native media applications, local-service bridges, u
 
 ## Package requirements
 
-A package includes its manifest, execution entry, optional UI assets, migrations, localization resources, SBOM, checksums, and signature. It must not contain user credentials, browser profile data, host-specific configuration, runtime logs, or unverified executable downloads.
+A package includes its manifest, a package-relative execution entry, optional UI assets, migrations, localization resources, SBOM, checksums, and signature. Isolated workers declare `worker`; shared adapters and future module runtimes declare `runtimeEntry` with protocol `0.1`. Core rejects absolute paths, traversal, commands, and host environment dependencies. It must not contain user credentials, browser profile data, host-specific configuration, runtime logs, or unverified executable downloads.
 
 The machine-readable v0 manifest and error catalog are maintained in the [`carmediahub-sdk`](https://github.com/CarMediaHub/carmediahub-sdk) repository.
