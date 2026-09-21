@@ -18,6 +18,8 @@ discovered -> verified -> grant pending -> configured -> prepared
 
 SDK 提供受作用域限制的配置、私有数据、存储、媒体、任务、历史、分类、显示、事件、诊断、网关路由、网络、浏览器会话和受管控传输能力。敏感能力在明确声明、批准和授予前保持禁用。
 
+`jobs` 能力始终限制在当前用户和插件安装实例作用域内。初始配额为每个作用域最多 10 个活跃任务，JSON payload 和结果各限制 64 KiB。超出限制时返回稳定错误码 `CMH.JOBS.QUEUE_FULL`、`CMH.JOBS.PAYLOAD_TOO_LARGE` 或 `CMH.JOBS.RESULT_TOO_LARGE`；调用方应使用错误目录中的 message key，不应硬编码面向用户的文案。
+
 Worker 通过版本化本地 IPC 契约与 Core 通信。公开契约定义生命周期、上下文、能力、事件、健康、诊断、取消和错误标识。大媒体和文件使用受控流句柄，而不是消息 payload。
 
 ## 私有数据 API
