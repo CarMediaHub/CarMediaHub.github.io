@@ -56,4 +56,6 @@ WDR Media 使用该 API 保存播放记录。存储根目录、媒体转换和�
 
 需要网络的插件必须通过 `network.request` 引用管理员创建的 service binding 和相对路径。插件不能提交任意 URL、主机名、端口、凭据、Socket 或未声明请求头。代理兼容插件在发布前仍必须通过隔离运行时、泄露和故障测试。
 
+重定向由 Core 处理：只有 GET 和 HEAD 最多跟随 3 次，并且每次都必须保持在 binding origin；跨源重定向以及其他方法的重定向都会被拒绝。
+
 仓库中的 `service-binding-adapter-example` 是中性的参考实现，只验证契约，不针对具体网站，也不提供公共代理。

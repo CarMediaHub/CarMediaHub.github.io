@@ -56,4 +56,6 @@ The official plugin collection builds installable artifacts under `dist/packages
 
 Network-enabled plugins use `network.request` with an administrator-created service binding and a relative path. They cannot submit arbitrary URLs, hostnames, ports, credentials, sockets, or unrestricted headers. Upstream adapters still require isolated-runtime and leakage tests before distribution.
 
+Redirects are handled by Core: only GET and HEAD may follow up to three redirects, and every target must remain on the binding origin. Cross-origin redirects and redirects for other methods are rejected.
+
 The repository includes `service-binding-adapter-example` as a neutral reference implementation. It demonstrates the contract without targeting a specific website or exposing a public proxy.
