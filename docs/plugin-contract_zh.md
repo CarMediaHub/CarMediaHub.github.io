@@ -20,6 +20,8 @@ SDK 提供受作用域限制的配置、私有数据、存储、媒体、任务�
 
 `jobs` 能力始终限制在当前用户和插件安装实例作用域内。初始配额为每个作用域最多 10 个活跃任务，JSON payload 和结果各限制 64 KiB。超出限制时返回稳定错误码 `CMH.JOBS.QUEUE_FULL`、`CMH.JOBS.PAYLOAD_TOO_LARGE` 或 `CMH.JOBS.RESULT_TOO_LARGE`；调用方应使用错误目录中的 message key，不应硬编码面向用户的文案。
 
+`history` 能力通过同一作用域 Worker 契约提供 `record`、`query` 和 `clear`。Core 只持久化必要的主题、路由、标题、分类、设备和时间字段；插件不能选择其他用户或安装实例，也不会获得数据库连接。
+
 Worker 通过版本化本地 IPC 契约与 Core 通信。公开契约定义生命周期、上下文、能力、事件、健康、诊断、取消和错误标识。大媒体和文件使用受控流句柄，而不是消息 payload。
 
 ## 私有数据 API

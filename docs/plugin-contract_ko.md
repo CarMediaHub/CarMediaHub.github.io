@@ -20,6 +20,8 @@ SDK는 설정, 개인 데이터, 저장소, 미디어, 작업, 기록, 카탈로
 
 `jobs` capability는 현재 사용자와 플러그인 설치 인스턴스의 범위 안에서만 작업을 실행합니다. 초기 한도는 범위마다 활성 작업 10개이며 JSON payload와 결과는 각각 64 KiB로 제한됩니다. 한도를 초과하면 안정적인 오류 코드 `CMH.JOBS.QUEUE_FULL`, `CMH.JOBS.PAYLOAD_TOO_LARGE` 또는 `CMH.JOBS.RESULT_TOO_LARGE`를 반환합니다. 호출자는 카탈로그의 message key를 사용하고 사용자 문구를 하드코딩하지 않아야 합니다.
 
+`history` capability는 동일한 범위의 Worker 계약으로 `record`, `query`, `clear`를 제공합니다. Core는 주제, 경로, 제목, 카테고리, 장치와 시간의 최소 필드만 저장하며 플러그인은 다른 사용자나 설치 인스턴스를 선택할 수 없고 데이터베이스 연결도 받지 않습니다.
+
 ## 개인 데이터 API
 
 `db`는 데이터베이스 연결이 아니라 제한된 논리 데이터 저장소를 부여합니다. Core는 각 읽기와 쓰기를 현재 조직, 사용자 및 플러그인 설치 인스턴스에 바인딩합니다. 플러그인은 다른 사용자를 선택하거나 schema를 지정하거나 DSN을 받거나 임의 SQL을 실행할 수 없습니다. Core가 SQLite, PostgreSQL 또는 운영자가 관리하는 호환 데이터베이스를 사용해도 SDK 의미는 동일합니다.
