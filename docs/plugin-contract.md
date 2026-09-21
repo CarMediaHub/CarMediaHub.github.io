@@ -28,6 +28,8 @@ The `display` capability exposes read-only display capabilities and a `requestMo
 
 The `notifications` API is provided through the platform event capability. A plugin can publish a bounded `info`, `success`, `warning`, or `error` notification and list or mark read only notifications in its current user and installation scope. Core owns persistence and user-facing delivery; plugins cannot address another user or installation.
 
+The `media` capability can create a short-lived playback session for an opaque media ID. Subsequent media reads must use that session; Core binds it to the user, device, installation and expiry, and revokes it when the user session or plugin installation is revoked. Plugins never receive a host path or a reusable public media URL.
+
 Workers communicate with the Core through a versioned local IPC contract. The public contract defines lifecycle, context, capabilities, events, health, diagnostics, cancellation, and error identifiers. Large media and files use controlled stream handles rather than message payloads.
 
 ## Private data API
