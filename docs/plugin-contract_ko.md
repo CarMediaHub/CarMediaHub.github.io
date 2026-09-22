@@ -46,6 +46,8 @@ Worker는 핸드셰이크 후 기능 적응을 위해 읽기 전용 `grantedCapa
 
 변환 결과는 조직, 사용자, 장치 및 설치 인스턴스 범위로 격리되고 자동 만료되며 취소할 수 있습니다. Core는 인증된 `GET`/`HEAD /api/media/outputs/:id`와 제한된 Range 읽기를 제공합니다. 만료, 취소, 부재 또는 범위 밖 결과는 호출자에게 동일하게 사용할 수 없는 것으로 처리됩니다.
 
+`media.requestHls`는 짧은 수명의 범위 제한 VOD 세션을 만들고 Core가 생성한 playlist 및 segment token을 반환합니다. `media.readHlsAsset`은 이 token에 대한 제한된 Range 읽기만 허용하며 플러그인은 출력 디렉터리, 파일 템플릿, 프로토콜, 필터 또는 FFmpeg 인자를 선택할 수 없습니다. HLS 세션은 만료 또는 취소 시 정리되며 영구 미디어 URL이 아닙니다.
+
 ## 개인 데이터 API
 
 `db`는 데이터베이스 연결이 아니라 제한된 논리 데이터 저장소를 부여합니다. Core는 각 읽기와 쓰기를 현재 조직, 사용자 및 플러그인 설치 인스턴스에 바인딩합니다. 플러그인은 다른 사용자를 선택하거나 schema를 지정하거나 DSN을 받거나 임의 SQL을 실행할 수 없습니다. Core가 SQLite, PostgreSQL 또는 운영자가 관리하는 호환 데이터베이스를 사용해도 SDK 의미는 동일합니다.

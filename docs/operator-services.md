@@ -30,7 +30,7 @@ browser or vehicle client
   -> operator-managed AList/rclone/media service
 ```
 
-Core can run bounded remux/transcode jobs through a healthy managed FFmpeg component; the worker and native/Docker service runner remain separately gated distribution concerns. The current contract does not claim HLS packaging or that every AList/rclone/Mihomo binary is already shipped for every platform.
+Core can run bounded remux/transcode and VOD HLS jobs through a healthy managed FFmpeg component; the worker and native/Docker service runner remain separately gated distribution concerns. The current contract does not claim live HLS, or that every AList/rclone/Mihomo binary is already shipped for every platform.
 
 ## Operational boundaries
 

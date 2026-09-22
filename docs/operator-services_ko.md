@@ -30,7 +30,7 @@ CarMediaHub는 미디어 및 네트워크 도구를 운영자가 관리하는 �
   -> 운영자가 관리하는 AList/rclone/미디어 서비스
 ```
 
-Core는 정상 상태의 관리되는 FFmpeg 구성 요소를 통해 제한된 remux/트랜스코딩 작업을 실행할 수 있습니다. Worker와 Native/Docker 서비스 실행기는 별도의 배포 기준으로 관리됩니다. 현재 계약은 HLS 패키징이나 모든 플랫폼용 AList/rclone/Mihomo 바이너리가 이미 제공된다는 뜻이 아닙니다.
+Core는 정상 상태의 관리되는 FFmpeg 구성 요소를 통해 제한된 remux/트랜스코딩 및 VOD HLS 작업을 실행할 수 있습니다. Worker와 Native/Docker 서비스 실행기는 별도의 배포 기준으로 관리됩니다. 현재 계약은 라이브 HLS나 모든 플랫폼용 AList/rclone/Mihomo 바이너리가 이미 제공된다는 뜻이 아닙니다.
 
 ## 운영 경계
 

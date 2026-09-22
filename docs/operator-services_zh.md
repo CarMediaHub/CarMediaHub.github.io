@@ -30,7 +30,7 @@ CarMediaHub 将媒体和网络工具视为由运营者控制的基础服务。�
   -> 运营者管理的 AList/rclone/媒体服务
 ```
 
-Core 可以通过健康的受管 FFmpeg 组件执行有界的转封装/转码任务；Worker 和 Native/Docker 服务运行器仍属于独立的分发门槛。当前契约不表示已经提供 HLS 封装，也不表示所有平台都已随项目发布 AList/rclone/Mihomo 二进制。
+Core 可以通过健康的受管 FFmpeg 组件执行有界的转封装/转码和点播 HLS 任务；Worker 和 Native/Docker 服务运行器仍属于独立的分发门槛。当前契约不表示已经提供直播 HLS，也不表示所有平台都已随项目发布 AList/rclone/Mihomo 二进制。
 
 ## 运营边界
 

@@ -44,6 +44,8 @@ Worker 握手后的只读上下文可以包含 `grantedCapabilities`，用于界
 
 转换结果隔离于组织、用户、设备和安装实例作用域，自动过期并可撤销。Core 提供带认证的 `GET`/`HEAD /api/media/outputs/:id`，支持受限的 Range 读取；过期、撤销、不存在或越权的结果对调用方统一表现为不可用。
 
+`media.requestHls` 创建短期、受作用域约束的点播会话，并返回由 Core 生成的清单和分片 token。`media.readHlsAsset` 只允许读取这些 token 的受限 Range；插件不能选择输出目录、文件模板、协议、滤镜或 FFmpeg 参数。HLS 会话在过期或撤销时清理，不是永久媒体 URL。
+
 Worker 通过版本化本地 IPC 契约与 Core 通信。公开契约定义生命周期、上下文、能力、事件、健康、诊断、取消和错误标识。大媒体和文件使用受控流句柄，而不是消息 payload。
 
 ## 私有数据 API

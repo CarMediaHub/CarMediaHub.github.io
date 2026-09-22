@@ -42,6 +42,8 @@ Media probing through `media.probe` returns controlled metadata, seekability, an
 
 Transform outputs are isolated to the organization, user, device and installation scope, expire automatically, and can be revoked. Core exposes authenticated `GET`/`HEAD /api/media/outputs/:id` with bounded Range reads; expired, revoked, missing, or out-of-scope results are indistinguishable to callers.
 
+`media.requestHls` creates a short-lived, scoped VOD session with a Core-generated playlist and segment tokens. `media.readHlsAsset` reads bounded ranges from those tokens; plugins cannot select an output directory, file template, protocol, filter, or FFmpeg argument. HLS sessions are cleaned up on expiry or revocation and are not permanent media URLs.
+
 Workers communicate with the Core through a versioned local IPC contract. The public contract defines lifecycle, context, capabilities, events, health, diagnostics, cancellation, and error identifiers. Large media and files use controlled stream handles rather than message payloads.
 
 ## Private data API
