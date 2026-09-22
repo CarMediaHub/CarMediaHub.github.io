@@ -24,7 +24,7 @@ When Core starts a managed component, it rechecks the recorded SHA-256 digest an
 
 ## Managed Media Roots
 
-An administrator explicitly selects each media root. Core encrypts the selected path in its deployment data, checks the directory and file type at access time, ignores symbolic links, and exposes only root IDs and opaque media IDs through its APIs. Plugins do not receive a host path. Controlled recursive indexing, short-lived playback sessions, Range reads, and Core-owned remux/transcode jobs are available; result publication, thumbnails, HLS, and cache recovery are not yet available.
+An administrator explicitly selects each media root. Core encrypts the selected path in its deployment data, checks the directory and file type at access time, ignores symbolic links, and exposes only root IDs and opaque media IDs through its APIs. Plugins do not receive a host path. Controlled recursive indexing, short-lived playback sessions, Range reads, Core-owned remux/transcode jobs, and short-lived scoped transform-output reads are available; permanent result URLs, thumbnails, HLS, and cache recovery are not yet available.
 
 ## Plugin Releases
 
