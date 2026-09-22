@@ -56,6 +56,8 @@ Workers communicate with the Core through a versioned local IPC contract. The pu
 
 WDR Media uses this API for playback history. Storage roots, media conversion, and service bindings remain Core-managed capabilities, so the plugin never receives host paths, upstream cookies, or service credentials.
 
+Operators can export or delete the current user's data for one plugin installation from Core. Export includes bounded logical records and migration metadata, is limited to 10,000 records or 4 MiB, and is marked `no-store`; deletion requires explicit confirmation and removes both records and migration metadata in one Core transaction. These operations never accept a plugin-supplied user, organization, installation, schema, or SQL statement.
+
 ## Adapter publication
 
 The plugin catalog separates native media applications, local-service bridges, upstream adapters, browser bridges, and community packages. A catalog entry is not an approval to run code. Packages that need browser identity, external network access, media extraction, or a high-risk upstream require an isolated runtime, explicit capability review, and dedicated leakage and rollback tests before public distribution.
