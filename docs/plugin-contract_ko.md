@@ -40,7 +40,7 @@ Worker는 핸드셰이크 후 기능 적응을 위해 읽기 전용 `grantedCapa
 
 미디어 Gateway 경로의 `HEAD` 요청은 메타데이터만 반환하며 재생 세션을 만들거나 미디어 바이트를 읽지 않습니다. 실제 `GET` 재생 요청에서만 세션이 생성되고 제한된 콘텐츠를 읽습니다.
 
-`media.probe`를 통한 미디어 탐색은 제한된 메타데이터, 탐색 가능 여부와 구조화된 재생 모드(`direct-range`, `remux`, `transcode`)를 반환합니다. 관리되는 FFmpeg가 정상 상태이면 Core가 제한된 `remux`와 `transcode`를 실행할 수 있습니다. 변환 작업이 완료되면 짧은 수명의 불투명한 `outputId`가 반환되며 플러그인은 `media.readOutput`으로 청크를 읽거나 Core 인증 재생 경로를 사용할 수 있습니다. HLS는 현재 계약에 포함되지 않습니다. 플러그인은 FFmpeg, 호스트 경로 또는 임의 명령 실행 권한을 받지 않습니다.
+`media.probe`를 통한 미디어 탐색은 제한된 메타데이터, 탐색 가능 여부와 구조화된 재생 모드(`direct-range`, `remux`, `transcode`)를 반환합니다. 관리되는 FFmpeg가 정상 상태이면 Core가 제한된 `remux`와 `transcode`를 실행할 수 있습니다. 변환 작업이 완료되면 짧은 수명의 불투명한 `outputId`가 반환되며 플러그인은 `media.readOutput`으로 청크를 읽거나 Core 인증 재생 경로를 사용할 수 있습니다. VOD HLS는 아래의 범위 제한 세션 API로 제공되며 라이브 HLS는 현재 계약에 포함되지 않습니다. 플러그인은 FFmpeg, 호스트 경로 또는 임의 명령 실행 권한을 받지 않습니다.
 
 `media.requestTransform`은 미디어 ID와 제한된 출력 프로필만 받습니다. Core가 미디어와 모드를 검증한 후 현재 범위에 묶인 취소 가능한 작업을 생성하며, 소스 경로, 실행 파일 인자, URL 또는 셸 조각은 받지 않습니다.
 

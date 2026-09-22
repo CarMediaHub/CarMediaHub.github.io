@@ -36,7 +36,7 @@ The `media` capability can create a short-lived playback session for an opaque m
 
 For media gateway routes, `HEAD` returns metadata only and does not create a playback session or read media bytes. A session is created only for an actual `GET` playback request.
 
-Media probing through `media.probe` returns controlled metadata, seekability, and structured playback modes: `direct-range`, `remux`, and `transcode`. When a managed FFmpeg is healthy, Core can execute the controlled `remux` and `transcode` modes. A completed transform returns a short-lived opaque `outputId`; the plugin reads bounded chunks through `media.readOutput`, or uses Core's authenticated playback route. HLS is not part of the current contract. Plugins never receive FFmpeg, host paths, or arbitrary command execution.
+Media probing through `media.probe` returns controlled metadata, seekability, and structured playback modes: `direct-range`, `remux`, and `transcode`. When a managed FFmpeg is healthy, Core can execute the controlled `remux` and `transcode` modes. A completed transform returns a short-lived opaque `outputId`; the plugin reads bounded chunks through `media.readOutput`, or uses Core's authenticated playback route. VOD HLS is provided through the scoped session API below; live HLS is not part of the current contract. Plugins never receive FFmpeg, host paths, or arbitrary command execution.
 
 `media.requestTransform` accepts only a media ID and a bounded output profile. Core validates the media and mode, then creates a scoped, cancellable Job; it does not accept source paths, executable arguments, URLs, or shell fragments.
 
