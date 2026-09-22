@@ -23,7 +23,7 @@
   -> 일상 사용 -> 미디어 재생 -> 문제 해결 -> 개인정보와 책임
 
 운영자
-  요구 사항 -> Docker -> Native -> 네트워크 진입점 -> [서비스와 바인딩](operator-services_ko.md)
+  요구 사항 -> Docker -> [Native](operator-native_ko.md) -> 네트워크 진입점 -> [서비스와 바인딩](operator-services_ko.md)
   -> [구성](operator-config_ko.md) -> [백업과 복구](operator-backup_ko.md) -> 업데이트 -> 진단
   -> 인증 -> 백업과 복구 -> 업데이트 -> 진단
 

@@ -23,7 +23,7 @@ Users
   -> Everyday Use -> Media Playback -> Troubleshooting -> Privacy and Responsibility
 
 Operators
-  Requirements -> Docker -> Native -> Network Entry -> [Services and Bindings](operator-services.md)
+  Requirements -> Docker -> [Native](operator-native.md) -> Network Entry -> [Services and Bindings](operator-services.md)
   -> [Configuration](operator-config.md) -> [Backup and Recovery](operator-backup.md) -> Upgrade -> Diagnostics
   -> Authentication -> Backup and Recovery -> Upgrade -> Diagnostics
 
