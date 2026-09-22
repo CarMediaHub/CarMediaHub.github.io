@@ -14,6 +14,8 @@ CarMediaHub treats media and network tools as operator-controlled services. A se
 
 These services are compatibility targets and managed dependencies. CarMediaHub does not modify their upstream source code. A compatibility plugin adapts a service through the Core binding API so the client can use it through the single CarMediaHub entry point.
 
+The Core component catalog records bounded roles for selection and validation: storage service, WebDAV, media processing, archive, and network egress. A role is metadata only; it does not mean that a signed binary is included or installed. Version, platform, digest, signature, and health checks remain separate gates.
+
 The public `alist-web-bridge` reference adapter demonstrates this boundary. It uses an operator-approved AList binding, accepts only bounded relative paths and `GET`/`HEAD`, and forwards only `Accept` and `Range` headers. It does not contain an AList address, credentials, cookies, or upstream source code. The example is a contract reference, not a claim that every AList WebDAV or management feature is supported.
 
 ## Binding model
