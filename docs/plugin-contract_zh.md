@@ -26,6 +26,8 @@ Worker 握手后的只读上下文可以包含 `grantedCapabilities`，用于界
 
 `history` 能力通过同一作用域 Worker 契约提供 `record`、`query` 和 `clear`。Core 只持久化必要的主题、路由、标题、分类、设备和时间字段；插件不能选择其他用户或安装实例，也不会获得数据库连接。
 
+历史和目录查询支持受限的 `limit`、`offset` 分页。Core 会先执行关键词和分类筛选，再进行分页；面向管理端的查询同时返回总数。非法分页参数返回 `CMH.PAGINATION.INVALID`。
+
 `catalog` 能力通过 `register`、`query` 和 `remove` 提供可搜索的插件目录项。Core 在筛选前执行作用域和授权检查；插件只能提交元数据和路由，不能执行 SQL 或获取不受限的索引查询。
 
 `display` 能力提供只读显示能力和 `normal`/`fullscreen` 的 `requestMode` 意图。设备不支持时 Core 可以拒绝全屏；插件不会获得浏览器窗口控制权。

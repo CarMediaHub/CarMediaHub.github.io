@@ -24,6 +24,8 @@ The `jobs` capability keeps work inside the current user and plugin-installation
 
 The `history` capability exposes `record`, `query`, and `clear` through the same scoped Worker contract. Core persists the minimal subject, route, title, category, device, and timestamp fields; plugins cannot select another user or installation and do not receive a database connection.
 
+History and catalog queries accept bounded `limit` and `offset` values for pagination. Core applies keyword and category filters before pagination and returns a total count for management-facing queries; invalid values are rejected with `CMH.PAGINATION.INVALID`.
+
 The `catalog` capability exposes `register`, `query`, and `remove` for searchable plugin entries. Core applies scope and authorization before filtering; a plugin contributes metadata and a route, never SQL or an unrestricted index query.
 
 The `display` capability exposes read-only display capabilities and a `requestMode` intent for `normal` or `fullscreen`. Core can reject fullscreen when the device does not support it; plugins never receive browser-window control.

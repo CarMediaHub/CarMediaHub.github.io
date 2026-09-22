@@ -28,6 +28,8 @@ Worker는 핸드셰이크 후 기능 적응을 위해 읽기 전용 `grantedCapa
 
 `history` capability는 동일한 범위의 Worker 계약으로 `record`, `query`, `clear`를 제공합니다. Core는 주제, 경로, 제목, 카테고리, 장치와 시간의 최소 필드만 저장하며 플러그인은 다른 사용자나 설치 인스턴스를 선택할 수 없고 데이터베이스 연결도 받지 않습니다.
 
+기록과 카탈로그 조회는 제한된 `limit` 및 `offset` 페이지 매김을 지원합니다. Core는 페이지를 나누기 전에 키워드와 카테고리 필터를 적용하며 관리 패널용 조회에는 전체 개수도 반환합니다. 잘못된 페이지 매김 값은 `CMH.PAGINATION.INVALID`로 거부됩니다.
+
 `catalog` capability는 `register`, `query`, `remove`로 검색 가능한 플러그인 항목을 제공합니다. Core는 필터링 전에 범위와 권한을 확인하며 플러그인은 메타데이터와 경로만 제출하고 SQL 또는 제한 없는 색인 조회를 사용할 수 없습니다.
 
 `display` capability는 읽기 전용 표시 기능과 `normal`/`fullscreen` `requestMode` 의도를 제공합니다. 장치가 지원하지 않으면 Core가 전체 화면을 거부할 수 있으며 플러그인은 브라우저 창을 제어할 수 없습니다.
