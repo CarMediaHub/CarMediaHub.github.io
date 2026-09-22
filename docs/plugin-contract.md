@@ -60,6 +60,8 @@ WDR Media uses this API for playback history. Storage roots, media conversion, a
 
 The plugin catalog separates native media applications, local-service bridges, upstream adapters, browser bridges, and community packages. A catalog entry is not an approval to run code. Packages that need browser identity, external network access, media extraction, or a high-risk upstream require an isolated runtime, explicit capability review, and dedicated leakage and rollback tests before public distribution.
 
+The public `browser-session-contract-example` is a fixture for this boundary. It exercises opaque session metadata through the SDK without starting a browser or connecting to an upstream website; it is not a browser automation or login-state integration.
+
 ## Package requirements
 
 A package includes its manifest, a package-relative execution entry, optional UI assets, migrations, localization resources, SBOM, checksums, and signature. Isolated workers declare `worker`; shared adapters and future module runtimes declare `runtimeEntry` with protocol `0.1`. Core rejects absolute paths, traversal, commands, and host environment dependencies. It must not contain user credentials, browser profile data, host-specific configuration, runtime logs, or unverified executable downloads.

@@ -62,6 +62,8 @@ WDR Media는 이 API로 재생 기록을 저장합니다. 저장소 루트, 미�
 
 플러그인 카탈로그는 네이티브 미디어 애플리케이션, 로컬 서비스 브리지, 상류 어댑터, 브라우저 브리지 및 커뮤니티 패키지를 구분합니다. 카탈로그 항목은 코드 실행 승인이 아닙니다. 브라우저 ID, 외부 네트워크, 미디어 추출 또는 고위험 상류가 필요한 패키지는 격리 런타임, 명시적 capability 검토 및 공개 배포 전 전용 누출·롤백 테스트가 필요합니다.
 
+공개된 `browser-session-contract-example`은 이 경계를 검증하는 픽스처입니다. SDK를 통해 불투명 세션 메타데이터를 테스트하지만 브라우저를 시작하거나 상위 웹사이트에 연결하지 않으며 브라우저 자동화나 로그인 상태 통합이 아닙니다.
+
 머신에서 검증 가능한 v0 매니페스트와 오류 목록은 [`carmediahub-sdk`](https://github.com/CarMediaHub/carmediahub-sdk)에 있습니다.
 
 공식 플러그인 모음은 `dist/packages/<plugin-id>` 아래에 설치 가능한 패키지를 생성합니다. 패키지에는 매니페스트, 컴파일된 `worker.js` 진입점, 선택적 UI, 다국어 README와 Worker를 독립적으로 로드하는 버전 고정 `@carmediahub/sdk` 런타임이 포함되며 Plugins monorepo의 모듈 해석에 의존하지 않습니다. [`carmediahub-plugins`](https://github.com/CarMediaHub/carmediahub-plugins)에서 `pnpm build`와 `pnpm verify:packages`를 실행한 뒤 Core staging에 패키지를 배치합니다.
