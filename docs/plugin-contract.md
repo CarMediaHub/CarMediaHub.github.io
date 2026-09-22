@@ -28,7 +28,7 @@ The `catalog` capability exposes `register`, `query`, and `remove` for searchabl
 
 The `display` capability exposes read-only display capabilities and a `requestMode` intent for `normal` or `fullscreen`. Core can reject fullscreen when the device does not support it; plugins never receive browser-window control.
 
-The `notifications` API is provided through the platform event capability. A plugin can publish a bounded `info`, `success`, `warning`, or `error` notification and list or mark read only notifications in its current user and installation scope. Core owns persistence and user-facing delivery; plugins cannot address another user or installation.
+The `notifications` API is provided through the platform event capability. A plugin can publish a bounded `info`, `success`, `warning`, or `error` notification and list, mark one read, or mark all read only within its current user and installation scope. `markAllRead` returns the number of notifications changed. Core owns persistence and user-facing delivery; plugins cannot address another user or installation.
 
 The `media` capability can create a short-lived playback session for an opaque media ID. Subsequent media reads must use that session; Core binds it to the user, device, installation and expiry, and revokes it when the user session or plugin installation is revoked. Plugins never receive a host path or a reusable public media URL.
 
