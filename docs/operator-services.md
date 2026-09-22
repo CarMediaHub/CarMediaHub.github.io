@@ -18,6 +18,8 @@ The Core component catalog records bounded roles for selection and validation: s
 
 The public `alist-web-bridge` reference adapter demonstrates this boundary. It uses an operator-approved AList binding, accepts only bounded relative paths and `GET`/`HEAD`, and forwards only `Accept` and `Range` headers. It does not contain an AList address, credentials, cookies, or upstream source code. The example is a contract reference, not a claim that every AList WebDAV or management feature is supported.
 
+The public `mihomo-web-bridge` reference adapter applies the same model to an operator-approved Mihomo control API and only exposes bounded paths such as `/configs`, `/proxies`, `/providers`, `/rules`, `/connections`, and `/version`. The first version does not forward authorization headers, provide a WebSocket traffic panel, or modify Mihomo; it is a control-API compatibility example, not a claim that the full Clash Web UI is supported.
+
 ## Binding model
 
 A binding is configured by an operator for a specific installed plugin instance. The binding contains a service identifier and a private upstream address, then applies health checks, request and response limits, concurrency limits, and redirect restrictions. The plugin receives a capability-scoped client; it does not receive a raw database connection, arbitrary command execution, host environment, or unrestricted network socket.
