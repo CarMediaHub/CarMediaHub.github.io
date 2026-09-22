@@ -4,6 +4,7 @@
   "private": true,
   "description": "Static public documentation site for CarMediaHub.",
   "license": "CC-BY-SA-4.0",
+  "packageManager": "pnpm@11.19.0",
   "type": "module",
   "scripts": { "dev": "astro dev", "build": "astro build", "preview": "astro preview", "check": "astro check" },
   "dependencies": { "@astrojs/check": "^0.9.4", "astro": "^5.7.10", "marked": "^15.0.7", "typescript": "^5.8.3" },
