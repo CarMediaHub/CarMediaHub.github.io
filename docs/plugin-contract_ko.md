@@ -22,6 +22,8 @@ discovered -> verified -> grant pending -> configured -> prepared
 
 SDK는 설정, 개인 데이터, 저장소, 미디어, 작업, 기록, 카탈로그, 표시, 이벤트, 진단, 게이트웨이 경로, 네트워크, 브라우저 세션과 관리형 전송을 범위가 제한된 capability로 제공합니다. 민감한 capability는 명시적으로 선언하고 승인하기 전까지 비활성화됩니다.
 
+플러그인 문구에는 SDK의 `normalizeLocale`, `localeFallbacks`, `localize`를 사용해야 합니다. 이 함수는 `zh`/`zh-CN`, `ko-KR`/`ko` 별칭을 정규화하고 요청 언어 -> 언어 계열 -> 영어 순서로 fallback합니다. 플러그인은 Core의 언어 설정을 상속하며 플랫폼 전체 언어 설정을 별도로 만들면 안 됩니다.
+
 Worker는 핸드셰이크 후 기능 적응을 위해 읽기 전용 `grantedCapabilities` 목록을 받을 수 있습니다. 이는 현재 설치 인스턴스의 유효 권한을 나타내지만 권한의 출처는 아닙니다. Core는 모든 호출에서 최신 권한을 다시 확인하며 구버전 Broker는 이 필드를 생략할 수 있습니다.
 
 `jobs` capability는 현재 사용자와 플러그인 설치 인스턴스의 범위 안에서만 작업을 실행합니다. 초기 한도는 범위마다 활성 작업 10개이며 JSON payload와 결과는 각각 64 KiB로 제한됩니다. 한도를 초과하면 안정적인 오류 코드 `CMH.JOBS.QUEUE_FULL`, `CMH.JOBS.PAYLOAD_TOO_LARGE` 또는 `CMH.JOBS.RESULT_TOO_LARGE`를 반환합니다. 호출자는 카탈로그의 message key를 사용하고 사용자 문구를 하드코딩하지 않아야 합니다.

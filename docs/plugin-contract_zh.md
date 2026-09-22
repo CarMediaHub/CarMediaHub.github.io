@@ -20,6 +20,8 @@ discovered -> verified -> grant pending -> configured -> prepared
 
 SDK 提供受作用域限制的配置、私有数据、存储、媒体、任务、历史、分类、显示、事件、诊断、网关路由、网络、浏览器会话和受管控传输能力。敏感能力在明确声明、批准和授予前保持禁用。
 
+插件文案应使用 SDK 的 `normalizeLocale`、`localeFallbacks` 和 `localize`。这些函数统一处理 `zh`/`zh-CN`、`ko-KR`/`ko` 别名，并按“请求语言 -> 语言族 -> 英文”顺序回退。插件继承 Core 的语言设置，不得另建平台级语言偏好。
+
 Worker 握手后的只读上下文可以包含 `grantedCapabilities`，用于界面和功能自适应。它表示当前安装实例的有效授权，但不是授权来源；Core 仍会在每次调用时重新检查最新授权。旧版本 Broker 可以省略该字段。
 
 `jobs` 能力始终限制在当前用户和插件安装实例作用域内。初始配额为每个作用域最多 10 个活跃任务，JSON payload 和结果各限制 64 KiB。超出限制时返回稳定错误码 `CMH.JOBS.QUEUE_FULL`、`CMH.JOBS.PAYLOAD_TOO_LARGE` 或 `CMH.JOBS.RESULT_TOO_LARGE`；调用方应使用错误目录中的 message key，不应硬编码面向用户的文案。
