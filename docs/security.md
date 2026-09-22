@@ -16,6 +16,8 @@ CarMediaHub uses a capability-first model. A plugin receives only the minimum, s
 
 Managed component binaries are staged inside the deployment rather than discovered from the host PATH. Installation requires a release record signed by an operator-trusted Ed25519 key; the record binds the component, version, platform, artifact identity, and SHA-256 digest. A staged file is rejected when any of those values or the signature do not match. Download sources, key rotation, health checks, and rollback remain deployment operations rather than plugin capabilities.
 
+When Core starts a managed component, it rechecks the recorded SHA-256 digest and runs the verified absolute file with `shell:false`. Component arguments, execution time, cancellation, and combined stdout/stderr are bounded. Plugins cannot choose a command, executable path, environment variable, or arbitrary component arguments.
+
 ## Managed Media Roots
 
 An administrator explicitly selects each media root. Core encrypts the selected path in its deployment data, checks the directory and file type at access time, ignores symbolic links, and exposes only root IDs and opaque media IDs through its APIs. Plugins do not receive a host path. Recursive indexing, thumbnails, playback binding, HLS, and transcoding are not yet available.
