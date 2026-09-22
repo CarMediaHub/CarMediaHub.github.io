@@ -34,7 +34,7 @@ Worker 握手后的只读上下文可以包含 `grantedCapabilities`，用于界
 
 `display` 能力提供只读显示能力和 `normal`/`fullscreen` 的 `requestMode` 意图。设备不支持时 Core 可以拒绝全屏；插件不会获得浏览器窗口控制权。
 
-当前 `browser` 能力只提供不透明、受作用域限制的会话元数据：`browser.session.request`、`browser.session.list` 和 `browser.session.revoke`。会话只包含不透明 ID、逻辑名称、用途、状态和过期时间，由 Core 绑定到组织、用户和插件安装实例，并在用户、安装实例或能力撤销时失效。该契约不会暴露浏览器 Profile、Cookie、CDP 地址、宿主路径、进程、任意 URL 或脚本。浏览器任务执行器和真实浏览器兼容性仍属于后续工作。
+当前 `browser` 能力提供不透明、受作用域限制的会话和有界 Core-owned 任务队列：`browser.session.request`、`browser.session.list`、`browser.session.revoke`、`browser.task.enqueue`、`browser.task.list` 和 `browser.task.cancel`。任务只能使用已注册的逻辑 kind 和有限输入，并绑定到有效会话、组织、用户和插件安装实例。Core 当前只保存和取消任务，不执行导航、脚本、Cookie 导入或媒体提取。该契约不会暴露浏览器 Profile、Cookie、CDP 地址、宿主路径、进程或任意 URL。真实 Browser Worker 和兼容矩阵仍属于后续工作。
 
 通知能力通过平台事件能力提供。插件可以发布受长度限制的 `info`、`success`、`warning` 或 `error` 通知，也可以在当前用户和安装实例作用域内查询、标记单条已读或批量标记已读。`markAllRead` 返回本次修改的通知数量。Core 负责持久化和面向用户的展示；插件不能向其他用户或安装实例发送或读取通知。
 

@@ -36,7 +36,7 @@ Worker는 핸드셰이크 후 기능 적응을 위해 읽기 전용 `grantedCapa
 
 `display` capability는 읽기 전용 표시 기능과 `normal`/`fullscreen` `requestMode` 의도를 제공합니다. 장치가 지원하지 않으면 Core가 전체 화면을 거부할 수 있으며 플러그인은 브라우저 창을 제어할 수 없습니다.
 
-현재 `browser` capability는 불투명하고 범위가 제한된 세션 메타데이터만 제공합니다: `browser.session.request`, `browser.session.list`, `browser.session.revoke`. 세션에는 불투명 ID, 논리 이름, 목적, 상태와 만료 시간만 포함되며 Core가 조직, 사용자와 플러그인 설치 인스턴스에 바인딩합니다. 사용자, 설치 인스턴스 또는 capability가 취소되면 세션도 취소됩니다. 이 계약은 브라우저 Profile, Cookie, CDP 주소, 호스트 경로, 프로세스, 임의 URL 또는 스크립트를 노출하지 않습니다. 브라우저 작업 실행기와 실제 브라우저 호환성은 후속 작업입니다.
+현재 `browser` capability는 불투명하고 범위가 제한된 세션과 제한된 Core-owned 작업 큐를 제공합니다: `browser.session.request`, `browser.session.list`, `browser.session.revoke`, `browser.task.enqueue`, `browser.task.list`, `browser.task.cancel`. 작업은 등록된 논리 kind와 제한된 입력만 사용하며 활성 세션, 조직, 사용자와 플러그인 설치 인스턴스에 바인딩됩니다. Core는 현재 작업을 저장하고 취소하지만 탐색, 스크립트, Cookie 가져오기 또는 미디어 추출을 실행하지 않습니다. 이 계약은 브라우저 Profile, Cookie, CDP 주소, 호스트 경로, 프로세스 또는 임의 URL을 노출하지 않습니다. 실제 Browser Worker와 호환성 매트릭스는 후속 작업입니다.
 
 알림 API는 플랫폼 이벤트 capability를 통해 제공됩니다. 플러그인은 길이가 제한된 `info`, `success`, `warning`, `error` 알림을 게시하고 현재 사용자와 설치 인스턴스 범위의 알림만 조회하거나 한 건 또는 전체를 읽음 처리할 수 있습니다. `markAllRead`는 변경된 알림 수를 반환합니다. 저장과 사용자 표시 전달은 Core가 담당하며 플러그인은 다른 사용자나 설치 인스턴스에 알림을 보낼 수 없습니다.
 
