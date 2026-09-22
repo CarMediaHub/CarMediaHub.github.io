@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "sbom": "node scripts/generate-sbom.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",

@@ -22,5 +22,11 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm audit --audit-level low
+      - name: Generate CycloneDX SBOM
+        run: pnpm run sbom -- "$RUNNER_TEMP/carmediahub-docs.cdx.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: carmediahub-docs-sbom
+          path: ${{ runner.temp }}/carmediahub-docs.cdx.json
       - run: pnpm check
       - run: pnpm build
