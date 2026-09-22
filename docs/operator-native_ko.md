@@ -6,7 +6,7 @@ Native 배포는 운영자가 관리하는 Windows 또는 Linux 호스트에서 
 
 ## 현재 계약
 
-`config/core.example.json`을 사용하고 `config/core.schema.json`으로 검증하십시오. 작업 디렉터리 밖의 구성은 `--config <경로>`로 명시합니다. Native bundle에는 Core CLI, 관리 화면 리소스, 컴포넌트 카탈로그, 스키마, 예제 구성과 런타임 메타데이터가 있어야 하며, 인스턴스 구성과 `.env`는 포함하지 않습니다.
+`config/core.example.json`을 사용하고 `config/core.schema.json`으로 검증하십시오. 작업 디렉터리 밖의 구성은 `--config <경로>`로 명시합니다. Native bundle에는 Core CLI, 관리 화면 리소스, 컴포넌트 카탈로그, 스키마, 예제 구성, Core 런타임 의존성, 버전이 고정된 `@carmediahub/sdk` 런타임과 런타임 메타데이터가 있어야 하며, 인스턴스 구성과 `.env`는 포함하지 않습니다. 엄격한 릴리스 번들은 의존성 심볼릭 링크가 아닌 실제 파일을 포함해야 하며, 저장소 검사는 소스 트리의 패키지 관리자 링크에 한해서만 허용합니다.
 
 Windows에서는 서비스 등록 계약이 Node, bundle, 데이터 디렉터리와 구성 파일의 절대 경로로 명시적인 `sc.exe` 인자를 생성합니다. Core의 loopback 기본값을 사용하며 PATH나 환경 변수를 읽지 않습니다. 현재 저장소는 이 계약과 테스트만 제공하며 Windows 서비스를 자동으로 설치하거나 변경하지 않습니다.
 
