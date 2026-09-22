@@ -33,6 +33,12 @@ The management panel distinguishes package installation from Worker health. An i
 
 Component checks only verify that a managed file exists and matches its SHA-256 digest; they do not execute AList, rclone, FFmpeg, or discover binaries through PATH or environment variables.
 
+## Managed services and adapters
+
+AList, rclone, FFmpeg, 7-Zip and Mihomo are managed component roles, not public application routes. A plugin can consume an operator-approved service binding through the Core capability boundary. The adapter translates the approved local service protocol into a logical plugin route without modifying the upstream project or publishing another host port. Binding origin, request headers, redirects, response size and installation scope remain enforced by Core.
+
+The plugin catalog keeps native media features, local-service bridges and external-site adapters in separate categories. A planned adapter is not an enabled integration: it requires an explicit package, capability grant, binding and compatibility review before it can be installed.
+
 The same view lists the capabilities declared by each validated Manifest and the current grant set for operator review. Installation grants the declared set by default, while an operator may reduce it to a subset; Core checks every capability call against the current grant, installation, and user boundaries, and audits changes.
 
 ## Data and identity
