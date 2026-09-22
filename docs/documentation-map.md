@@ -24,7 +24,7 @@ Users
 
 Operators
   Requirements -> Docker -> Native -> Network Entry -> [Services and Bindings](operator-services.md)
-  -> [Backup and Recovery](operator-backup.md) -> Upgrade -> Diagnostics
+  -> [Configuration](operator-config.md) -> [Backup and Recovery](operator-backup.md) -> Upgrade -> Diagnostics
   -> Authentication -> Backup and Recovery -> Upgrade -> Diagnostics
 
 Developers

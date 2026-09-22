@@ -24,7 +24,7 @@
 
 运营者
   系统要求 -> Docker -> Native -> 网络入口 -> [服务与绑定](operator-services_zh.md)
-  -> [备份与恢复](operator-backup_zh.md) -> 升级 -> 诊断
+  -> [配置](operator-config_zh.md) -> [备份与恢复](operator-backup_zh.md) -> 升级 -> 诊断
   -> 认证 -> 备份恢复 -> 升级 -> 诊断
 
 开发者

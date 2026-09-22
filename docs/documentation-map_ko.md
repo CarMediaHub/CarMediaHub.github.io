@@ -24,7 +24,7 @@
 
 운영자
   요구 사항 -> Docker -> Native -> 네트워크 진입점 -> [서비스와 바인딩](operator-services_ko.md)
-  -> [백업과 복구](operator-backup_ko.md) -> 업데이트 -> 진단
+  -> [구성](operator-config_ko.md) -> [백업과 복구](operator-backup_ko.md) -> 업데이트 -> 진단
   -> 인증 -> 백업과 복구 -> 업데이트 -> 진단
 
 개발자
