@@ -12,4 +12,4 @@ On Windows, the service registration contract generates explicit `sc.exe` argume
 
 ## Not a release promise yet
 
-Native installers, service-account and ACL setup, Linux system-service generation, clean-machine installation, component distribution, upgrade, rollback and cross-platform recovery remain release gates. Do not expose database, Worker, plugin or debugging ports while those gates are incomplete.
+Native installers, service-account and ACL setup, system-service installation, clean-machine installation, component distribution, upgrade, rollback and cross-platform recovery remain release gates. The repository has generation contracts for Windows `sc.exe` and Linux systemd, but does not apply them to the host yet. Do not expose database, Worker, plugin or debugging ports while those gates are incomplete.
