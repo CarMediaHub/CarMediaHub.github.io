@@ -9,7 +9,7 @@
 | 读者 | 建议入口 | 主要问题 |
 |---|---|---|
 | 普通用户 | [项目由来](project-origin_zh.md)、[项目目标](project-goals_zh.md)和用户指南 | CarMediaHub 是什么、能做什么、运营者需要准备什么？ |
-| 部署运营者 | [基础服务与服务绑定](operator-services_zh.md)及部署与运维指南 | 如何安装、加固、连接服务、备份、升级和诊断？ |
+| 部署运营者 | [基础服务与服务绑定](operator-services_zh.md)、[备份与恢复](operator-backup_zh.md)及部署与运维指南 | 如何安装、加固、连接服务、备份、升级和诊断？ |
 | 插件开发者 | [插件契约](plugin-contract_zh.md)和 SDK 参考 | 如何开发、隔离、测试、发布和维护插件？ |
 | 贡献者 | 治理与工程参考 | 如何评审、发布、记录和支持变更？ |
 
@@ -24,6 +24,7 @@
 
 运营者
   系统要求 -> Docker -> Native -> 网络入口 -> [服务与绑定](operator-services_zh.md)
+  -> [备份与恢复](operator-backup_zh.md) -> 升级 -> 诊断
   -> 认证 -> 备份恢复 -> 升级 -> 诊断
 
 开发者

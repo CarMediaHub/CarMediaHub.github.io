@@ -9,7 +9,7 @@ Status: v0 Draft
 | Reader | Start here | Main questions |
 |---|---|---|
 | User | [Project Origin](project-origin.md) and [Project Goals](project-goals.md) | What is CarMediaHub, what can it do, and what do I need to operate it? |
-| Operator | [Services and Bindings](operator-services.md) and deployment guides | How do I install, secure, connect, back up, update, and diagnose my deployment? |
+| Operator | [Services and Bindings](operator-services.md), [Backup and Recovery](operator-backup.md), and deployment guides | How do I install, secure, connect, back up, update, and diagnose my deployment? |
 | Plugin author | [Plugin Contract](plugin-contract.md) and SDK references | How do I build, isolate, test, publish, and maintain a plugin? |
 | Contributor | Governance and engineering references | How are changes reviewed, released, documented, and supported? |
 
@@ -24,6 +24,7 @@ Users
 
 Operators
   Requirements -> Docker -> Native -> Network Entry -> [Services and Bindings](operator-services.md)
+  -> [Backup and Recovery](operator-backup.md) -> Upgrade -> Diagnostics
   -> Authentication -> Backup and Recovery -> Upgrade -> Diagnostics
 
 Developers
