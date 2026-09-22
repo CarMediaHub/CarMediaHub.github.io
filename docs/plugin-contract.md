@@ -60,7 +60,7 @@ WDR Media uses this API for playback history. Storage roots, media conversion, a
 
 The plugin catalog separates native media applications, local-service bridges, upstream adapters, browser bridges, and community packages. A catalog entry is not an approval to run code. Packages that need browser identity, external network access, media extraction, or a high-risk upstream require an isolated runtime, explicit capability review, and dedicated leakage and rollback tests before public distribution.
 
-The public `browser-session-contract-example` is a fixture for this boundary. It exercises opaque session metadata through the SDK without starting a browser or connecting to an upstream website; it is not a browser automation or login-state integration.
+The public `browser-session-contract-example` is a fixture for this boundary. It has been verified through an isolated Worker, the Core Broker, and the Gateway for opaque session and bounded task metadata, without starting a real browser or connecting to an upstream website; it is not a browser automation or login-state integration.
 
 ## Package requirements
 
