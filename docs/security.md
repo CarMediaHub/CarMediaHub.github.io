@@ -12,6 +12,10 @@ CarMediaHub uses a capability-first model. A plugin receives only the minimum, s
 - No implicit sharing of configuration, data, caches, secrets, logs, tasks, or browser state between plugins.
 - No requirement for a hosted account, relay, or central service to run an installed deployment.
 
+## Web response security
+
+The Core entry point sets response headers that disable content-type sniffing, restrict referrers and browser capabilities, and prevent framing. Core-owned pages and APIs also use a same-origin Content Security Policy. Plugin `/apps/*` content keeps its plugin-controlled resource policy rather than being forcibly rewritten by Core.
+
 ## Managed Components
 
 Managed component binaries are staged inside the deployment rather than discovered from the host PATH. Installation requires a release record signed by an operator-trusted Ed25519 key; the record binds the component, version, platform, artifact identity, and SHA-256 digest. A staged file is rejected when any of those values or the signature do not match. Download sources, key rotation, health checks, and rollback remain deployment operations rather than plugin capabilities.
