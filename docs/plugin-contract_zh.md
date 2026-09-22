@@ -38,9 +38,11 @@ Worker 握手后的只读上下文可以包含 `grantedCapabilities`，用于界
 
 媒体网关路由的 `HEAD` 只返回元数据，不创建播放会话，也不读取媒体字节。只有实际的 `GET` 播放请求才会创建会话并读取受控内容。
 
-媒体探测通过 `media.probe` 返回受控元数据、是否可寻址以及结构化播放模式：`direct-range`、`remux`、`transcode`。当前 Core 仅提供 `direct-range`；后两种模式需要未来由 Core 管理的任务执行器实现，不授予插件调用 FFmpeg、访问宿主路径或执行任意命令的权限。
+媒体探测通过 `media.probe` 返回受控元数据、是否可寻址以及结构化播放模式：`direct-range`、`remux`、`transcode`。受管 FFmpeg 健康可用时，Core 可以执行受控的 `remux` 和 `transcode`。转换任务完成后返回短期不透明的 `outputId`；插件通过 `media.readOutput` 分段读取，也可以使用 Core 的认证播放路由。HLS 尚未纳入当前契约。插件不会获得 FFmpeg、宿主路径或任意命令执行权限。
 
 `media.requestTransform` 只接受媒体 ID 和受限的输出策略。Core 校验媒体与模式后创建受作用域约束、可取消的任务；不会接受源文件路径、可执行文件参数、URL 或 Shell 片段。
+
+转换结果隔离于组织、用户、设备和安装实例作用域，自动过期并可撤销。Core 提供带认证的 `GET`/`HEAD /api/media/outputs/:id`，支持受限的 Range 读取；过期、撤销、不存在或越权的结果对调用方统一表现为不可用。
 
 Worker 通过版本化本地 IPC 契约与 Core 通信。公开契约定义生命周期、上下文、能力、事件、健康、诊断、取消和错误标识。大媒体和文件使用受控流句柄，而不是消息 payload。
 
