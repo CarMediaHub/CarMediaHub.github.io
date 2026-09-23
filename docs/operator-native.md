@@ -10,6 +10,8 @@ Use `config/core.example.json` and validate it with `config/core.schema.json`. P
 
 On Windows, the service registration contract generates explicit `sc.exe` arguments from absolute paths to Node, the bundle, the data directory and the configuration file. It uses the Core loopback defaults and does not read PATH or environment variables. The current repository provides this contract and tests; it does not silently install or modify a Windows service.
 
+After building Core, `pnpm create:native-bundle -- <absolute-output-directory>` creates a self-contained release directory outside the source tree. The command copies only release artifacts and dereferences package-manager links; run `pnpm check:native-bundle` against the resulting directory before distribution.
+
 ## Not a release promise yet
 
 Native installers, service-account and ACL setup, system-service installation, clean-machine installation, component distribution, upgrade, rollback and cross-platform recovery remain release gates. The repository has generation contracts for Windows `sc.exe` and Linux systemd, but does not apply them to the host yet. Do not expose database, Worker, plugin or debugging ports while those gates are incomplete.

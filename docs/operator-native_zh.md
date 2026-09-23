@@ -10,6 +10,8 @@ Native 部署直接运行在运营者控制的 Windows 或 Linux 主机上。请
 
 在 Windows 上，服务注册契约会根据 Node、bundle、数据目录和配置文件的绝对路径生成显式 `sc.exe` 参数。它使用 Core 的回环监听默认值，不读取 PATH 或环境变量。当前仓库提供该契约和测试，不会静默安装或修改 Windows 服务。
 
+完成 Core 构建后，可运行 `pnpm create:native-bundle -- <绝对输出目录>` 在源码树之外生成自包含发布目录。该命令只复制发布工件并解除包管理器链接；分发前应对生成目录运行 `pnpm check:native-bundle`。
+
 ## 尚未形成发布承诺
 
 Native 安装器、服务账号与 ACL 配置、系统服务安装、干净机器安装、组件分发、升级、回滚和跨平台恢复仍属于发布门槛。仓库已经提供 Windows `sc.exe` 和 Linux systemd 的生成契约，但尚未将它们应用到主机。在这些门槛完成前，不要向互联网公开数据库、Worker、插件或调试端口。
