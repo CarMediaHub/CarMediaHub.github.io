@@ -28,7 +28,7 @@ Operators
   -> Authentication -> Backup and Recovery -> Upgrade -> Diagnostics
 
 Developers
-  SDK Quickstart -> [Manifest](manifest.md) -> [Lifecycle](lifecycle.md) -> Context and i18n -> [Capabilities](capabilities.md)
+  SDK Quickstart -> [Manifest](manifest.md) -> [Lifecycle](lifecycle.md) -> [Context and i18n](context-i18n.md) -> [Capabilities](capabilities.md)
   -> Data and Jobs -> UI -> Proxy Adapters -> Native Plugins
   -> Testing -> Packaging, Signing and Security Reports
 

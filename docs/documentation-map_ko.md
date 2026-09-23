@@ -28,7 +28,7 @@
   -> 인증 -> 백업과 복구 -> 업데이트 -> 진단
 
 개발자
-  SDK 시작하기 -> [Manifest](manifest_ko.md) -> [수명 주기](lifecycle_ko.md) -> 컨텍스트와 국제화 -> [Capability](capabilities_ko.md)
+  SDK 시작하기 -> [Manifest](manifest_ko.md) -> [수명 주기](lifecycle_ko.md) -> [컨텍스트와 국제화](context-i18n_ko.md) -> [Capability](capabilities_ko.md)
   -> 데이터와 작업 -> UI -> 프록시 어댑터 -> 네이티브 플러그인
   -> 테스트 -> 패키징, 서명과 보안 보고서
 
