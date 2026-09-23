@@ -41,13 +41,14 @@ Bootstrap 是一次性的管理员操作。登录和退出使用 Core 管理的�
 - `/api/components`、`/api/components/catalog`、`/api/components/install`、`/api/components/:id/health`
 - `/api/media-roots`、`/api/media-sources` 及撤销/健康检查路由
 - `/api/plugins`、`/api/plugins/packages/install`、`/api/plugins/:id/upgrade`，以及插件启用、停用、卸载、作用域数据导出/删除
+- `POST /api/plugins/:id/health`：按安装实例作用域探测插件声明的固定 `/health` 路由，只返回健康状态和 HTTP 状态，不返回响应正文；未声明该路由时返回 `409`。
 - `/api/service-bindings` 及绑定健康检查
 - `/api/credentials` 及凭据撤销
 - `/api/jobs` 和 `/api/browser/sessions`/`tasks` 管理接口
 
 凭据创建后不再返回明文。浏览器诊断只返回逻辑 target、会话和任务元数据，绝不返回 Cookie、Profile、CDP、密码、Token、任意 URL 或宿主路径。
 
-`POST /api/plugins/:id/upgrade` 接受相同 package ID 和 runtime 的签名插件包。Core 保留安装 ID 和作用域数据，新授权取旧授权与新 Manifest 声明的交集，并且只有通过签名、摘要、入口和运行时兼容校验的包才可激活。真实 Worker 健康探测和失败激活自动回滚目前还不是发布保证。
+`POST /api/plugins/:id/upgrade` 接受相同 package ID 和 runtime 的签名插件包。Core 保留安装 ID 和作用域数据，新授权取旧授权与新 Manifest 声明的交集，并且只有通过签名、摘要、入口和运行时兼容校验的包才可激活。健康探测使用当前管理员作用域启动/复用 Worker，并通过 Core-owned Broker 调用固定路径，不是任意 URL 代理；失败激活自动回滚和排空协调目前还不是发布保证。
 
 ## 插件网关路由
 
