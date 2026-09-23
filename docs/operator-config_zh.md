@@ -16,6 +16,19 @@ Core 支持从 `config/core.json` 或 `--config <路径>` 读取显式部署元�
 
 命令行参数会覆盖文件值。未知字段、非法值、重复 `--config` 以及显式指定但不存在的文件都会阻止启动。Core 不读取 `PATH`、`PG*` 或其他隐式环境变量作为部署配置。
 
+## 浏览器目标配置
+
+浏览器自动化目标由部署者维护。插件需要受控浏览器桥接时，在 Core 数据目录放置 `browser-targets.json`：
+
+```json
+{
+  "schemaVersion": 1,
+  "targets": [{ "id": "media-example", "origins": ["https://media.example"] }]
+}
+```
+
+文件只允许逻辑 ID 和 HTTPS Origin。配置非法时 Core 会拒绝启动，不会降低网络策略。版本化模板见 Core 仓库的 `config/browser-targets.example.json`。
+
 ## 不要写入秘密
 
 不要在此文件写入密码、Cookie、Token、数据库 DSN、浏览器 Profile 数据或插件凭据。它们应保存在 Core 管理的数据目录和凭据边界中。Docker 镜像只包含仓库内受控的目录、Schema 和示例配置；实例配置应通过运行时参数或受控挂载提供。

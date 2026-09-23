@@ -18,6 +18,17 @@ Command-line options override file values. Unknown fields, invalid values, dupli
 
 ## Keep secrets out
 
+Controlled browser targets are deployment-owned. Put `browser-targets.json` in the Core data directory when a plugin needs the browser bridge:
+
+```json
+{
+  "schemaVersion": 1,
+  "targets": [{ "id": "media-example", "origins": ["https://media.example"] }]
+}
+```
+
+Only logical IDs and HTTPS origins are accepted. Invalid configuration stops startup; it does not weaken the network policy. See the Core repository's `config/browser-targets.example.json` for the versioned template.
+
 Do not put passwords, cookies, tokens, database DSNs, browser profile data, or plugin credentials in this file. Keep them in the Core-managed data and credential boundaries. A Docker image contains only the checked-in catalog, schemas, and example configuration; provide instance configuration explicitly at runtime or through a controlled mount.
 
 The configuration contract is not yet an installer contract. Native installers, real Docker execution, NAS validation, upgrades, and rollback remain separate release gates.
