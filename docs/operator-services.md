@@ -16,6 +16,8 @@ These services are compatibility targets and managed dependencies. CarMediaHub d
 
 The Core component catalog records bounded roles for selection and validation: storage service, WebDAV, media processing, archive, and network egress. A role is metadata only; it does not mean that a signed binary is included or installed. Version, platform, digest, signature, and health checks remain separate gates.
 
+When an operator registers an already staged component, Core accepts only a semantic version, a managed relative executable identifier, and a SHA-256 digest (optionally prefixed with `sha256:`). Registration records metadata; it does not grant a plugin a role or replace signature and health verification.
+
 The public `alist-web-bridge` reference adapter demonstrates this boundary. It uses an operator-approved AList binding, accepts bounded relative paths, and forwards only filtered headers. `GET`/`HEAD` can read relative resources; `POST` is limited to `/api/fs/list`, `/api/fs/get`, and `/api/fs/search` with a 64 KiB JSON body limit. It does not contain an AList address, credentials, cookies, or upstream source code. The example is a contract reference, not a claim that every AList WebDAV or management feature is supported.
 
 The public `mihomo-web-bridge` reference adapter applies the same model to an operator-approved Mihomo control API and only exposes bounded paths such as `/configs`, `/proxies`, `/providers`, `/rules`, `/connections`, and `/version`. The first version does not forward authorization headers, provide a WebSocket traffic panel, or modify Mihomo; it is a control-API compatibility example, not a claim that the full Clash Web UI is supported.
