@@ -16,7 +16,7 @@ CarMediaHub 将媒体和网络工具视为由运营者控制的基础服务。�
 
 Core 组件目录会记录受限角色，用于选择和安装前校验：存储服务、WebDAV、媒体处理、归档和网络出口。角色只是元数据，不表示项目已经包含或安装了签名二进制；版本、平台、摘要、签名和健康检查仍是独立门禁。
 
-公开的 `alist-web-bridge` 参考适配器展示了这一边界。它使用运营者批准的 AList 绑定，只接受有界相对路径和 `GET`/`HEAD`，只转发 `Accept` 与 `Range` 请求头。它不包含 AList 地址、凭据、Cookie 或上游源码。该示例用于说明契约，不代表已经兼容 AList 的所有 WebDAV 或管理功能。
+公开的 `alist-web-bridge` 参考适配器展示了这一边界。它使用运营者批准的 AList 绑定，只接受有界相对路径并转发经过过滤的请求头；`GET`/`HEAD` 可读取相对资源，`POST` 只允许 `/api/fs/list`、`/api/fs/get` 和 `/api/fs/search`，JSON 请求体上限为 64 KiB。它不包含 AList 地址、凭据、Cookie 或上游源码。该示例用于说明契约，不代表已经兼容 AList 的所有 WebDAV 或管理功能。
 
 公开的 `mihomo-web-bridge` 参考适配器以同样方式连接运营者批准的 Mihomo 控制 API，只开放 `/configs`、`/proxies`、`/providers`、`/rules`、`/connections` 和 `/version` 等受限路径。首版不转发认证头、不提供 WebSocket 流量面板，也不修改 Mihomo；它是控制 API 兼容示例，不代表完整 Clash Web UI 已完成兼容。
 

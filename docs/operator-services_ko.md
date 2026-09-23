@@ -16,7 +16,7 @@ CarMediaHub는 미디어 및 네트워크 도구를 운영자가 관리하는 �
 
 Core 구성 요소 카탈로그는 선택과 설치 전 검사를 위한 제한된 역할을 기록합니다: 스토리지 서비스, WebDAV, 미디어 처리, 아카이브, 네트워크 egress. 역할은 메타데이터일 뿐 서명된 바이너리가 포함되었거나 설치되었다는 뜻이 아닙니다. 버전, 플랫폼, digest, 서명과 상태 확인은 별도의 게이트입니다.
 
-공개된 `alist-web-bridge` 참고 어댑터는 이 경계를 보여 줍니다. 운영자가 승인한 AList 바인딩을 사용하고 제한된 상대 경로와 `GET`/`HEAD`만 허용하며 `Accept`와 `Range` 헤더만 전달합니다. AList 주소, 자격 증명, 쿠키 또는 업스트림 소스 코드는 포함하지 않습니다. 이 예제는 계약을 설명하기 위한 것이며 모든 AList WebDAV 또는 관리 기능을 지원한다는 의미는 아닙니다.
+공개된 `alist-web-bridge` 참고 어댑터는 이 경계를 보여 줍니다. 운영자가 승인한 AList 바인딩을 사용하고 제한된 상대 경로와 필터링된 헤더만 전달합니다. `GET`/`HEAD`는 상대 리소스를 읽고, `POST`는 `/api/fs/list`, `/api/fs/get`, `/api/fs/search`로 제한되며 JSON 본문은 64 KiB 이하입니다. AList 주소, 자격 증명, 쿠키 또는 업스트림 소스 코드는 포함하지 않습니다. 이 예제는 계약을 설명하기 위한 것이며 모든 AList WebDAV 또는 관리 기능을 지원한다는 의미는 아닙니다.
 
 공개된 `mihomo-web-bridge` 참고 어댑터는 동일한 모델로 운영자가 승인한 Mihomo 제어 API를 연결하고 `/configs`, `/proxies`, `/providers`, `/rules`, `/connections`, `/version`과 같은 제한된 경로만 노출합니다. 첫 버전은 인증 헤더를 전달하거나 WebSocket 트래픽 패널을 제공하거나 Mihomo를 수정하지 않습니다. 이는 제어 API 호환 예제이며 전체 Clash Web UI를 지원한다는 의미가 아닙니다.
 
