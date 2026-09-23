@@ -24,7 +24,7 @@ The public `mihomo-web-bridge` reference adapter applies the same model to an op
 
 AList and rclone WebDAV may eventually be used as read-only media sources, but this is separate from the AList Web management bridge. The planned design uses a Core-owned opaque source handle for scoped listing, probing, playback sessions, and Range reads. Plugins will not receive a WebDAV URL, endpoint, host path, or credential; Core resolves and injects WebDAV credentials at the final request boundary.
 
-Core now has the registration, persistence, revocation, and read-only provider fixture for remote media sources. WDR still uses Core-managed local media roots, while `alist-web-bridge` remains a bounded management/catalog adapter. The real AList/rclone deployment matrix, production health checks, and WDR migration are still pending. WebDAV write, delete, upload, arbitrary proxying, and automatic discovery are outside the initial scope.
+Core now has registration, persistence, revocation, health checks, and a read-only provider fixture for remote media sources. Health checks return only status and a classified diagnostic. WDR still uses Core-managed local media roots, while `alist-web-bridge` remains a bounded management/catalog adapter. The real AList/rclone deployment matrix and WDR production verification are still pending. WebDAV write, delete, upload, arbitrary proxying, and automatic discovery are outside the initial scope.
 
 ## Binding model
 
