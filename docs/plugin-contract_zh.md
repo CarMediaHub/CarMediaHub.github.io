@@ -78,6 +78,8 @@ WDR Media 使用该 API 保存播放记录。存储根目录、媒体转换和�
 
 需要网络的插件必须通过 `network.request` 使用 service binding 和相对路径。安装实例专属 binding 优先；Core 全局 binding 只有在插件 Manifest 的 `serviceBindings` 显式列出对应名称时才可使用。不选择安装实例且未声明该名称时，绑定仍只属于 Core，不会暴露给插件请求。插件不能提交任意 URL、主机名、端口、凭据、Socket 或未声明请求头。代理兼容插件在发布前仍必须通过隔离运行时、泄露和故障测试。
 
+需要代用户访问上游登录态的插件必须声明 `secrets` capability。管理员在 Core 管理端录入 Cookie 或 Authorization 后，插件只获得不透明的 `credentialRef`，通过 `network.request` 请求时由 Core 在最后一跳注入；明文不会进入 Worker、SDK 返回值或插件数据。凭据绑定到组织、用户和安装实例，撤销后立即不可用，插件不能用自带的 Cookie 或 Authorization 覆盖 Core 注入值。
+
 管理员可以在管理端对单个绑定执行健康检查。Core 发送受限的 `HEAD` 请求，不跟随重定向，也不返回响应正文；结果只包含可达性、可用时的 HTTP 状态和耗时。健康检查不会授予插件网络能力。
 
 重定向由 Core 处理：只有 GET 和 HEAD 最多跟随 3 次，并且每次都必须保持在 binding origin；跨源重定向以及其他方法的重定向都会被拒绝。

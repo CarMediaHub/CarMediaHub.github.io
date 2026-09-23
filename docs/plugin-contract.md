@@ -76,6 +76,8 @@ The official plugin collection builds installable artifacts under `dist/packages
 
 Network-enabled plugins use `network.request` with a service binding and a relative path. An installation-specific binding takes precedence. A Core-global binding is available only when the plugin Manifest explicitly lists its name in `serviceBindings`; leaving the binding scope empty without that declaration keeps it Core-only. Plugins cannot submit arbitrary URLs, hostnames, ports, credentials, sockets, or unrestricted headers. Upstream adapters still require isolated-runtime and leakage tests before distribution.
 
+A plugin that needs an operator-approved upstream login state must declare the `secrets` capability. The administrator enters a cookie or authorization value in the Core management surface; the plugin receives only an opaque `credentialRef`, which Core injects at the final bound request hop. Plaintext never enters the Worker, SDK return values, or plugin data. References are scoped to the organization, user, and installation, are immediately invalid after revocation, and cannot be combined with plugin-supplied Cookie or Authorization headers.
+
 Operators can run an explicit binding health check from the management panel. Core sends a bounded `HEAD` request without following redirects or returning the response body; the result contains only reachability, HTTP status when available, and latency. A health check does not grant a plugin network capability.
 
 Redirects are handled by Core: only GET and HEAD may follow up to three redirects, and every target must remain on the binding origin. Cross-origin redirects and redirects for other methods are rejected.
