@@ -26,7 +26,7 @@ Core starts only a registered runtime factory or verified component. Health is a
 
 ## Upgrade and rollback
 
-Upgrade stages a new package beside the current one, validates its signature, digest, SDK range and Manifest, then drains the old installation before switching the logical entry. The old package and data are not deleted until the new instance passes health checks. If activation fails, Core keeps the old installation enabled and records a redacted audit event. Data migrations are versioned, scoped and idempotent; Core never gives a plugin SQL or a database connection.
+The current Core upgrade path stages a new package beside the current one, validates its signature, digest, SDK range, Manifest and package entry, then updates the same installation identity and logical route. The old package and scoped data are retained for rollback. The current path verifies package integrity and runtime compatibility before activation; a full live Worker health probe, drain coordination and automatic activation rollback remain release gates. Data migrations are versioned, scoped and idempotent; Core never gives a plugin SQL or a database connection.
 
 ## Uninstall and data
 
