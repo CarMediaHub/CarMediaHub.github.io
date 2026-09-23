@@ -33,7 +33,7 @@
   -> 테스트 -> 패키징, 서명과 보안 보고서
 
 참고
-  [API](api_ko.md) -> [오류와 이벤트](errors-events_ko.md) -> [구성](configuration_ko.md) -> 호환성 매트릭스
+  [API](api_ko.md) -> [오류와 이벤트](errors-events_ko.md) -> [구성](configuration_ko.md) -> [호환성 매트릭스](compatibility_ko.md)
   -> 알려진 제한 -> 버전과 마이그레이션
 ```
 
