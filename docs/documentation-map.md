@@ -10,7 +10,7 @@ Status: v0 Draft
 |---|---|---|
 | User | [Project Origin](project-origin.md) and [Project Goals](project-goals.md) | What is CarMediaHub, what can it do, and what do I need to operate it? |
 | Operator | [Services and Bindings](operator-services.md), [Backup and Recovery](operator-backup.md), and deployment guides | How do I install, secure, connect, back up, update, and diagnose my deployment? |
-| Plugin author | [Plugin Contract](plugin-contract.md) and SDK references | How do I build, isolate, test, publish, and maintain a plugin? |
+| Plugin author | [Plugin Contract](plugin-contract.md), [Manifest](manifest.md), and [API](api.md) | How do I build, isolate, test, publish, and maintain a plugin? |
 | Contributor | Governance and engineering references | How are changes reviewed, released, documented, and supported? |
 
 ## Planned Sections
@@ -28,12 +28,12 @@ Operators
   -> Authentication -> Backup and Recovery -> Upgrade -> Diagnostics
 
 Developers
-  SDK Quickstart -> Manifest -> Lifecycle -> Context and i18n -> Capabilities
+  SDK Quickstart -> [Manifest](manifest.md) -> Lifecycle -> Context and i18n -> Capabilities
   -> Data and Jobs -> UI -> Proxy Adapters -> Native Plugins
   -> Testing -> Packaging, Signing and Security Reports
 
 Reference
-  API -> Errors -> Events -> Configuration -> Compatibility Matrix
+  [API](api.md) -> Errors -> Events -> Configuration -> Compatibility Matrix
   -> Known Limitations -> Versioning and Migration
 ```
 
