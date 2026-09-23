@@ -54,6 +54,8 @@ Workers communicate with the Core through a versioned local IPC contract. The pu
 
 `db` grants a constrained logical data store, not a database connection. Each read and write is bound by Core to the active organization, user, and plugin installation. A plugin cannot select another user, name a schema, receive a DSN, or issue arbitrary SQL. The same contract applies whether Core uses SQLite, PostgreSQL, or an operator-managed compatible database.
 
+Data listing is deterministic: records are returned in key order, and `prefix` is matched as a literal key prefix rather than a SQL pattern. This keeps the same behavior across database backends.
+
 WDR Media uses this API for playback history. Storage roots, media conversion, and service bindings remain Core-managed capabilities, so the plugin never receives host paths, upstream cookies, or service credentials.
 
 Operators can export or delete the current user's data for one plugin installation from Core. Export includes bounded logical records and migration metadata, is limited to 10,000 records or 4 MiB, and is marked `no-store`; deletion requires explicit confirmation and removes both records and migration metadata in one Core transaction. These operations never accept a plugin-supplied user, organization, installation, schema, or SQL statement.
