@@ -20,6 +20,12 @@ The public `alist-web-bridge` reference adapter demonstrates this boundary. It u
 
 The public `mihomo-web-bridge` reference adapter applies the same model to an operator-approved Mihomo control API and only exposes bounded paths such as `/configs`, `/proxies`, `/providers`, `/rules`, `/connections`, and `/version`. The first version does not forward authorization headers, provide a WebSocket traffic panel, or modify Mihomo; it is a control-API compatibility example, not a claim that the full Clash Web UI is supported.
 
+## Remote media sources
+
+AList and rclone WebDAV may eventually be used as read-only media sources, but this is separate from the AList Web management bridge. The planned design uses a Core-owned opaque source handle for scoped listing, probing, playback sessions, and Range reads. Plugins will not receive a WebDAV URL, endpoint, host path, or credential; Core resolves and injects WebDAV credentials at the final request boundary.
+
+This provider is designed but not implemented yet. Current WDR uses Core-managed local media roots, while `alist-web-bridge` remains a bounded management/catalog adapter. WebDAV write, delete, upload, arbitrary proxying, and automatic discovery are outside the initial scope.
+
 ## Binding model
 
 A binding is configured by an operator for a specific installed plugin instance. The binding contains a service identifier and a private upstream address, then applies health checks, request and response limits, concurrency limits, and redirect restrictions. The plugin receives a capability-scoped client; it does not receive a raw database connection, arbitrary command execution, host environment, or unrestricted network socket.
