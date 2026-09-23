@@ -29,4 +29,5 @@ jobs:
           name: carmediahub-docs-sbom
           path: ${{ runner.temp }}/carmediahub-docs.cdx.json
       - run: pnpm check
+      - run: pnpm check:locales
       - run: pnpm build
