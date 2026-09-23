@@ -33,7 +33,7 @@
   -> 测试 -> 打包、签名与安全报告
 
 参考
-  [API](api_zh.md) -> [错误与事件](errors-events_zh.md) -> 配置 -> 兼容矩阵
+  [API](api_zh.md) -> [错误与事件](errors-events_zh.md) -> [配置](configuration_zh.md) -> 兼容矩阵
   -> 已知限制 -> 版本与迁移
 ```
 
