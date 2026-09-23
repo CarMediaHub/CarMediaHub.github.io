@@ -58,6 +58,8 @@ WDR Media uses this API for playback history. Storage roots, media conversion, a
 
 Operators can export or delete the current user's data for one plugin installation from Core. Export includes bounded logical records and migration metadata, is limited to 10,000 records or 4 MiB, and is marked `no-store`; deletion requires explicit confirmation and removes both records and migration metadata in one Core transaction. These operations never accept a plugin-supplied user, organization, installation, schema, or SQL statement.
 
+Stopping, uninstalling, and deleting data remain separate lifecycle actions. Uninstalling requires the installation to be stopped, removes its active route and runtime authorization, and preserves its scoped data until an explicit deletion. A later installation of the same package version receives a new installation identity.
+
 ## Adapter publication
 
 The plugin catalog separates native media applications, local-service bridges, upstream adapters, browser bridges, and community packages. A catalog entry is not an approval to run code. Packages that need browser identity, external network access, media extraction, or a high-risk upstream require an isolated runtime, explicit capability review, and dedicated leakage and rollback tests before public distribution.
