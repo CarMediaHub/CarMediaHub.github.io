@@ -48,7 +48,7 @@ Bootstrap 是一次性的管理员操作。登录和退出使用 Core 管理的�
 
 凭据创建后不再返回明文。浏览器诊断只返回逻辑 target、会话和任务元数据，绝不返回 Cookie、Profile、CDP、密码、Token、任意 URL 或宿主路径。
 
-`POST /api/plugins/:id/upgrade` 接受相同 package ID 和 runtime 的签名插件包。Core 保留安装 ID 和作用域数据，新授权取旧授权与新 Manifest 声明的交集，并且只有通过签名、摘要、入口和运行时兼容校验的包才可激活。新版声明 `/health` 时，Core 会在当前管理员作用域启动/复用 Worker 并通过 Core-owned Broker 调用固定路径；探测失败会恢复旧 Manifest、授权和应用元数据。没有健康路由的插件不执行该探测，也不提供自动回滚保证；该机制不是任意 URL 代理，排空协调仍未完成。
+`POST /api/plugins/:id/upgrade` 接受相同 package ID 和 runtime 的签名插件包。Core 保留安装 ID 和作用域数据，新授权取旧授权与新 Manifest 声明的交集，并且只有通过签名、摘要、入口和运行时兼容校验的包才可激活。升级先进入安装实例级排空：新网关请求会收到可重试的 `503`，已有请求最多等待 5 秒；排空超时则取消升级并恢复接收流量。新版声明 `/health` 时，Core 会在当前管理员作用域启动/复用 Worker 并通过 Core-owned Broker 调用固定路径；探测失败会恢复旧 Manifest、授权和应用元数据。没有健康路由的插件不执行该探测，也不提供自动回滚保证；该机制不是任意 URL 代理。
 
 ## 插件网关路由
 
