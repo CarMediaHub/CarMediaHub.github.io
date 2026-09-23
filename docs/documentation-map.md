@@ -33,7 +33,7 @@ Developers
   -> Testing -> Packaging, Signing and Security Reports
 
 Reference
-  [API](api.md) -> Errors -> Events -> Configuration -> Compatibility Matrix
+  [API](api.md) -> [Errors and events](errors-events.md) -> Configuration -> Compatibility Matrix
   -> Known Limitations -> Versioning and Migration
 ```
 
