@@ -14,7 +14,7 @@ staged -> installed -> enabled -> draining -> disabled
 - **staged**: package files are outside the active runtime and await signature, digest and Manifest validation.
 - **installed**: the verified package and installation record exist, but its routes are not necessarily enabled.
 - **enabled**: Core may start the declared runtime and expose only declared routes and granted capabilities.
-- **draining**: new work is rejected while active gateway streams, jobs, browser sessions and media sessions receive cancellation.
+- **draining**: new gateway requests are rejected while existing requests have up to five seconds to finish; a timeout does not forcibly cancel media streams and the upgrade resumes traffic.
 - **disabled**: the Worker is stopped and routes are closed; installation data remains.
 - **uninstalled**: the application entry and runtime are closed. Plugin data remains until an explicit, confirmed deletion.
 
@@ -26,7 +26,7 @@ Core starts only a registered runtime factory or verified component. Health is a
 
 ## Upgrade and rollback
 
-The current Core upgrade path stages a new package beside the current one, validates its signature, digest, SDK range, Manifest and package entry, then updates the same installation identity and logical route. The old package and scoped data are retained for rollback. The current path verifies package integrity and runtime compatibility before activation; a full live Worker health probe, drain coordination and automatic activation rollback remain release gates. Data migrations are versioned, scoped and idempotent; Core never gives a plugin SQL or a database connection.
+The current Core upgrade path stages a new package beside the current one, validates its signature, digest, SDK range, Manifest and package entry, drains the installation, then updates the same installation identity and logical route. When the new package declares `/health`, Core probes that fixed route and restores the previous Manifest, grants and application metadata if the probe fails. The old package and scoped data are retained for rollback. Cluster-wide draining, migration-failure rollback and cross-deployment upgrade drills remain release gates. Data migrations are versioned, scoped and idempotent; Core never gives a plugin SQL or a database connection.
 
 ## Uninstall and data
 
