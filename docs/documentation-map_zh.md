@@ -23,7 +23,7 @@
   -> 日常使用 -> 媒体播放 -> 故障排查 -> 隐私与责任
 
 运营者
-  系统要求 -> Docker -> [Native](operator-native_zh.md) -> 网络入口 -> [服务与绑定](operator-services_zh.md)
+  系统要求 -> [Docker](operator-docker_zh.md) -> [Native](operator-native_zh.md) -> 网络入口 -> [服务与绑定](operator-services_zh.md)
   -> [配置](operator-config_zh.md) -> [备份与恢复](operator-backup_zh.md) -> 升级 -> 诊断
   -> 认证 -> 备份恢复 -> 升级 -> 诊断
 
