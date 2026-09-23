@@ -40,12 +40,14 @@ Administrators use the management UI for these operations. The API validates siz
 - `/api/users`, `/api/users/:id/revoke`
 - `/api/components`, `/api/components/catalog`, `/api/components/install`, `/api/components/:id/health`
 - `/api/media-roots`, `/api/media-sources` and their revoke/health routes
-- `/api/plugins`, `/api/plugins/packages/install`, plugin enable/disable/uninstall, scoped data export/delete
+- `/api/plugins`, `/api/plugins/packages/install`, `/api/plugins/:id/upgrade`, plugin enable/disable/uninstall, scoped data export/delete
 - `/api/service-bindings` and binding health
 - `/api/credentials` and credential revoke
 - `/api/jobs` and `/api/browser/sessions`/`tasks` administration
 
 Credential creation never returns plaintext again. Browser diagnostics return logical target/session/task metadata only; they never return Cookie, Profile, CDP, password, token, arbitrary URL or host path data.
+
+`POST /api/plugins/:id/upgrade` accepts a signed plugin package for the same package ID and runtime. Core retains the installation ID and scoped data, intersects previous grants with the new manifest, and only activates a package whose signature, digest, entry and runtime compatibility checks pass. A live Worker health probe and automatic failed-activation rollback are not yet release guarantees.
 
 ## Plugin gateway routes
 

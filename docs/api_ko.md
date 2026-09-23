@@ -35,9 +35,11 @@ Bootstrap은 일회성 관리자 작업입니다. 로그인과 로그아웃은 C
 
 ## 관리자 경로
 
-관리자는 관리 화면을 사용합니다. API는 실행 전 크기, 메서드, capability와 리소스 경계를 검증합니다. 주요 그룹은 `/api/users`, `/api/components`, `/api/media-roots`, `/api/media-sources`, `/api/plugins`, `/api/service-bindings`, `/api/credentials`, `/api/jobs`, `/api/browser/sessions` 및 `/api/browser/tasks`입니다.
+관리자는 관리 화면을 사용합니다. API는 실행 전 크기, 메서드, capability와 리소스 경계를 검증합니다. 주요 그룹은 `/api/users`, `/api/components`, `/api/media-roots`, `/api/media-sources`, `/api/plugins`, `/api/plugins/:id/upgrade`, `/api/service-bindings`, `/api/credentials`, `/api/jobs`, `/api/browser/sessions` 및 `/api/browser/tasks`입니다.
 
 자격 증명 생성 응답에는 평문이 다시 포함되지 않습니다. 브라우저 진단은 논리 target·세션·작업 메타데이터만 반환하며 Cookie, Profile, CDP, 비밀번호, Token, 임의 URL 또는 호스트 경로를 반환하지 않습니다.
+
+`POST /api/plugins/:id/upgrade`는 동일한 package ID와 runtime을 가진 서명된 플러그인 패키지를 받습니다. Core는 설치 ID와 범위 데이터를 유지하고 이전 권한과 새 Manifest 선언의 교집합만 부여하며, 서명·다이제스트·진입점·런타임 호환성 검사를 통과한 패키지만 활성화합니다. 실제 Worker health probe와 실패 활성화 자동 롤백은 아직 릴리스 보장이 아닙니다.
 
 ## 플러그인 Gateway 경로
 
