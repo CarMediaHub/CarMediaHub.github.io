@@ -87,3 +87,7 @@ Redirects are handled by Core: only GET and HEAD may follow up to three redirect
 Core limits each binding to ten active requests and rejects response bodies larger than 1 MiB. The quota is released on success, failure, timeout, and cancellation.
 
 The repository includes `service-binding-adapter-example` as a neutral reference implementation. It demonstrates the contract without targeting a specific website or exposing a public proxy.
+
+## Migration policy
+
+The plugin repository keeps a machine-checked reference-key inventory for 16 logical integrations from the site-gateway design. Every reference key has exactly one migration record, but a record is not an approval to distribute an upstream adapter. The public collection currently contains seven contract examples: WDR media, AList and Mihomo service bridges, a browser-session contract, and neutral adapter examples. Entries that require browser identity, imported login state, media extraction, remote sessions, or high-risk upstream behavior remain review-only and are not copied into public packages. The inventory contains logical keys and risk classes only; it does not contain upstream domains, cookies, host paths, or runtime configuration.
