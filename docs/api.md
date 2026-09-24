@@ -48,6 +48,8 @@ Administrators use the management UI for these operations. The API validates siz
 
 Credential creation never returns plaintext again. Browser diagnostics return logical target/session/task metadata only; they never return Cookie, Profile, CDP, password, token, arbitrary URL or host path data.
 
+Entry keys use `POST /api/keys` to create a hashed, user-owned opaque entry URL, `GET /api/keys` to list the current administrator's keys, and `POST /api/keys/:id/revoke` to revoke one. `expiresAt`, when supplied, must be a future canonical ISO-8601 UTC timestamp. Cross-user and repeated revocation are hidden as `404`; a key does not expand the permissions of its owner.
+
 `POST /api/plugins/:id/upgrade` accepts a signed plugin package for the same package ID and runtime. Core retains the installation ID and scoped data, intersects previous grants with the new manifest, and only activates a package whose signature, digest, entry and runtime compatibility checks pass. Upgrade first enters installation-level draining: new gateway requests receive a retryable `503`, while existing requests have up to five seconds to finish; a drain timeout cancels the upgrade and resumes traffic. When the new manifest declares `/health`, Core starts or reuses the Worker in the current administrator scope and invokes that fixed path through the Core-owned Broker; a failed probe restores the previous manifest, grants, and application metadata. Packages without a health route skip this probe and do not receive automatic rollback guarantees. This is not an arbitrary URL proxy.
 
 ## Plugin gateway routes
