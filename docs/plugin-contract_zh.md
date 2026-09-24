@@ -76,7 +76,7 @@ WDR Media 使用该 API 保存播放记录。存储根目录、媒体转换和�
 
 机器可验证的 v0 清单和错误目录维护在 [`carmediahub-sdk`](https://github.com/CarMediaHub/carmediahub-sdk) 仓库。
 
-官方插件集合会在 `dist/packages/<plugin-id>` 生成可安装包。包包含 Manifest、编译后的 `worker.js` 入口、可选 UI、三语 README，以及用于独立加载 Worker 的版本化 `@carmediahub/sdk` 运行时，不依赖 Plugins monorepo 的模块解析。在 [`carmediahub-plugins`](https://github.com/CarMediaHub/carmediahub-plugins) 中先运行 `pnpm build`，再运行 `pnpm verify:packages`，然后才能将包放入 Core staging 目录。
+官方插件集合会在 `dist/packages/<plugin-id>` 生成可安装包。包包含 Manifest、编译后的 `worker.js` 入口、可选 UI、三语 README，以及用于独立加载 Worker 的捆绑 `@carmediahub/sdk` 运行时；加载前会逐包校验其实际版本是否满足 Manifest 声明的 SDK 范围，不依赖 Plugins monorepo 的模块解析。在 [`carmediahub-plugins`](https://github.com/CarMediaHub/carmediahub-plugins) 中先运行 `pnpm build`，再运行 `pnpm verify:packages`，然后才能将包放入 Core staging 目录。
 
 需要网络的插件必须通过 `network.request` 使用 service binding 和相对路径。安装实例专属 binding 优先；Core 全局 binding 只有在插件 Manifest 的 `serviceBindings` 显式列出对应名称时才可使用。不选择安装实例且未声明该名称时，绑定仍只属于 Core，不会暴露给插件请求。插件不能提交任意 URL、主机名、端口、凭据、Socket 或未声明请求头。代理兼容插件在发布前仍必须通过隔离运行时、泄露和故障测试。
 

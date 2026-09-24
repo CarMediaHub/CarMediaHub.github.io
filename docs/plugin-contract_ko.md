@@ -72,7 +72,7 @@ WDR Media는 이 API로 재생 기록을 저장합니다. 저장소 루트, 미�
 
 머신에서 검증 가능한 v0 매니페스트와 오류 목록은 [`carmediahub-sdk`](https://github.com/CarMediaHub/carmediahub-sdk)에 있습니다.
 
-공식 플러그인 모음은 `dist/packages/<plugin-id>` 아래에 설치 가능한 패키지를 생성합니다. 패키지에는 매니페스트, 컴파일된 `worker.js` 진입점, 선택적 UI, 다국어 README와 Worker를 독립적으로 로드하는 버전 고정 `@carmediahub/sdk` 런타임이 포함되며 Plugins monorepo의 모듈 해석에 의존하지 않습니다. [`carmediahub-plugins`](https://github.com/CarMediaHub/carmediahub-plugins)에서 `pnpm build`와 `pnpm verify:packages`를 실행한 뒤 Core staging에 패키지를 배치합니다.
+공식 플러그인 모음은 `dist/packages/<plugin-id>` 아래에 설치 가능한 패키지를 생성합니다. 패키지에는 매니페스트, 컴파일된 `worker.js` 진입점, 선택적 UI, 다국어 README와 Worker를 독립적으로 로드하는 번들 `@carmediahub/sdk` 런타임이 포함됩니다. Worker를 로드하기 전에 실제 SDK 버전이 매니페스트에 선언된 범위를 만족하는지 패키지별로 검증하며 Plugins monorepo의 모듈 해석에 의존하지 않습니다. [`carmediahub-plugins`](https://github.com/CarMediaHub/carmediahub-plugins)에서 `pnpm build`와 `pnpm verify:packages`를 실행한 뒤 Core staging에 패키지를 배치합니다.
 
 네트워크 플러그인은 service binding과 상대 경로를 사용하는 `network.request`만 호출할 수 있습니다. 설치 인스턴스 전용 binding이 우선하며, Core 전역 binding은 플러그인 Manifest의 `serviceBindings`에 이름을 명시한 경우에만 사용할 수 있습니다. 설치 인스턴스를 선택하지 않고 이름도 선언하지 않으면 binding은 Core 전용으로 플러그인 요청에 노출되지 않습니다. 임의 URL, 호스트명, 포트, 자격 증명, 소켓 또는 제한되지 않은 헤더를 제출할 수 없습니다. 상류 어댑터는 배포 전에 격리 런타임, 정보 유출 및 장애 테스트를 통과해야 합니다.
 
