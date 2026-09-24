@@ -10,6 +10,8 @@ Use an explicit JSON configuration file and a dedicated persistent data director
 
 The repository CI builds the hardened image and checks `/health/live` and `/health/ready` in a Linux container. The local source tree does not promise that every host has Docker installed. Before a deployment is exposed, verify image provenance, persistent storage permissions, HTTPS termination, backup/restore, and the resource limits appropriate for media work.
 
+The image runs Core as a dedicated non-root `carmediahub` user. Only the managed data volume is writable; the image filesystem remains read-only in the default Compose profile.
+
 ## Network and upgrades
 
 Publish only the configured Gateway port through the reverse proxy. Keep PostgreSQL, service bindings, Worker IPC, and managed component ports private. Stop or drain the deployment before an offline SQLite snapshot; validate the snapshot before restoring to an empty data directory. Component updates are staged, health-checked, and activatable; failed health checks must leave the active version unchanged.

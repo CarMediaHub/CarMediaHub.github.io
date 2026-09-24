@@ -10,6 +10,8 @@ Docker 部署始终只公开 Core Gateway 一个入口。Core、内部运行时�
 
 仓库 CI 会构建加固镜像，并在 Linux 容器中检查 `/health/live` 和 `/health/ready`。源码仓库不承诺每台主机都已安装 Docker。正式暴露前，应验证镜像来源、持久化目录权限、HTTPS 终止、备份/恢复和媒体任务所需的资源限制。
 
+镜像使用专用的非 root 用户 `carmediahub` 运行 Core。默认 Compose 配置只允许受管数据卷写入，镜像文件系统保持只读。
+
 ## 网络与升级
 
 反向代理只转发配置的 Gateway 端口。PostgreSQL、服务绑定、Worker IPC 和受管组件端口保持内部可见。创建离线 SQLite 快照前应停机或排空，并在恢复到空数据目录前校验快照。组件更新先暂存并健康检查，检查失败时不得替换当前活动版本。
