@@ -28,7 +28,7 @@ An administrator explicitly selects each media root. Core encrypts the selected 
 
 ## Plugin Releases
 
-Installing an isolated Worker requires an operator-trusted Ed25519-signed package release record. The signature binds the manifest, signer identity, staged artifact identity, and canonical directory digest. Core installs only the matching staged directory, rejects links and unsafe entries, and stores only a relative verified package location for restart recovery. Package verification remains separate from capability grants and Worker startup; media Range, bounded Core-owned remux/transcode/HLS VOD execution and authenticated short-lived result playback are available, while permanent result URLs, live HLS, upgrades, and rollback are not yet provided.
+Installing an isolated Worker requires an operator-trusted Ed25519-signed package release record. The signature binds the manifest, signer identity, staged artifact identity, and canonical directory digest. Core installs only the matching staged directory, rejects links and unsafe entries, and stores only a relative verified package location for restart recovery. Package verification remains separate from capability grants and Worker startup; media Range, bounded Core-owned remux/transcode/HLS VOD execution and authenticated short-lived result playback are available. Core also provides single-installation package upgrades with draining, fixed health checks, and restoration of the previous manifest and grants when the health gate fails. Cluster-wide draining, migration-failure rollback, and cross-deployment upgrade drills remain release gates.
 
 ## Operator responsibilities
 
