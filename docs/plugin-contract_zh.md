@@ -76,6 +76,8 @@ WDR Media 使用该 API 保存播放记录。存储根目录、媒体转换和�
 
 插件包包含清单、包内相对执行入口、可选 UI 资源、迁移、国际化资源、SBOM、校验和和签名。隔离 Worker 使用 `worker`，共享适配器及后续模块运行时使用带 `0.1` 协议的 `runtimeEntry`。Core 拒绝绝对路径、路径穿越、命令和宿主环境依赖。它不得包含用户凭据、浏览器 Profile 数据、宿主特定配置、运行日志或未经校验的可执行下载。
 
+对于声明 `ui.entry` 的签名包，Core 可以在重新计算包摘要通过后，提供需要登录的应用根页面和显式命名空间的 `/ui/*` 资源。UI 文件只能从已验证的包读取，绝不由 Worker 提供；Core 只允许受控内容类型，并返回 `no-store` 与 `nosniff`。UI 与其 API 使用同一用户会话和应用路由，不会获得包路径或独立监听端口。
+
 机器可验证的 v0 清单和错误目录维护在 [`carmediahub-sdk`](https://github.com/CarMediaHub/carmediahub-sdk) 仓库。
 
 官方插件集合会在 `dist/packages/<plugin-id>` 生成可安装包。包包含 Manifest、编译后的 `worker.js` 入口、可选 UI、三语 README，以及用于独立加载 Worker 的捆绑 `@carmediahub/sdk` 运行时；加载前会逐包校验其实际版本是否满足 Manifest 声明的 SDK 范围，不依赖 Plugins monorepo 的模块解析。在 [`carmediahub-plugins`](https://github.com/CarMediaHub/carmediahub-plugins) 中先运行 `pnpm build`，再运行 `pnpm verify:packages`，然后才能将包放入 Core staging 目录。
