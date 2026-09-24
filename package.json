@@ -13,6 +13,7 @@
     "check": "astro check",
     "check:locales": "node scripts/verify-locales.mjs",
     "verify:locales": "pnpm check:locales",
+    "verify": "pnpm check && pnpm check:locales && pnpm build",
     "sbom": "node scripts/generate-sbom.mjs"
   },
   "dependencies": {
