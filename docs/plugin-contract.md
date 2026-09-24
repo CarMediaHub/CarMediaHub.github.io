@@ -4,6 +4,8 @@ Status: v0 Draft
 
 A plugin package declares its identity, localized metadata, SDK compatibility, runtime requirement, routes, capabilities and optional service bindings. The manifest is an authorization request, not an automatic grant.
 
+A package may also declare Core component dependencies by managed component ID, required role, and optionality. Before installation or upgrade, Core verifies catalog membership, role compatibility, a verified installation record, and health. An unavailable required dependency rejects admission; optional dependencies require a documented degraded path. This declaration never exposes executable paths, commands, processes, or host environment variables to plugins.
+
 ## Lifecycle
 
 ```text
