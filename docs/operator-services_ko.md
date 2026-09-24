@@ -18,6 +18,8 @@ Core 구성 요소 카탈로그는 선택과 설치 전 검사를 위한 제한�
 
 운영자가 staging에 배치된 컴포넌트를 등록할 때 Core는 유효한 SemVer, 관리되는 상대 실행 파일 식별자와 SHA-256 digest(`sha256:` 접두사 선택 가능)만 허용합니다. 등록은 메타데이터만 기록하며 플러그인에 role을 부여하거나 서명 및 상태 확인을 대신하지 않습니다.
 
+릴리스를 준비할 때 Core의 `component:prepare-release` 명령에 데이터 디렉터리, 아티팩트 경로, 구성요소 ID, 버전, 플랫폼과 아티팩트 ID를 명시할 수 있습니다. 이 명령은 일반 파일을 `data/staging`에 복사하고 SHA-256 digest를 계산하며 요청 시 서명되지 않은 릴리스 레코드를 기록합니다. 개인 키를 읽거나 릴리스에 서명하거나 기존 staging 아티팩트를 덮어쓰거나 구성요소를 설치하지 않습니다. 관리 API가 릴리스 레코드를 허용하기 전에 운영자 소유 서명 절차가 서명을 완료해야 합니다.
+
 공개된 `alist-web-bridge` 참고 어댑터는 이 경계를 보여 줍니다. 운영자가 승인한 AList 바인딩을 사용하고 제한된 상대 경로와 필터링된 헤더만 전달합니다. `GET`/`HEAD`는 상대 리소스를 읽고, `POST`는 `/api/fs/list`, `/api/fs/get`, `/api/fs/search`로 제한되며 JSON 본문은 64 KiB 이하입니다. AList 주소, 자격 증명, 쿠키 또는 업스트림 소스 코드는 포함하지 않습니다. 이 예제는 계약을 설명하기 위한 것이며 모든 AList WebDAV 또는 관리 기능을 지원한다는 의미는 아닙니다.
 
 공개된 `mihomo-web-bridge` 참고 어댑터는 동일한 모델로 운영자가 승인한 Mihomo 제어 API를 연결하고 `/configs`, `/proxies`, `/providers`, `/rules`, `/connections`, `/version`과 같은 제한된 경로만 노출합니다. 첫 버전은 인증 헤더를 전달하거나 WebSocket 트래픽 패널을 제공하거나 Mihomo를 수정하지 않습니다. 이는 제어 API 호환 예제이며 전체 Clash Web UI를 지원한다는 의미가 아닙니다.
