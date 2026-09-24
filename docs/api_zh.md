@@ -41,6 +41,7 @@ Bootstrap 是一次性的管理员操作。登录和退出使用 Core 管理的�
 
 - `/api/users`、`/api/users/:id/revoke`
 - `/api/components`、`/api/components/catalog`、`/api/components/install`、`/api/components/:id/health`
+- `/api/components/:id/versions`、`/api/components/:id/versions/:version/health`、`/api/components/:id/versions/:version/activate`
 - `/api/media-roots`、`/api/media-sources` 及撤销/健康检查路由
 - `/api/plugins`、`/api/plugins/packages/install`、`/api/plugins/:id/upgrade`，以及插件启用、停用、卸载、作用域数据导出/删除
 - `POST /api/plugins/:id/health`：按安装实例作用域探测插件声明的固定 `/health` 路由，只返回健康状态和 HTTP 状态，不返回响应正文；未声明该路由时返回 `409`。
@@ -49,6 +50,8 @@ Bootstrap 是一次性的管理员操作。登录和退出使用 Core 管理的�
 - `/api/jobs` 和 `/api/browser/sessions`/`tasks` 管理接口
 
 凭据创建后不再返回明文。浏览器诊断只返回逻辑 target、会话和任务元数据，绝不返回 Cookie、Profile、CDP、密码、Token、任意 URL 或宿主路径。
+
+组件版本列表返回受管版本元数据和 `active` 标记。版本健康检查会重新校验受管可执行文件摘要，但不会暴露文件路径。只有最新健康状态为 `healthy` 的已安装版本才允许激活；Core 切换当前版本时保留旧版本，供后续回滚流程使用。
 
 入口 Key 使用 `POST /api/keys` 创建，Core 只保存哈希并将 Key 绑定到当前管理员；使用 `GET /api/keys` 列出自己的 Key，使用 `POST /api/keys/:id/revoke` 撤销。提供 `expiresAt` 时必须是未来的规范 ISO-8601 UTC 时间。跨用户撤销和重复撤销统一隐藏为 `404`；Key 不会扩大所属用户已有权限。
 

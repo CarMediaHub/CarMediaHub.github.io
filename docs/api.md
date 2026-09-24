@@ -41,6 +41,7 @@ Administrators use the management UI for these operations. The API validates siz
 
 - `/api/users`, `/api/users/:id/revoke`
 - `/api/components`, `/api/components/catalog`, `/api/components/install`, `/api/components/:id/health`
+- `/api/components/:id/versions`, `/api/components/:id/versions/:version/health`, `/api/components/:id/versions/:version/activate`
 - `/api/media-roots`, `/api/media-sources` and their revoke/health routes
 - `/api/plugins`, `/api/plugins/packages/install`, `/api/plugins/:id/upgrade`, plugin enable/disable/uninstall, scoped data export/delete
 - `POST /api/plugins/:id/health` probes the installation-scoped fixed `/health` route declared by the plugin. It returns only health and HTTP status, never the response body; installations without that route return `409`.
@@ -49,6 +50,8 @@ Administrators use the management UI for these operations. The API validates siz
 - `/api/jobs` and `/api/browser/sessions`/`tasks` administration
 
 Credential creation never returns plaintext again. Browser diagnostics return logical target/session/task metadata only; they never return Cookie, Profile, CDP, password, token, arbitrary URL or host path data.
+
+Component version listing returns managed version metadata and an `active` marker. A version health check revalidates the managed executable digest without exposing its path. Activation is accepted only for an installed version whose latest health state is `healthy`; Core then switches the active version while preserving the previous version for rollback operations.
 
 Entry keys use `POST /api/keys` to create a hashed, user-owned opaque entry URL, `GET /api/keys` to list the current administrator's keys, and `POST /api/keys/:id/revoke` to revoke one. `expiresAt`, when supplied, must be a future canonical ISO-8601 UTC timestamp. Cross-user and repeated revocation are hidden as `404`; a key does not expand the permissions of its owner.
 
