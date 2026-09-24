@@ -22,7 +22,7 @@ Manifest names and descriptions provide all three required locales. Runtime UI m
 
 ## Context changes
 
-Register `onContextChanged` and update rendered UI, date/time formatting and display decisions when a new context arrives. Do not cache identity, grants or locale forever. A context change does not grant new capabilities; each operation is still authorized by Core.
+Register `onContextChanged` and update rendered UI, date/time formatting and display decisions when a new context arrives. The method supports multiple subscribers and returns a disposer; call it when a view or plugin-owned subscription is released. Subscriber exceptions are isolated from the Broker transport. Do not cache identity, grants or locale forever. A context change does not grant new capabilities; each operation is still authorized by Core. Core and the SDK accept an update only when its complete scope and installation metadata still match the authenticated Worker.
 
 ## Display and vehicle behavior
 
