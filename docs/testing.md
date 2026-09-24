@@ -15,4 +15,4 @@ CarMediaHub treats tests as contract evidence. A green unit test does not prove 
 
 Record the commit, package versions, platform, configuration mode, component digests, test commands, result counts, and known limitations. Failure-path tests are required for scope denial, revocation, cancellation, timeout, rollback, leakage, and recovery. Browser tests must run muted and must not use a host profile, arbitrary URL, CDP endpoint, or implicit environment variable.
 
-The current repository evidence covers SDK/Core/Plugins contract layers and static deployment gates. Real Windows service registration, Docker/NAS installation, signed component distribution, real Browser Worker navigation, and desktop/mobile/vehicle playback remain separate release gates.
+The current repository evidence covers SDK/Core/Plugins contract layers, a real muted Chrome Browser Worker smoke for one allowlisted Origin, and static deployment gates. Real Windows service registration, Docker/NAS installation, signed component distribution, broader Browser Worker redirect/WebSocket/Worker coverage, and desktop/mobile/vehicle playback remain separate release gates.
