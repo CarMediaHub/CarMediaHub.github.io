@@ -15,4 +15,4 @@ CarMediaHub는 테스트를 계약의 증거로 취급합니다. 일괄 테스�
 
 커밋, 패키지 버전, 플랫폼, 구성 방식, 컴포넌트 digest, 명령, 결과 수와 알려진 제한을 기록합니다. 범위 거부, 철회, 취소, timeout, rollback, 누출과 복구의 실패 경로가 필요합니다. 브라우저 테스트는 음소거하고 호스트 Profile, 임의 URL, CDP 주소 또는 암시적 환경 변수를 사용하지 않습니다.
 
-현재 저장소에는 SDK/Core/Plugins 계약 계층, 하나의 허용된 Origin을 대상으로 한 실제 음소거 Chrome Browser Worker smoke와 정적 배포 gate의 증거가 있습니다. 실제 Windows 서비스 등록, Docker/NAS 설치, 서명 컴포넌트 배포, 더 넓은 Browser Worker 리디렉션/WebSocket/Worker 검증과 데스크톱/모바일/차량 재생은 별도 릴리스 gate로 남아 있습니다.
+현재 저장소에는 SDK/Core/Plugins 계약 계층, 하나의 허용된 Origin을 대상으로 한 실제 음소거 Chrome Browser Worker smoke, 데스크톱 및 모바일 viewport에서의 서명 WDR 패키지 UI smoke와 정적 배포 gate의 증거가 있습니다. WDR smoke는 인증된 UI 제공, 범위 제한 미디어 목록, 언어 상속과 반응형 레이아웃을 검증하지만 모든 브라우저 또는 차량에서 미디어 재생이 가능하다고 주장하지 않습니다. 실제 Windows 서비스 등록, Docker/NAS 설치, 서명 컴포넌트 배포, 더 넓은 Browser Worker 리디렉션/WebSocket/Worker 검증과 데스크톱/모바일/차량 재생은 별도 릴리스 gate로 남아 있습니다.

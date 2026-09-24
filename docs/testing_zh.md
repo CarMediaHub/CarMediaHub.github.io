@@ -15,4 +15,4 @@ CarMediaHub 把测试视为契约证据。单元测试通过并不能证明某�
 
 记录提交、包版本、平台、配置模式、组件摘要、命令、结果数量和已知限制。作用域拒绝、撤销、取消、超时、回滚、泄露和恢复等失败路径必须有测试。浏览器测试必须静音，不能使用宿主 Profile、任意 URL、CDP 地址或隐式环境变量。
 
-当前仓库已有 SDK/Core/Plugins 契约层、针对一个允许 Origin 的真实静音 Chrome Browser Worker smoke，以及部署静态门禁证据。真实 Windows 服务注册、Docker/NAS 安装、签名组件分发、更完整的 Browser Worker 重定向/WebSocket/Worker 覆盖，以及桌面/手机/车机播放仍是独立发布门槛。
+当前仓库已有 SDK/Core/Plugins 契约层、针对一个允许 Origin 的真实静音 Chrome Browser Worker smoke、签名 WDR 包在桌面与移动视口的 UI smoke，以及部署静态门禁证据。WDR smoke 验证登录后的 UI 分发、受作用域限制的媒体列表、语言继承和响应式布局，不代表所有浏览器或车机均可播放媒体。真实 Windows 服务注册、Docker/NAS 安装、签名组件分发、更完整的 Browser Worker 重定向/WebSocket/Worker 覆盖，以及桌面/手机/车机播放仍是独立发布门槛。
