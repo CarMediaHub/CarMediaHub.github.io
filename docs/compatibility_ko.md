@@ -4,7 +4,7 @@
 
 | 영역 | 현재 상태 | 증거와 경계 |
 | --- | --- | --- |
-| Node.js Core 런타임 | 검증됨 | 지원 개발 호스트에서 TypeScript 빌드와 Core `171/171` 회귀. |
+| Node.js Core 런타임 | 검증됨 | 지원 개발 호스트에서 TypeScript 빌드와 Core `173/173` 회귀. |
 | SDK와 Wire Protocol v0.1 | 검증됨 | SDK `42/42`, Manifest/오류/Wire 계약과 Memory Runtime 테스트. |
 | 공식 플러그인 패키지 | 검증됨 | 7개 패키지 Manifest, 카탈로그 정렬과 패키지 검증 통과. |
 | Windows Native | 계약만 있음 | Bundle, 서비스 계획과 리소스 검사는 있으나 클린 설치, ACL과 롤백은 보류. |
