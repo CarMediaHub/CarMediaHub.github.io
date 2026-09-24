@@ -19,9 +19,11 @@ Status: v0 Draft
 
 ```powershell
 pnpm install
-pnpm check
+pnpm verify
 pnpm build
 pnpm dev
 ```
+
+`pnpm verify` runs the Astro check, the English/Chinese/Korean locale triplet check, and the static build.
 
 The site is a static build. It reads the public Markdown pages at build time and does not require Core, a central account, a runtime database or a media relay.

@@ -16,3 +16,12 @@ CarMediaHub 사용자와 플러그인 개발자를 위한 공개 문서입니다
 | [문서 사이트 지도](docs/documentation-map_ko.md) | 사용자, 운영자, 개발자, 기여자와 참고 자료 경로 |
 
 이 v0 초안에는 설치, 관리, 운영 또는 API 참고 자료가 포함되어 있지 않습니다.
+
+## 로컬 검증
+
+```powershell
+pnpm install
+pnpm verify
+```
+
+`pnpm verify`는 Astro 검사, 영어·중국어·한국어 문서 묶음 검증과 정적 빌드를 실행합니다.

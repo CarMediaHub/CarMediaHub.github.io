@@ -19,9 +19,11 @@
 
 ```powershell
 pnpm install
-pnpm check
+pnpm verify
 pnpm build
 pnpm dev
 ```
+
+`pnpm verify` 会执行 Astro 检查、中英韩三语文档组校验和静态构建。
 
 本站是纯静态构建，构建时读取公开 Markdown，不依赖 Core、中心账号、运行时数据库或媒体中继。
