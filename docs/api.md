@@ -19,7 +19,7 @@ Bootstrap is a one-time administrator action. Login and logout use Core-managed 
 
 Authenticated users can change their password with `POST /api/auth/password` by providing `currentPassword` and a new password of at least 12 characters. Core keeps the current session and revokes the user's other sessions.
 
-All list and mutation routes enforce the current organization, user and installation scope. A successful HTTP status does not grant a plugin additional capability; Core rechecks the installed Manifest on every logical operation.
+Runtime data routes enforce the current organization, user and plugin-installation scope. Deployment control-plane routes such as plugin installation, managed components, service bindings and application registration are administrator-only deployment resources; they are not presented as multi-organization resources in Core v1. A successful HTTP status does not grant a plugin additional capability; Core rechecks the installed Manifest on every logical operation.
 
 ## User-facing routes
 
