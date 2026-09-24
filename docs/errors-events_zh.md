@@ -24,6 +24,16 @@ SDK 错误和领域事件是版本化数据契约。客户端应根据稳定的 
 
 v0 目录覆盖作用域、能力、分页、协议、任务、媒体、网络、存储、浏览器和目录错误，例如 `CMH.DB.SCOPE_DENIED`、`CMH.CAPABILITY.DENIED`、`CMH.PROTOCOL.DEADLINE_EXCEEDED`、`CMH.JOBS.INTERRUPTED`、`CMH.MEDIA.QUOTA_EXCEEDED` 和 `CMH.BROWSER.GRANT_REQUIRED`。未知 code 应显示通用本地化错误，并带上 `diagnosticId`。
 
+网络错误使用以下稳定语义：
+
+| Code | 重试策略 | 含义 |
+| --- | --- | --- |
+| `CMH.NETWORK.TARGET_DENIED` | 不重试 | 请求路径超出服务绑定策略，或绑定当前不可用。 |
+| `CMH.NETWORK.QUOTA_EXCEEDED` | 有界退避后重试 | 组织/用户/安装实例/绑定作用域的并发配额当前已满。 |
+| `CMH.NETWORK.RESPONSE_TOO_LARGE` | 不重试 | 上游响应超过 Core 的有界响应限制。 |
+
+插件不得把这些错误转换为上游 URL、请求头、Cookie 或响应体写入日志。
+
 ## 事件 envelope
 
 ```json

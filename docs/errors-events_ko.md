@@ -24,6 +24,16 @@ SDK 오류와 도메인 이벤트는 버전이 지정된 데이터 계약입니�
 
 v0 카탈로그는 범위, capability, 페이지, protocol, 작업, 미디어, 네트워크, 저장소, 브라우저와 카탈로그 오류를 포함합니다. 예시는 `CMH.DB.SCOPE_DENIED`, `CMH.CAPABILITY.DENIED`, `CMH.PROTOCOL.DEADLINE_EXCEEDED`, `CMH.JOBS.INTERRUPTED`, `CMH.MEDIA.QUOTA_EXCEEDED`, `CMH.BROWSER.GRANT_REQUIRED`입니다. 알 수 없는 code는 일반화된 현지화 오류로 표시하고 `diagnosticId`를 함께 보고합니다.
 
+네트워크 오류는 다음의 안정적인 의미를 사용합니다.
+
+| Code | 재시도 정책 | 의미 |
+| --- | --- | --- |
+| `CMH.NETWORK.TARGET_DENIED` | 재시도하지 않음 | 요청 경로가 service binding 정책 밖에 있거나 binding을 사용할 수 없습니다. |
+| `CMH.NETWORK.QUOTA_EXCEEDED` | 제한된 backoff 후 재시도 | 조직/사용자/설치 인스턴스/binding 범위의 동시성 quota가 가득 찼습니다. |
+| `CMH.NETWORK.RESPONSE_TOO_LARGE` | 재시도하지 않음 | upstream 응답이 Core의 제한된 응답 크기를 초과했습니다. |
+
+플러그인은 이 오류를 upstream URL, header, Cookie 또는 응답 본문으로 변환하여 로그에 남기면 안 됩니다.
+
 ## 이벤트 envelope
 
 ```json

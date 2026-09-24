@@ -24,6 +24,16 @@ Retry only errors marked retryable, use bounded backoff and stop when the user c
 
 The v0 catalog includes scope, capability, pagination, protocol, job, media, network, storage, browser and catalog errors. Examples: `CMH.DB.SCOPE_DENIED`, `CMH.CAPABILITY.DENIED`, `CMH.PROTOCOL.DEADLINE_EXCEEDED`, `CMH.JOBS.INTERRUPTED`, `CMH.MEDIA.QUOTA_EXCEEDED` and `CMH.BROWSER.GRANT_REQUIRED`. Unknown codes must be rendered as a generic localized failure and reported with `diagnosticId`.
 
+Network failures use these stable semantics:
+
+| Code | Retry policy | Meaning |
+| --- | --- | --- |
+| `CMH.NETWORK.TARGET_DENIED` | Do not retry | The requested path is outside the service binding policy or the binding is unavailable. |
+| `CMH.NETWORK.QUOTA_EXCEEDED` | Retry with bounded backoff | The scoped organization/user/installation/binding concurrency quota is currently full. |
+| `CMH.NETWORK.RESPONSE_TOO_LARGE` | Do not retry | The upstream response exceeds Core's bounded response limit. |
+
+Plugins must not turn these errors into upstream URLs, headers, cookies or response bodies in logs.
+
 ## Event envelope
 
 ```json
