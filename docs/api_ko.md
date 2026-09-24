@@ -35,6 +35,8 @@ Bootstrap은 일회성 관리자 작업입니다. 로그인과 로그아웃은 C
 | `GET` | `/api/diagnostics/speed/download` | 제한된 인증 다운로드 측정. |
 | `POST` | `/api/diagnostics/speed/upload` | 제한된 인증 업로드 측정; 본문은 저장하지 않음. |
 
+속도 측정 요청은 인증된 사용자별로 제한됩니다. Core는 사용자당 동시에 하나의 테스트만 허용하고 1분 동안 완료되는 테스트를 최대 네 번으로 제한합니다. 초과 요청은 재시도 가능한 진단 오류와 함께 `429`를 반환합니다. 이 할당량은 사용자의 자체 배포에만 적용되며 측정 데이터가 CarMediaHub 서비스로 전송되지 않습니다.
+
 ## 관리자 경로
 
 관리자는 관리 화면을 사용합니다. API는 실행 전 크기, 메서드, capability와 리소스 경계를 검증합니다. 주요 그룹은 `/api/users`, `/api/components`, `/api/components/:id/versions`, `/api/components/:id/versions/:version/health`, `/api/components/:id/versions/:version/activate`, `/api/media-roots`, `/api/media-sources`, `/api/plugins`, `/api/plugins/:id/upgrade`, `/api/service-bindings`, `/api/credentials`, `/api/jobs`, `/api/browser/sessions` 및 `/api/browser/tasks`입니다. `POST /api/plugins/:id/health`는 플러그인이 선언한 고정 `/health` 경로를 설치 범위에서 검사하며 건강 상태와 HTTP 상태만 반환합니다. 응답 본문이나 임의 URL은 노출하지 않습니다.

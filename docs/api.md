@@ -35,6 +35,8 @@ All list and mutation routes enforce the current organization, user and installa
 | `GET` | `/api/diagnostics/speed/download` | Bounded authenticated download measurement. |
 | `POST` | `/api/diagnostics/speed/upload` | Bounded authenticated upload measurement; body is not persisted. |
 
+Speed-test requests are limited per authenticated user: Core allows one active test and at most four completed tests in a rolling one-minute window. Excess requests return `429` with a retryable diagnostic error. The quota is local to the deployment and does not send test data to CarMediaHub services.
+
 ## Administration routes
 
 Administrators use the management UI for these operations. The API validates sizes, methods, capabilities and resource boundaries before acting:
