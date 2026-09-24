@@ -1,6 +1,6 @@
 # 오류와 이벤트
 
-SDK 오류와 도메인 이벤트는 버전이 지정된 데이터 계약입니다. 클라이언트는 예외 문구, URL 또는 호스트 세부 정보가 아니라 안정적인 `code`를 기준으로 처리해야 합니다.
+SDK 오류와 도메인 이벤트는 버전이 지정된 데이터 계약입니다. 클라이언트는 예외 문구, URL 또는 호스트 세부 정보가 아니라 안정적인 `code`를 기준으로 처리해야 합니다. 모든 SDK capability 호출이 Core 오류를 받으면 이 envelope를 `CmhError`로 보존합니다. data, job, media, browser, history, catalog, notification, network 호출이 모두 같은 규칙을 사용합니다.
 
 ## 오류 envelope
 

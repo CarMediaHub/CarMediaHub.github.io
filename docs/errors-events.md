@@ -1,6 +1,6 @@
 # Errors and Events
 
-SDK errors and domain events are versioned data contracts. Clients should branch on the stable `code`, not on exception text, URLs or host details.
+SDK errors and domain events are versioned data contracts. Clients should branch on the stable `code`, not on exception text, URLs or host details. Every SDK capability call that receives a Core error preserves this envelope as `CmhError`; this applies to data, jobs, media, browser, history, catalog, notifications and network calls alike.
 
 ## Error envelope
 
