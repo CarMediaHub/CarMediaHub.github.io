@@ -17,6 +17,8 @@
 
 Bootstrap 是一次性的管理员操作。登录和退出使用 Core 管理的会话 Cookie。`GET /api/me` 返回当前用户和平台上下文；`PATCH /api/me/preferences` 更新经过校验的语言、时区、主题和密度偏好，偏好会通过 SDK 上下文传递给插件。管理员可以管理用户、TOTP、凭据、插件安装、服务绑定、组件和媒体源。
 
+已认证用户可以通过 `POST /api/auth/password` 提交 `currentPassword` 和至少 12 个字符的新密码修改密码。Core 保留当前会话，并撤销该用户的其他会话。
+
 所有列表和变更路由都强制当前组织、用户和插件安装实例作用域。HTTP 成功状态不会授予插件额外能力；Core 会在每次逻辑操作时重新校验已安装 Manifest。
 
 ## 用户路由

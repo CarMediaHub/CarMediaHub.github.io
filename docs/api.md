@@ -17,6 +17,8 @@ These responses do not contain host paths, credentials, upstream URLs or user co
 
 Bootstrap is a one-time administrator action. Login and logout use Core-managed session cookies. `GET /api/me` returns the current user and platform context; `PATCH /api/me/preferences` updates validated locale, time zone, theme and density preferences that are propagated to plugins through the SDK context. Administrators can manage users, TOTP, credentials, plugin installations, service bindings, components and media sources.
 
+Authenticated users can change their password with `POST /api/auth/password` by providing `currentPassword` and a new password of at least 12 characters. Core keeps the current session and revokes the user's other sessions.
+
 All list and mutation routes enforce the current organization, user and installation scope. A successful HTTP status does not grant a plugin additional capability; Core rechecks the installed Manifest on every logical operation.
 
 ## User-facing routes
