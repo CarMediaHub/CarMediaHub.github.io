@@ -5,7 +5,7 @@
 | 范围 | 当前状态 | 证据与边界 |
 | --- | --- | --- |
 | Node.js Core 运行时 | 已验证 | 支持开发主机上的 TypeScript 构建和 Core `188/188` 回归。 |
-| SDK 与 Wire Protocol v0.1 | 已验证 | SDK `44/44`，Manifest/错误/Wire 契约和 Memory Runtime 测试。 |
+| SDK 与 Wire Protocol v0.1 | 已验证 | SDK `45/45`，Manifest/错误/Wire 契约、capability 上下文校验和 Memory Runtime 测试。 |
 | 官方插件包 | 已验证 | 7 个包的 Manifest、目录一致性和分发包校验通过。 |
 | Windows Native | 仅契约 | 已有 Bundle、服务计划和资源检查；干净机器安装、ACL 和回滚待验证。 |
 | Docker | CI 证据 | Linux CI 构建加固镜像并执行初始化、readiness 和备份恢复；本地 Docker 与升级演练待验证。 |
