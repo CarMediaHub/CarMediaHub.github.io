@@ -12,4 +12,4 @@
 - 신뢰된 release key로 패키지 digest, SBOM, provenance metadata와 서명을 생성합니다.
 - 패키지와 공개 문서만 게시하며 credential, Profile, 로그와 사설 배포 데이터를 포함하지 않습니다.
 
-카탈로그에는 게시자, 라이선스, SDK 범위, runtime, target class, 위험도, 데이터 수명 주기, 지원 상태, digest와 철회 상태를 기록합니다. 카탈로그 항목은 상위 사이트 작동의 증거가 아닙니다. 브라우저, 외부 네트워크, 미디어 추출과 proxy adapter는 공개 배포 전에 추가 심사를 통과해야 합니다.
+저장소 카탈로그에는 패키지 경로, 통합 종류, target class, runtime, SDK 범위, 라이선스와 상류 분류를 기록합니다. 서명된 release record는 패키지 digest와 provenance를 신뢰된 키에 별도로 연결합니다. 카탈로그 항목은 상위 사이트 작동의 증거가 아닙니다. 브라우저, 외부 네트워크, 미디어 추출과 proxy adapter는 공개 배포 전에 추가 심사를 통과해야 합니다.

@@ -2,7 +2,7 @@
 
 Status: v0 Draft
 
-A plugin package declares its identity, publisher, SDK compatibility, runtime requirement, routes, capabilities, resources, and data lifecycle. The manifest is an authorization request, not an automatic grant.
+A plugin package declares its identity, localized metadata, SDK compatibility, runtime requirement, routes, capabilities and optional service bindings. The manifest is an authorization request, not an automatic grant.
 
 ## Lifecycle
 

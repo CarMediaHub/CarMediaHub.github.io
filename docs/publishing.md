@@ -12,4 +12,4 @@ Publishing is a reproducible package operation, not an automatic approval. A pac
 - Generate the package digest, SBOM, provenance metadata, and signature with a trusted release key.
 - Publish only the artifact and public documentation; keep credentials, profiles, logs, and private deployment data out of the package.
 
-The catalog records publisher, license, SDK range, runtime, target class, risk, data lifecycle, support status, digest, and revocation state. A catalog entry is not proof that an upstream site works. High-risk browser, external-network, media-extraction, and proxy adapters require additional review before public distribution.
+The repository catalog records the package path, integration kind, target class, runtime, SDK range, license and upstream classification. Signed release records separately bind the package digest and provenance to a trusted key. A catalog entry is not proof that an upstream site works. High-risk browser, external-network, media-extraction, and proxy adapters require additional review before public distribution.

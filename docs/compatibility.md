@@ -4,8 +4,8 @@ This matrix separates automated contract evidence from real deployment evidence.
 
 | Area | Current status | Evidence and boundary |
 | --- | --- | --- |
-| Node.js Core runtime | Verified | TypeScript build and Core `173/173` regression on the supported development host. |
-| SDK and Wire Protocol v0.1 | Verified | SDK `42/42`, strict Manifest/error/Wire contracts and Memory Runtime tests. |
+| Node.js Core runtime | Verified | TypeScript build and Core `178/178` regression on the supported development host. |
+| SDK and Wire Protocol v0.1 | Verified | SDK `43/43`, strict Manifest/error/Wire contracts and Memory Runtime tests. |
 | Official plugin packages | Verified | Seven package manifests, catalog alignment and package verification pass. |
 | Windows Native bundle | Contract only | Bundle, service-plan and resource checks exist; clean-machine install, ACL and rollback remain pending. |
 | Docker | CI evidence | Linux CI builds the hardened image and exercises bootstrap/readiness/backup restore; local Docker and upgrade drills remain pending. |
