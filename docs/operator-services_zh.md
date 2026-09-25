@@ -26,7 +26,7 @@ Core 组件目录会记录受限角色，用于选择和安装前校验：存储
 
 ## 远程媒体源
 
-AList 和 rclone 的 WebDAV 将来可以作为只读媒体源使用，但这与 AList Web 管理桥是两种不同的能力。规划中的实现会使用 Core 管理的不透明媒体源句柄，提供受作用域限制的目录、探测、播放会话和 Range 读取。插件不会获得 WebDAV URL、服务端点、宿主路径或凭据；WebDAV 凭据由 Core 在最后一跳解析和注入。
+AList 和 rclone 的 WebDAV 可以注册为只读媒体源，但这与 AList Web 管理桥是两种不同的能力。Core 使用不透明媒体源句柄，提供受作用域限制的目录、探测、播放会话和 Range 读取。插件不会获得 WebDAV URL、服务端点、宿主路径或凭据；WebDAV 凭据由 Core 在最后一跳解析和注入。
 
 Core 已提供远程媒体源的注册、持久化、撤销、健康检查和只读 provider fixture；健康检查只返回状态及分类诊断，不返回上游细节。当前 WDR 仍消费 Core 管理的本地媒体根目录，`alist-web-bridge` 仍是范围受限的管理/目录兼容适配器。真实 AList/rclone 部署矩阵和 WDR 生产验证仍未完成。首版不包含 WebDAV 写入、删除、上传、任意代理或自动发现。
 

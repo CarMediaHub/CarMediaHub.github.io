@@ -5,7 +5,7 @@ Capability는 서명된 Manifest의 명시적 요청입니다. Core는 조직, �
 | Capability | SDK 표면 | 경계 |
 | --- | --- | --- |
 | `config` | 플랫폼 설정 API | 검증된 플러그인 설정만 제공하며 비밀이나 환경 변수는 제공하지 않습니다. |
-| `secrets` | 자격 증명 참조 | Core가 평문을 저장하고 통제된 마지막 홉에서만 주입하며 플러그인은 읽을 수 없습니다. |
+| `secrets` | 자격 증명 참조 | Core가 암호화된 값을 저장하고 통제된 마지막 홉에서만 주입하며 플러그인은 평문을 읽을 수 없습니다. |
 | `db` | `database()` | 범위가 지정된 논리 컬렉션·레코드·마이그레이션이며 DSN, Schema, SQL은 없습니다. |
 | `storage` | 미디어/저장소 계약 | 운영자가 승인한 불투명 핸들만 사용하며 호스트 경로는 허용하지 않습니다. |
 | `media` | probe, playback, transform, HLS | Core 소유 세션, 제한된 Range 읽기와 관리형 FFmpeg 작업. |

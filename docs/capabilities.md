@@ -5,7 +5,7 @@ Capabilities are explicit requests in the signed Manifest. Core grants them per 
 | Capability | SDK surface | Boundary |
 | --- | --- | --- |
 | `config` | platform configuration APIs | Validated plugin configuration only; no secrets or environment variables. |
-| `secrets` | credential references | Core stores plaintext and injects it only at a controlled final hop; the plugin cannot read it. |
+| `secrets` | credential references | Core stores encrypted values and injects them only at a controlled final hop; the plugin cannot read them. |
 | `db` | `database()` | Logical collections and records with scoped migrations; no DSN, schema or SQL. |
 | `storage` | media/storage contracts | Opaque, operator-authorized handles; no arbitrary host paths. |
 | `media` | probe, playback, transform and HLS | Core-owned sessions, bounded Range reads and managed FFmpeg jobs. |
