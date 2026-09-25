@@ -30,4 +30,5 @@ jobs:
           path: ${{ runner.temp }}/carmediahub-docs.cdx.json
       - run: pnpm check
       - run: pnpm check:locales
+      - run: pnpm check:public-boundaries
       - run: pnpm build
