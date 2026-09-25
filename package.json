@@ -12,8 +12,9 @@
     "preview": "astro preview",
     "check": "astro check",
     "check:locales": "node scripts/verify-locales.mjs",
+    "check:public-boundaries": "node scripts/verify-public-boundaries.mjs",
     "verify:locales": "pnpm check:locales",
-    "verify": "pnpm check && pnpm check:locales && pnpm build",
+    "verify": "pnpm check && pnpm check:locales && pnpm check:public-boundaries && pnpm build",
     "sbom": "node scripts/generate-sbom.mjs"
   },
   "dependencies": {
