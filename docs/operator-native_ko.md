@@ -19,3 +19,5 @@ Native 설치 관리자, 서비스 계정 및 ACL 설정, 시스템 서비스 �
 dry-run 계획에는 직렬화된 작업 목록이 포함됩니다. 향후 권한 있는 설치 프로그램이 계획을 소비하기 전에 Core가 플랫폼 명령 허용 목록, 인자 바이트, 멱등성 모드와 stdin 경계를 다시 검증합니다. 이는 실행 경계를 보호하지만 Native 서비스 등록이나 ACL 적용이 호스트에서 완료되었다는 뜻은 아닙니다.
 
 Native bundle에는 `config/native-install-plan.schema.json`이 포함되어 외부 설치 프로그램이 권한 있는 작업을 실행하기 전에 계획 구조를 독립적으로 검증할 수 있습니다.
+
+공개 사본은 [`/schemas/native-install-plan.schema.json`](/schemas/native-install-plan.schema.json)에서 제공합니다.
