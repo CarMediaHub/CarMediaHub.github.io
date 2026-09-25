@@ -8,7 +8,7 @@ Docker 部署始终只公开 Core Gateway 一个入口。Core、内部运行时�
 
 使用显式 JSON 配置和专用持久化数据目录，只挂载部署契约声明的目录。Core 不读取 `.env`、`PATH`、`PG*`、宿主浏览器 Profile 或任意宿主路径。凭据放在部署侧的秘密管理机制中，插件不会获得原始数据库连接。
 
-仓库 CI 会构建加固镜像，并在 Linux 容器中检查 `/health/live` 和 `/health/ready`。源码仓库不承诺每台主机都已安装 Docker。正式暴露前，应验证镜像来源、持久化目录权限、HTTPS 终止、备份/恢复和媒体任务所需的资源限制。
+仓库 CI 会构建加固镜像，并在 Linux 容器中检查 `/health/live` 和 `/health/ready`；备份恢复后还会从恢复目录启动第二个 Core 实例并再次检查 `/health/ready`。源码仓库不承诺每台主机都已安装 Docker。正式暴露前，应验证镜像来源、持久化目录权限、HTTPS 终止、备份/恢复和媒体任务所需的资源限制。
 
 镜像使用专用的非 root 用户 `carmediahub` 运行 Core。默认 Compose 配置只允许受管数据卷写入，镜像文件系统保持只读。
 

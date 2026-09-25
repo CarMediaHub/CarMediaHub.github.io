@@ -8,7 +8,7 @@ Docker deployment keeps Core Gateway as the only public entry. Core, its private
 
 Use an explicit JSON configuration file and a dedicated persistent data directory. Mount only the directories declared by the deployment contract. The Core image does not discover `.env`, `PATH`, `PG*`, host browser profiles, or arbitrary host paths. Credentials belong in the deployment secret mechanism and are never passed to plugins as raw database connections.
 
-The repository CI builds the hardened image and checks `/health/live` and `/health/ready` in a Linux container. The local source tree does not promise that every host has Docker installed. Before a deployment is exposed, verify image provenance, persistent storage permissions, HTTPS termination, backup/restore, and the resource limits appropriate for media work.
+The repository CI builds the hardened image and checks `/health/live` and `/health/ready` in a Linux container; after backup and restore it also starts a second Core instance from the restored directory and checks `/health/ready` again. The local source tree does not promise that every host has Docker installed. Before a deployment is exposed, verify image provenance, persistent storage permissions, HTTPS termination, backup/restore, and the resource limits appropriate for media work.
 
 The image runs Core as a dedicated non-root `carmediahub` user. Only the managed data volume is writable; the image filesystem remains read-only in the default Compose profile.
 
