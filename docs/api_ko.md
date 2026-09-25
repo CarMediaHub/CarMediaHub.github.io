@@ -45,7 +45,7 @@ Bootstrap은 일회성 관리자 작업입니다. 로그인과 로그아웃은 C
 
 구성요소 버전 목록은 관리되는 버전 메타데이터와 `active` 표시를 반환합니다. 버전 health 검사는 관리되는 실행 파일의 다이제스트를 다시 확인하지만 파일 경로는 노출하지 않습니다. 최신 health 상태가 `healthy`인 설치 버전만 활성화할 수 있으며, Core는 이전 버전을 보존해 후속 롤백 흐름에 사용할 수 있습니다.
 
-Entry Key는 `POST /api/keys`로 생성되며 Core는 해시만 저장하고 현재 관리자에게 귀속합니다. `GET /api/keys`로 자신의 Key를 조회하고 `POST /api/keys/:id/revoke`로 철회합니다. `expiresAt`을 지정할 때는 미래의 정규 ISO-8601 UTC 시간이어야 합니다. 다른 사용자의 Key를 철회하거나 이미 철회된 Key를 다시 철회하면 `404`로 숨겨지며, Key는 소유자의 기존 권한을 확장하지 않습니다.
+Entry Key는 `POST /api/keys`로 생성되며 Core는 해시만 저장하고 현재 관리자에게 귀속합니다. `GET /api/keys`로 자신의 Key를 조회하고 `POST /api/keys/:id/revoke`로 철회합니다. `POST /api/keys/:id/rotate`는 현재 사용자가 소유한 활성 Key를 원자적으로 철회하고 교체 Key의 평문을 한 번만 반환합니다. `expiresAt`을 지정할 때는 미래의 정규 ISO-8601 UTC 시간이어야 합니다. 다른 사용자의 Key, 반복 또는 이미 철회된 작업은 `404`로 숨겨지며, Key는 소유자의 기존 권한을 확장하지 않습니다.
 
 `POST /api/plugins/:id/upgrade`는 동일한 package ID와 runtime을 가진 서명된 플러그인 패키지를 받습니다. Core는 설치 ID와 범위 데이터를 유지하고 이전 권한과 새 Manifest 선언의 교집합만 부여하며, 서명·다이제스트·진입점·런타임 호환성 검사를 통과한 패키지만 활성화합니다. 업그레이드는 먼저 설치 범위 drain에 들어갑니다. 새 gateway 요청은 재시도 가능한 `503`을 받고 기존 요청은 최대 5초 동안 완료할 수 있습니다. 시간이 초과되면 업그레이드를 취소하고 트래픽을 다시 허용합니다. 새 Manifest가 `/health`를 선언하면 현재 관리자 범위에서 Worker를 시작하거나 재사용하고 Core 소유 Broker를 통해 고정 경로를 호출합니다. probe가 실패하면 이전 Manifest, 권한과 애플리케이션 메타데이터를 복원합니다. health 경로가 없는 패키지는 probe를 건너뛰며 자동 롤백을 보장하지 않습니다. 임의 URL 프록시가 아닙니다.
 

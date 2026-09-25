@@ -55,7 +55,7 @@ Bootstrap 是一次性的管理员操作。登录和退出使用 Core 管理的�
 
 组件版本列表返回受管版本元数据和 `active` 标记。版本健康检查会重新校验受管可执行文件摘要，但不会暴露文件路径。只有最新健康状态为 `healthy` 的已安装版本才允许激活；Core 切换当前版本时保留旧版本，供后续回滚流程使用。
 
-入口 Key 使用 `POST /api/keys` 创建，Core 只保存哈希并将 Key 绑定到当前管理员；使用 `GET /api/keys` 列出自己的 Key，使用 `POST /api/keys/:id/revoke` 撤销。提供 `expiresAt` 时必须是未来的规范 ISO-8601 UTC 时间。跨用户撤销和重复撤销统一隐藏为 `404`；Key 不会扩大所属用户已有权限。
+入口 Key 使用 `POST /api/keys` 创建，Core 只保存哈希并将 Key 绑定到当前管理员；使用 `GET /api/keys` 列出自己的 Key，使用 `POST /api/keys/:id/revoke` 撤销。`POST /api/keys/:id/rotate` 会原子撤销当前用户的有效旧 Key，并只返回一次替换 Key 的明文。提供 `expiresAt` 时必须是未来的规范 ISO-8601 UTC 时间。跨用户、重复或已撤销的操作统一隐藏为 `404`；Key 不会扩大所属用户已有权限。
 
 `POST /api/plugins/:id/upgrade` 接受相同 package ID 和 runtime 的签名插件包。Core 保留安装 ID 和作用域数据，新授权取旧授权与新 Manifest 声明的交集，并且只有通过签名、摘要、入口和运行时兼容校验的包才可激活。升级先进入安装实例级排空：新网关请求会收到可重试的 `503`，已有请求最多等待 5 秒；排空超时则取消升级并恢复接收流量。新版声明 `/health` 时，Core 会在当前管理员作用域启动/复用 Worker 并通过 Core-owned Broker 调用固定路径；探测失败会恢复旧 Manifest、授权和应用元数据。没有健康路由的插件不执行该探测，也不提供自动回滚保证；该机制不是任意 URL 代理。
 
