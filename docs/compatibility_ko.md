@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | Node.js Core 런타임 | 검증됨 | 지원 개발 호스트에서 TypeScript 빌드와 Core `188/188` 회귀. |
 | SDK와 Wire Protocol v0.1 | 검증됨 | SDK `48/48`, Manifest/오류/Wire 계약, locale 계약 일치성, capability 컨텍스트 검증과 Memory Runtime 테스트. |
-| 공식 플러그인 패키지 | 검증됨 | 7개 패키지 Manifest, 카탈로그 정렬과 패키지 검증 통과. |
+| 공식 플러그인 패키지 | 검증됨 | 8개 패키지 Manifest, 카탈로그 정렬과 패키지 검증 통과; 브라우저 보조 미디어 패키지는 아직 T2 계약 예제이며 실제 상류에 연결하지 않습니다. |
 | Windows Native | 계약만 있음 | Bundle, 서비스 계획과 리소스 검사는 있으나 클린 설치, ACL과 롤백은 보류. |
 | Docker | CI 증거 | Linux CI에서 hardened 이미지, bootstrap/readiness/백업 복구를 실행하며 로컬 Docker와 업그레이드는 보류. |
 | Linux/NAS | 계약만 있음 | 명시적 구성과 플랫폼 role은 있으나 대상 설치, 서비스 계정, 저장소와 복구는 보류. |
