@@ -26,6 +26,8 @@ Manifest는 서명된 플러그인 패키지가 선언하는 계약입니다. Co
 | `id` | 소문자 패키지 식별자, 3-64자. |
 | `version` | Semver. 패키지 내용이 바뀌면 새 버전을 발행합니다. |
 | `sdk` | 패키지가 지원하는 SDK 버전 범위. |
+
+v0은 정확한 `x.y.z`, 캐럿 `^x.y.z`, 틸드 `~x.y.z` 범위만 허용합니다. Core와 패키지 도구는 플러그인을 로드하기 전에 설치된 SDK 계약 버전과 비교합니다.
 | `name`, `description` | 비어 있지 않은 `en`, `zh-CN`, `ko` 문자열이 필요하며 호스트 언어가 기준입니다. |
 | `runtime` | `isolated-worker`, `shared-adapter-host` 또는 `wasm-module`. |
 | `capabilities` | SDK가 아는 capability만 선언하며 알 수 없는 값은 거부됩니다. |

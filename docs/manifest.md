@@ -26,6 +26,8 @@ The manifest is a signed plugin package's declared contract. Core validates it b
 | `id` | Lowercase package identifier, 3-64 characters. |
 | `version` | Semver. Publishing a changed package requires a new version. |
 | `sdk` | SDK version range supported by the package. |
+
+v0 accepts an exact `x.y.z`, caret `^x.y.z`, or tilde `~x.y.z` range. Core and package tooling compare it with the installed SDK contract version before loading a plugin.
 | `name`, `description` | Non-empty `en`, `zh-CN` and `ko` strings. The host locale is authoritative. |
 | `runtime` | `isolated-worker`, `shared-adapter-host` or `wasm-module`. |
 | `capabilities` | Explicit SDK capabilities only. Unknown values are rejected. |

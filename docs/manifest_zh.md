@@ -26,6 +26,8 @@ Manifest 是签名插件包声明的契约。Core 在安装前校验它，并据
 | `id` | 小写包标识符，长度 3-64。 |
 | `version` | Semver。包内容变化必须发布新版本。 |
 | `sdk` | 包支持的 SDK 版本范围。 |
+
+v0 只接受精确 `x.y.z`、插入号 `^x.y.z` 或波浪号 `~x.y.z` 范围。Core 和包工具会在加载插件前将其与已安装的 SDK 契约版本比较。
 | `name`、`description` | 必须提供非空的 `en`、`zh-CN` 和 `ko` 文案，宿主语言设置具有权威性。 |
 | `runtime` | `isolated-worker`、`shared-adapter-host` 或 `wasm-module`。 |
 | `capabilities` | 只能声明 SDK 已知能力，未知值会被拒绝。 |
