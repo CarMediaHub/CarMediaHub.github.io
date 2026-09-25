@@ -51,7 +51,7 @@ Bootstrap 是一次性的管理员操作。登录和退出使用 Core 管理的�
 - `/api/credentials` 及凭据撤销
 - `/api/jobs` 和 `/api/browser/sessions`/`tasks` 管理接口
 
-凭据创建后不再返回明文。浏览器诊断只返回逻辑 target、会话和任务元数据，绝不返回 Cookie、Profile、CDP、密码、Token、任意 URL 或宿主路径。
+凭据创建后不再返回明文。创建时可以使用未来的 canonical UTC ISO-8601 `expiresAt` 限定凭据有效期；过期凭据不会出现在列表中，也不会被注入请求。浏览器诊断只返回逻辑 target、会话和任务元数据，绝不返回 Cookie、Profile、CDP、密码、Token、任意 URL 或宿主路径。
 
 组件版本列表返回受管版本元数据和 `active` 标记。版本健康检查会重新校验受管可执行文件摘要，但不会暴露文件路径。只有最新健康状态为 `healthy` 的已安装版本才允许激活；Core 切换当前版本时保留旧版本，供后续回滚流程使用。
 

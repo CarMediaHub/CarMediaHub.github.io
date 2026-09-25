@@ -51,7 +51,7 @@ Administrators use the management UI for these operations. The API validates siz
 - `/api/credentials` and credential revoke
 - `/api/jobs` and `/api/browser/sessions`/`tasks` administration
 
-Credential creation never returns plaintext again. Browser diagnostics return logical target/session/task metadata only; they never return Cookie, Profile, CDP, password, token, arbitrary URL or host path data.
+Credential creation never returns plaintext again. An optional future canonical UTC ISO-8601 `expiresAt` can bound a credential; expired credentials are omitted from listings and cannot be injected into requests. Browser diagnostics return logical target/session/task metadata only; they never return Cookie, Profile, CDP, password, token, arbitrary URL or host path data.
 
 Component version listing returns managed version metadata and an `active` marker. A version health check revalidates the managed executable digest without exposing its path. Activation is accepted only for an installed version whose latest health state is `healthy`; Core then switches the active version while preserving the previous version for rollback operations.
 
