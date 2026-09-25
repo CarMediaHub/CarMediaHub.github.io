@@ -92,6 +92,8 @@ Core limits each binding within the current organization, user, and plugin-insta
 
 The repository includes `service-binding-adapter-example` as a neutral reference implementation. It demonstrates the contract without targeting a specific website or exposing a public proxy.
 
+Plugin data migrations may use SDK `database().migrateBatch()` to submit multiple version records atomically. Core wraps the batch in a transaction for the current user and plugin installation scope; a conflict or invalid entry rolls back the whole batch, so no partial migration ledger remains. The single-entry `migrate()` method remains available for simple idempotent initialization.
+
 ## Migration policy
 
 The plugin repository keeps a machine-checked reference-key inventory for 16 logical integrations from the site-gateway design. Every reference key has exactly one migration record, but a record is not an approval to distribute an upstream adapter. The public collection currently contains ten example packages, including the Core-owned History capability, WDR media, AList/rclone/Mihomo service bridges, browser-session/media contracts, and neutral adapter examples. Entries that require browser identity, imported login state, media extraction, remote sessions, or high-risk upstream behavior remain review-only and are not copied into public packages. The inventory contains logical keys and risk classes only; it does not contain upstream domains, cookies, host paths, or runtime configuration.
