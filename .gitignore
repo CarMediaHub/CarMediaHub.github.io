@@ -4,3 +4,15 @@ dist/
 coverage/
 sbom/
 *.tsbuildinfo
+.env
+.env.*
+!.env.example
+*.log
+logs/
+tmp/
+temp/
+.cache/
+.DS_Store
+Thumbs.db
+.vercel/
+.netlify/
