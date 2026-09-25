@@ -28,6 +28,7 @@ try { matrix = JSON.parse(fs.readFileSync(matrixFile, "utf8")); } catch { fail(`
 if (matrix.$id !== "https://carmediahub.github.io/schemas/component-release-matrix.schema.json" || matrix.$schema !== "https://json-schema.org/draft/2020-12/schema") fail("component release matrix schema identity is incorrect");
 if (matrix.type !== "object" || matrix.additionalProperties !== false || matrix.properties?.schemaVersion?.const !== 1) fail("component release matrix root is invalid");
 for (const key of ["componentId", "version", "platforms", "releases"]) if (!matrix.required?.includes(key)) fail(`component release matrix required field is missing: ${key}`);
+if (matrix.properties?.releases?.items?.properties?.release?.$ref !== "component-release.schema.json#/$defs/release") fail("component release matrix must reference the release payload definition");
 console.log(`Verified public schema: ${matrixRelative}`);
 const releaseRelative = "public/schemas/component-release.schema.json";
 const releaseFile = path.join(root, releaseRelative);
