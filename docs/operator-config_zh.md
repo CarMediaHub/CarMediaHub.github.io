@@ -8,7 +8,7 @@ Core 支持从 `config/core.json` 或 `--config <路径>` 读取显式部署元�
 
 | 字段 | 含义 |
 |---|---|
-| `dataDir` | Core 管理的数据目录。相对路径相对于工作目录解析。 |
+| `dataDir` | Core 管理的数据目录。相对路径相对于安装包根目录解析，不依赖进程工作目录。 |
 | `host` | Core 监听地址。 |
 | `port` | 1 到 65535 的 Core 监听端口。 |
 | `publicUrl` | 用于显示公网地址的无凭据 HTTP 或 HTTPS Origin。 |

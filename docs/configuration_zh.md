@@ -6,7 +6,7 @@ Core 通过 JSON 文件或命令行参数接受显式部署元数据。配置刻
 
 | 字段 | 规则 |
 | --- | --- |
-| `dataDir` | Core 管理的数据目录，相对路径按工作目录解析。 |
+| `dataDir` | Core 管理的数据目录，相对路径按安装包根目录解析，不依赖进程工作目录。 |
 | `host` | 非空且不含空白的监听地址。 |
 | `port` | `1` 到 `65535` 的整数。 |
 | `publicUrl` | 不带凭据、路径、query 或 fragment 的 HTTP/HTTPS Origin。 |
@@ -30,7 +30,7 @@ Core 通过 JSON 文件或命令行参数接受显式部署元数据。配置刻
 
 ## 部署模式
 
-- **Native**：使用 `--config <path>` 或 `config/core.json`；发布包携带运行时依赖和 Schema，实例数据放在包外。
+- **Native**：使用 `--config <path>` 或 `config/core.json`；相对路径按安装包根目录解析，服务管理器无需设置工作目录。发布包携带运行时依赖和 Schema，实例数据放在包外。
 - **Docker**：镜像包含 Core 运行时、登记目录、Schema 和示例文件。挂载数据卷并显式提供实例配置；默认 Compose 只绑定回环地址并使用 SQLite。
 - **NAS/Linux**：复用同一配置文件和数据目录契约；服务注册、ACL、升级和回滚仍需目标环境验证。
 

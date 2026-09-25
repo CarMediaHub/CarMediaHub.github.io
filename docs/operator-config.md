@@ -8,7 +8,7 @@ Core accepts explicit deployment metadata from `config/core.json` or `--config <
 
 | Field | Meaning |
 |---|---|
-| `dataDir` | Managed Core state directory. Relative paths are resolved from the working directory. |
+| `dataDir` | Managed Core state directory. Relative paths are resolved from the installed bundle root, not the process working directory. |
 | `host` | Core listen host. |
 | `port` | Core listen port from 1 to 65535. |
 | `publicUrl` | Credential-free HTTP or HTTPS origin used for the displayed public address. |

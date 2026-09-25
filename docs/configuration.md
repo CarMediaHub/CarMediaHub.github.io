@@ -6,7 +6,7 @@ Core accepts explicit deployment metadata from a JSON file or command-line argum
 
 | Field | Rule |
 | --- | --- |
-| `dataDir` | Managed Core state directory. Relative paths resolve from the working directory. |
+| `dataDir` | Managed Core state directory. Relative paths resolve from the installed bundle root, not the process working directory. |
 | `host` | Non-empty listen host without whitespace. |
 | `port` | Integer from `1` to `65535`. |
 | `publicUrl` | Credential-free HTTP/HTTPS origin without path, query or fragment. |
@@ -30,7 +30,7 @@ Validate with the checked-in `config/core.schema.json`. For a browser bridge, th
 
 ## Deployment modes
 
-- **Native**: pass `--config <path>` or use `config/core.json`; the release bundle carries runtime dependencies and schemas, while instance data stays outside the bundle.
+- **Native**: pass `--config <path>` or use `config/core.json`; relative paths are resolved from the installed bundle root, so service managers do not need to set a working directory. The release bundle carries runtime dependencies and schemas, while instance data stays outside the bundle.
 - **Docker**: the image contains the Core runtime, checked-in catalogs, schemas and example files. Mount the data volume and provide instance configuration explicitly. The default Compose file binds the Core port to loopback and uses SQLite.
 - **NAS/Linux**: use the same explicit file and data-directory contract; service registration, ACLs, upgrades and rollback remain deployment gates until the target is tested.
 
