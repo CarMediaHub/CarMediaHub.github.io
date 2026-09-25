@@ -11,7 +11,10 @@ const prohibited = [
   /旧\s*site[_-]?gateway/iu,
   /已废止条目/iu,
   /\b(?:기존|폐기된)\s*site[_-]?gateway\b/iu,
-  /폐기된 항목/iu
+  /폐기된 항목/iu,
+  /stores plaintext/iu,
+  /保存明文(?:凭据)?/u,
+  /평문을 저장/iu
 ];
 const violations = [];
 for (const file of files) {
