@@ -41,7 +41,7 @@ Bootstrap은 일회성 관리자 작업입니다. 로그인과 로그아웃은 C
 
 관리자는 관리 화면을 사용합니다. API는 실행 전 크기, 메서드, capability와 리소스 경계를 검증합니다. 주요 그룹은 `/api/users`, `/api/components`, `/api/components/:id/versions`, `/api/components/:id/versions/:version/health`, `/api/components/:id/versions/:version/activate`, `/api/media-roots`, `/api/media-sources`, `/api/plugins`, `/api/plugins/:id/upgrade`, `/api/service-bindings`, `/api/credentials`, `/api/jobs`, `/api/browser/sessions` 및 `/api/browser/tasks`입니다. `POST /api/plugins/:id/health`는 플러그인이 선언한 고정 `/health` 경로를 설치 범위에서 검사하며 건강 상태와 HTTP 상태만 반환합니다. 응답 본문이나 임의 URL은 노출하지 않습니다.
 
-자격 증명 생성 응답에는 평문이 다시 포함되지 않습니다. 생성 시 미래의 canonical UTC ISO-8601 `expiresAt`으로 유효 기간을 제한할 수 있으며, 만료된 자격 증명은 목록에 표시되지 않고 요청에 주입되지 않습니다. 브라우저 진단은 논리 target·세션·작업 메타데이터만 반환하며 Cookie, Profile, CDP, 비밀번호, Token, 임의 URL 또는 호스트 경로를 반환하지 않습니다.
+자격 증명 생성 응답에는 평문이 다시 포함되지 않습니다. `POST /api/credentials/:id/rotate`는 활성 자격 증명을 원자적으로 철회하고 대체 값을 저장하지만 평문은 반환하지 않습니다. 생성 또는 교체 시 미래의 canonical UTC ISO-8601 `expiresAt`으로 유효 기간을 제한할 수 있으며, 만료된 자격 증명은 목록에 표시되지 않고 요청에 주입되지 않습니다. 브라우저 진단은 논리 target·세션·작업 메타데이터만 반환하며 Cookie, Profile, CDP, 비밀번호, Token, 임의 URL 또는 호스트 경로를 반환하지 않습니다.
 
 구성요소 버전 목록은 관리되는 버전 메타데이터와 `active` 표시를 반환합니다. 버전 health 검사는 관리되는 실행 파일의 다이제스트를 다시 확인하지만 파일 경로는 노출하지 않습니다. 최신 health 상태가 `healthy`인 설치 버전만 활성화할 수 있으며, Core는 이전 버전을 보존해 후속 롤백 흐름에 사용할 수 있습니다.
 
