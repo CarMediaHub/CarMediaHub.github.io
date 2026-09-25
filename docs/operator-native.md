@@ -15,3 +15,5 @@ After building Core, `pnpm create:native-bundle -- <absolute-output-directory>` 
 ## Not a release promise yet
 
 Native installers, service-account and ACL setup, system-service installation, clean-machine installation, component distribution, upgrade, rollback and cross-platform recovery remain release gates. The repository has generation contracts for Windows `sc.exe` and Linux systemd, but does not apply them to the host yet. Do not expose database, Worker, plugin or debugging ports while those gates are incomplete.
+
+The dry-run plan includes a serialized action list. Before a future privileged installer consumes it, Core revalidates the platform command allowlist, argument bytes, idempotency mode and stdin boundary. This protects the execution boundary but does not claim that Native service registration or ACL application has been performed.
