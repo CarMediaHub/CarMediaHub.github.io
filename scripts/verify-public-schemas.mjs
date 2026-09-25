@@ -12,6 +12,7 @@ try { schema = JSON.parse(fs.readFileSync(file, "utf8")); } catch { fail(`${rela
 if (schema.$id !== "https://carmediahub.github.io/schemas/native-install-plan.schema.json") fail("schema id is incorrect");
 if (schema.$schema !== "https://json-schema.org/draft/2020-12/schema") fail("schema draft is incorrect");
 if (schema.type !== "object" || schema.additionalProperties !== false) fail("schema root is not closed");
+if (schema.properties?.service?.oneOf?.length !== 2 || schema.$defs?.windowsService?.additionalProperties !== false || schema.$defs?.linuxService?.additionalProperties !== false) fail("service variants are not closed");
 for (const key of ["platform", "bundle", "resources", "service", "serviceAccount", "acl", "actions"]) if (!schema.required?.includes(key)) fail(`required field is missing: ${key}`);
 const commands = schema.$defs?.action?.properties?.command?.enum;
 if (!Array.isArray(commands) || !commands.includes("sc.exe") || !commands.includes("systemctl")) fail("platform command allowlist is incomplete");
