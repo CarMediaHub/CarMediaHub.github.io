@@ -18,6 +18,8 @@ Native installers, service-account and ACL setup, system-service installation, c
 
 The dry-run plan includes a serialized action list. Before a future privileged installer consumes it, Core revalidates the platform command allowlist, argument bytes, idempotency mode and stdin boundary. This protects the execution boundary but does not claim that Native service registration or ACL application has been performed.
 
+The validator also requires the complete platform sequence. Windows must apply bundle, configuration and data ACLs before service creation, description and start. Linux must create the account and directories before writing the systemd unit, applying ownership, reloading systemd and enabling the service. Missing, duplicated or reordered stages are rejected.
+
 Native bundles include `config/native-install-plan.schema.json`, allowing an external installer to validate the plan shape independently before executing privileged operations.
 
 The public copy is available at [`/schemas/native-install-plan.schema.json`](/schemas/native-install-plan.schema.json).

@@ -18,6 +18,8 @@ Native 安装器、服务账号与 ACL 配置、系统服务安装、干净机�
 
 dry-run 计划包含序列化动作列表。未来的特权安装器消费计划前，Core 会再次校验平台命令白名单、参数字节、幂等策略和 stdin 边界。这保护了执行边界，但不代表 Native 服务注册或 ACL 写入已经在主机上完成。
 
+校验器还要求完整的平台动作顺序：Windows 必须先完成 bundle、配置和数据目录 ACL，再创建服务、设置描述并启动；Linux 必须先创建账号和目录，再写入 systemd 单元、应用所有权、重载 systemd 并启用服务。缺失、重复或乱序的阶段都会被拒绝。
+
 Native bundle 包含 `config/native-install-plan.schema.json`，外部安装器可以在执行特权操作前独立校验计划结构。
 
 公开副本位于 [`/schemas/native-install-plan.schema.json`](/schemas/native-install-plan.schema.json)。
