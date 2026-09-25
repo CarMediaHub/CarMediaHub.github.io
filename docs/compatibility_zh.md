@@ -12,6 +12,7 @@
 | Linux/NAS | 仅契约 | 已有显式配置和平台角色；目标安装、服务身份、存储和恢复待验证。 |
 | SQLite | 已验证 | Schema v1 门禁、迁移台账、作用域数据和备份恢复测试。 |
 | PostgreSQL | 适配器/CI 夹具 | 有作用域适配器和 CI PostgreSQL smoke；默认 Compose 与 NAS 生产矩阵待完成。 |
+| MySQL | Core 适配器/契约夹具 | 已有 Core 管理的显式适配器和作用域测试；真实 MySQL 服务、备份和 NAS 矩阵待完成。 |
 | Chromium/浏览器桥接 | 受限 smoke/契约 | 真实静音 Chrome 已验证允许 Origin 导航、未知 Origin 阻断和作用域 User Data 隔离；Chromium 签名分发、重定向/WebSocket/Worker 覆盖和跨平台矩阵待完成。 |
 | 媒体播放 | Core/夹具 | Range、转封装、转码、HLS 和 WDR 契约测试通过；真实车机、手机和桌面播放矩阵待完成。 |
 | AList/rclone/Mihomo | 桥接夹具 | 受限 service binding 适配器通过本地 HTTP 夹具；正式二进制分发和运营者实装待完成。 |

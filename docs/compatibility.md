@@ -12,6 +12,7 @@ This matrix separates automated contract evidence from real deployment evidence.
 | Linux/NAS | Contract only | Explicit config and platform roles exist; target-specific install, service identity, storage and recovery remain pending. |
 | SQLite | Verified | Schema v1 gate, migration ledger, scoped data and backup/restore tests. |
 | PostgreSQL | Adapter/CI fixture | Scoped adapter and CI PostgreSQL smoke exist; default Compose and NAS production matrix are pending. |
+| MySQL | Core adapter/contract fixture | Explicit Core-owned adapter and scope tests exist; real MySQL service, backup and NAS matrix are pending. |
 | Chromium/browser bridge | Contract/fixture | Target allowlist, silent managed driver, task/result boundaries and worker fixtures pass; signed Chromium distribution, real navigation and cross-platform matrix are pending. |
 | Media playback | Core/fixture | Range, remux, transcode, HLS and WDR contract tests pass; real car head-unit, mobile and desktop device matrix is pending. |
 | AList/rclone/Mihomo | Bridge fixtures | Bounded service-binding adapters pass local HTTP fixtures; official binary distribution and real operator deployments are pending. |

@@ -12,6 +12,7 @@
 | Linux/NAS | 계약만 있음 | 명시적 구성과 플랫폼 role은 있으나 대상 설치, 서비스 계정, 저장소와 복구는 보류. |
 | SQLite | 검증됨 | Schema v1 gate, migration ledger, 범위 데이터와 백업/복구 테스트. |
 | PostgreSQL | Adapter/CI fixture | 범위 adapter와 CI smoke는 있으나 기본 Compose와 NAS 운영 매트릭스는 보류. |
+| MySQL | Core adapter/계약 fixture | 명시적 Core 관리 adapter와 범위 테스트가 있으며 실제 MySQL 서비스, 백업과 NAS 매트릭스는 보류. |
 | Chromium/브라우저 브리지 | 계약/fixture | target allowlist, 무음 관리 드라이버, 작업/결과 경계와 Worker fixture 통과; Chromium 서명 배포, 실제 탐색과 크로스 플랫폼은 보류. |
 | 미디어 재생 | Core/fixture | Range, remux, transcode, HLS와 WDR 계약 테스트 통과; 실제 차량, 모바일과 데스크톱 재생은 보류. |
 | AList/rclone/Mihomo | 브리지 fixture | 제한된 service binding adapter가 로컬 HTTP fixture에서 통과; 공식 바이너리 배포와 운영 배치는 보류. |
