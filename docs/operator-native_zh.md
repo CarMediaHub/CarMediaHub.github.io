@@ -6,7 +6,7 @@ Native 部署直接运行在运营者控制的 Windows 或 Linux 主机上。请
 
 ## 当前契约
 
-使用 `config/core.example.json`，并通过 `config/core.schema.json` 校验。配置文件不在工作目录时，使用 `--config <路径>` 显式指定。Native bundle 必须包含 Core CLI、管理端资源、组件目录、Schema、示例配置、Core 运行时依赖、版本化的 `@carmediahub/sdk` 运行时和运行时元数据；实例配置和 `.env` 不得进入发布包。严格发布包必须包含真实文件而不是依赖符号链接；仓库检查源码工作树时才允许包管理器链接。
+使用 `config/core.example.json`，并通过 `config/core.schema.json` 校验。默认 `config/core.json` 和相对 `dataDir` 路径均按安装包根目录解析，不依赖服务管理器的工作目录；需要使用其他位置的配置文件时，通过 `--config <路径>` 显式指定。Native bundle 必须包含 Core CLI、管理端资源、组件目录、Schema、示例配置、Core 运行时依赖、版本化的 `@carmediahub/sdk` 运行时和运行时元数据；实例配置和 `.env` 不得进入发布包。严格发布包必须包含真实文件而不是依赖符号链接；仓库检查源码工作树时才允许包管理器链接。
 
 在 Windows 上，服务注册契约会根据 Node、bundle、数据目录和配置文件的绝对路径生成显式 `sc.exe` 参数。它使用 Core 的回环监听默认值，不读取 PATH 或环境变量。当前仓库提供该契约和测试，不会静默安装或修改 Windows 服务。
 
