@@ -31,6 +31,8 @@ Manifest는 서명된 플러그인 패키지가 선언하는 계약입니다. Co
 | `capabilities` | SDK가 아는 capability만 선언하며 알 수 없는 값은 거부됩니다. |
 | `routes` | 논리 상대 경로와 허용 HTTP 메서드. |
 
+v0 route 메서드 허용 목록은 `GET`, `HEAD`, `POST`, `PUT`, `PATCH`, `DELETE`, `PROPFIND`입니다. `PROPFIND`는 제한된 읽기 전용 WebDAV 디렉터리 탐색에 사용하며, 어댑터는 상대 경로를 유지하고 재귀 또는 쓰기 동작을 구현해서는 안 됩니다. Core는 `GET`과 `HEAD`에 대해서만 같은 origin 리디렉션을 따릅니다.
+
 `isolated-worker`는 `worker.entry`와 protocol `0.1`을 선언합니다. `shared-adapter-host`는 `runtimeEntry`를 선언하고 `core-companion` 분류를 사용해야 하며 저위험 capability(`config`, `display`, `diagnostics`, `events`, `gateway`)만 사용할 수 있습니다. WASM 패키지는 runtime entry를 사용하고 같은 범위 및 리소스 제한을 받습니다.
 
 ## Capability와 서비스 바인딩

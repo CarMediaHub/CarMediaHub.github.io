@@ -31,6 +31,8 @@ The manifest is a signed plugin package's declared contract. Core validates it b
 | `capabilities` | Explicit SDK capabilities only. Unknown values are rejected. |
 | `routes` | Relative logical routes and their allowed HTTP methods. |
 
+The v0 route method allowlist is `GET`, `HEAD`, `POST`, `PUT`, `PATCH`, `DELETE` and `PROPFIND`. `PROPFIND` is intended for bounded read-only WebDAV directory inspection; adapters must keep paths relative and must not use it for recursive or write behavior. Core only follows same-origin redirects for `GET` and `HEAD`.
+
 An `isolated-worker` declares `worker.entry` and protocol `0.1`. A `shared-adapter-host` declares `runtimeEntry`, must use category `core-companion`, and is restricted to low-risk capabilities (`config`, `display`, `diagnostics`, `events`, `gateway`). A WASM package uses a runtime entry and remains subject to the same scope and resource controls.
 
 ## Capabilities and bindings

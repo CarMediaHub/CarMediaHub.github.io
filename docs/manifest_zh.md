@@ -31,6 +31,8 @@ Manifest 是签名插件包声明的契约。Core 在安装前校验它，并据
 | `capabilities` | 只能声明 SDK 已知能力，未知值会被拒绝。 |
 | `routes` | 逻辑相对路由及允许的 HTTP 方法。 |
 
+v0 路由方法白名单为 `GET`、`HEAD`、`POST`、`PUT`、`PATCH`、`DELETE` 和 `PROPFIND`。`PROPFIND` 用于有界的只读 WebDAV 目录探测；适配器必须保持路径为相对路径，不能借此实现递归或写入行为。Core 只为 `GET` 和 `HEAD` 跟随同源重定向。
+
 `isolated-worker` 必须声明 `worker.entry` 和协议 `0.1`。`shared-adapter-host` 必须声明 `runtimeEntry`、使用 `core-companion` 分类，并且只能使用低风险能力（`config`、`display`、`diagnostics`、`events`、`gateway`）。WASM 包使用运行时入口，并继续受到相同的作用域和资源限制。
 
 ## 能力与服务绑定
