@@ -20,6 +20,10 @@ Core 组件目录会记录受限角色，用于选择和安装前校验：存储
 
 准备组件发布时，可以使用 Core 的 `component:prepare-release` 命令显式提供数据目录、组件文件、组件 ID、版本、平台、artifact ID 和受信任公钥的 16 位指纹。命令会把普通文件复制到 `data/staging`，计算 SHA-256，并在需要时写出未签名发布记录。它不会读取私钥、生成签名、覆盖已有 staging 文件或安装组件；管理 API 接受发布记录前，必须由运营者自己的签名流程完成签名。
 
+在运营者自己的发布工作站上，Core 还提供显式的 `component:sign-release` 命令。它读取指定的未签名记录和 Ed25519 私钥文件，要求派生出的公钥指纹与 `release.keyId` 相符，并写入新的已签名记录；私钥不会复制到 staging 或运行包。每个平台分别签名后，使用带显式平台列表的 `component:assemble-matrix` 生成发布矩阵。该命令会拒绝缺少平台、重复平台、组件或版本混用、provenance 不完整以及覆盖已有输出。
+
+矩阵是发布管理制品，不是安装请求。`/api/components/install` 只接受当前部署平台的一条受信任签名记录，提交矩阵会被拒绝。公开 Schema 位于 [`/schemas/component-release.schema.json`](/schemas/component-release.schema.json) 和 [`/schemas/component-release-matrix.schema.json`](/schemas/component-release-matrix.schema.json)。这套流程提供可审计的发布记录，但不表示 CarMediaHub 当前已经分发官方 FFmpeg、AList、rclone、Mihomo 或 Chromium 二进制。
+
 公开的 `alist-web-bridge` 参考适配器展示了这一边界。它使用运营者批准的 AList 绑定，只接受有界相对路径并转发经过过滤的请求头；`GET`/`HEAD` 可读取相对资源，`POST` 只允许 `/api/fs/list`、`/api/fs/get` 和 `/api/fs/search`，JSON 请求体上限为 64 KiB。它不包含 AList 地址、凭据、Cookie 或上游源码。该示例用于说明契约，不代表已经兼容 AList 的所有 WebDAV 或管理功能。
 
 公开的 `mihomo-web-bridge` 参考适配器以同样方式连接运营者批准的 Mihomo 控制 API，只开放 `/configs`、`/proxies`、`/providers`、`/rules`、`/connections` 和 `/version` 等受限路径。首版不转发认证头、不提供 WebSocket 流量面板，也不修改 Mihomo；它是控制 API 兼容示例，不代表完整 Clash Web UI 已完成兼容。

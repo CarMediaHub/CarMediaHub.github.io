@@ -20,6 +20,10 @@ Core 구성 요소 카탈로그는 선택과 설치 전 검사를 위한 제한�
 
 릴리스를 준비할 때 Core의 `component:prepare-release` 명령에 데이터 디렉터리, 아티팩트 경로, 구성요소 ID, 버전, 플랫폼, 아티팩트 ID와 신뢰된 공개 서명 키의 16자리 지문을 명시할 수 있습니다. 이 명령은 일반 파일을 `data/staging`에 복사하고 SHA-256 digest를 계산하며 요청 시 서명되지 않은 릴리스 레코드를 기록합니다. 개인 키를 읽거나 릴리스에 서명하거나 기존 staging 아티팩트를 덮어쓰거나 구성요소를 설치하지 않습니다. 관리 API가 릴리스 레코드를 허용하기 전에 운영자 소유 서명 절차가 서명을 완료해야 합니다.
 
+운영자 릴리스 워크스테이션에서 Core는 명시적인 `component:sign-release` 명령도 제공합니다. 이 명령은 선택한 unsigned record와 Ed25519 개인 키 파일을 읽고, 파생된 공개 키 지문이 `release.keyId`와 일치해야 하며, 개인 키를 staging 또는 런타임 번들에 복사하지 않고 새 signed record를 작성합니다. 플랫폼별로 하나의 record를 서명한 뒤 명시적 플랫폼 목록과 함께 `component:assemble-matrix`를 사용하여 릴리스 매트릭스를 만듭니다. 이 명령은 누락 또는 중복된 플랫폼, 혼합된 구성요소나 버전, 불완전한 provenance, 기존 출력 덮어쓰기를 거부합니다.
+
+매트릭스는 릴리스 관리 아티팩트이며 설치 요청이 아닙니다. `/api/components/install`은 현재 배포 플랫폼의 단일 신뢰된 signed record만 허용하며 매트릭스를 제출하면 거부합니다. 공개 Schema는 [`/schemas/component-release.schema.json`](/schemas/component-release.schema.json) 및 [`/schemas/component-release-matrix.schema.json`](/schemas/component-release-matrix.schema.json)에 있습니다. 이 흐름은 감사 가능한 릴리스 기록을 제공하지만 CarMediaHub가 현재 공식 FFmpeg, AList, rclone, Mihomo 또는 Chromium 바이너리를 배포한다는 뜻은 아닙니다.
+
 공개된 `alist-web-bridge` 참고 어댑터는 이 경계를 보여 줍니다. 운영자가 승인한 AList 바인딩을 사용하고 제한된 상대 경로와 필터링된 헤더만 전달합니다. `GET`/`HEAD`는 상대 리소스를 읽고, `POST`는 `/api/fs/list`, `/api/fs/get`, `/api/fs/search`로 제한되며 JSON 본문은 64 KiB 이하입니다. AList 주소, 자격 증명, 쿠키 또는 업스트림 소스 코드는 포함하지 않습니다. 이 예제는 계약을 설명하기 위한 것이며 모든 AList WebDAV 또는 관리 기능을 지원한다는 의미는 아닙니다.
 
 공개된 `mihomo-web-bridge` 참고 어댑터는 동일한 모델로 운영자가 승인한 Mihomo 제어 API를 연결하고 `/configs`, `/proxies`, `/providers`, `/rules`, `/connections`, `/version`과 같은 제한된 경로만 노출합니다. 첫 버전은 인증 헤더를 전달하거나 WebSocket 트래픽 패널을 제공하거나 Mihomo를 수정하지 않습니다. 이는 제어 API 호환 예제이며 전체 Clash Web UI를 지원한다는 의미가 아닙니다.
