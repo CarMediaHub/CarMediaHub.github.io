@@ -4,8 +4,8 @@
 
 | 范围 | 当前状态 | 证据与边界 |
 | --- | --- | --- |
-| Node.js Core 运行时 | 已验证 | 支持开发主机上的 TypeScript 构建和 Core `223/223` 回归。 |
-| SDK 与 Wire Protocol v0.1 | 已验证 | SDK `49/49`，Manifest/错误/Wire 契约、locale 契约一致性、capability 上下文校验和 Memory Runtime 测试。 |
+| Node.js Core 运行时 | 已验证 | 支持开发主机上的 TypeScript 构建和 Core `229/229` 回归。 |
+| SDK 与 Wire Protocol v0.1 | 已验证 | SDK `50/50`，Manifest/错误/Wire 契约、locale 契约一致性、capability 上下文校验和 Memory Runtime 测试。 |
 | 官方插件包 | 已验证 | 10 个包的 Manifest、目录一致性和分发包校验通过；其中浏览器辅助媒体提取包仍是 T2 契约示例，不连接真实上游。 |
 | Windows Native | Bundle 与恢复 smoke | Bundle、服务计划、资源检查和恢复后启动已通过；服务注册、ACL 写入和自动回滚仍待验证。安装失败会提供已执行动作诊断，并提供显式平台补偿回调契约；当前仍需运营者按状态恢复。 |
 | Docker | CI 证据 | Linux CI 构建加固镜像并执行初始化、readiness 和备份恢复；本地 Docker 与升级演练待验证。 |
