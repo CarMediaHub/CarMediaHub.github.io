@@ -8,7 +8,7 @@ This matrix separates automated contract evidence from real deployment evidence.
 | SDK and Wire Protocol v0.1 | Verified | SDK `49/49`, strict Manifest/error/Wire contracts, locale-contract alignment, capability-context validation and Memory Runtime tests. |
 | Official plugin packages | Verified | Ten package manifests, catalog alignment and package verification pass. |
 | Windows Native bundle | Bundle and recovery smoke | Bundle, service-plan, resource and restored-start checks pass; service registration, ACL writes, and automatic rollback remain pending. Install failures expose applied-action diagnostics and an explicit platform compensation-hook contract; operators must still recover according to the recorded state. |
-| Docker | CI evidence | Linux CI builds the hardened image and exercises bootstrap/readiness/backup restore; local Docker and upgrade drills remain pending. |
+| Docker | CI and one controlled WSL target | Linux CI builds the hardened image and exercises bootstrap/readiness/backup restore; one WSL Docker target also passed startup, volume recovery and login checks, while production upgrades remain pending. |
 | Linux Native / NAS | Single-target verification | One controlled Linux systemd install, service identity, readiness and cleanup run is verified; NAS, cross-host storage and recovery remain pending. |
 | SQLite | Verified | Schema v1 gate, migration ledger, scoped data and backup/restore tests. |
 | PostgreSQL | Adapter/CI fixture | Scoped adapter and CI PostgreSQL smoke exist; default Compose and NAS production matrix are pending. |

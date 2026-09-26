@@ -8,7 +8,7 @@
 | SDK 与 Wire Protocol v0.1 | 已验证 | SDK `50/50`，Manifest/错误/Wire 契约、locale 契约一致性、capability 上下文校验和 Memory Runtime 测试。 |
 | 官方插件包 | 已验证 | 10 个包的 Manifest、目录一致性和分发包校验通过；其中浏览器辅助媒体提取包仍是 T2 契约示例，不连接真实上游。 |
 | Windows Native | Bundle 与恢复 smoke | Bundle、服务计划、资源检查和恢复后启动已通过；服务注册、ACL 写入和自动回滚仍待验证。安装失败会提供已执行动作诊断，并提供显式平台补偿回调契约；当前仍需运营者按状态恢复。 |
-| Docker | CI 证据 | Linux CI 构建加固镜像并执行初始化、readiness 和备份恢复；本地 Docker 与升级演练待验证。 |
+| Docker | CI 与一个受控 WSL 目标 | Linux CI 构建加固镜像并执行初始化、readiness 和备份恢复；一个 WSL Docker 目标也已通过启动、数据卷恢复和登录检查；生产升级演练仍待验证。 |
 | Linux Native / NAS | 单目标已验证 | 已完成一次受控 Linux systemd 安装、服务身份、readiness 和清理验收；NAS、跨主机存储与恢复仍待验证。 |
 | SQLite | 已验证 | Schema v1 门禁、迁移台账、作用域数据和备份恢复测试。 |
 | PostgreSQL | 适配器/CI 夹具 | 有作用域适配器和 CI PostgreSQL smoke；默认 Compose 与 NAS 生产矩阵待完成。 |

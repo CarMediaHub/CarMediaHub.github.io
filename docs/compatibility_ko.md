@@ -8,7 +8,7 @@
 | SDK와 Wire Protocol v0.1 | 검증됨 | SDK `49/49`, Manifest/오류/Wire 계약, locale 계약 일치성, capability 컨텍스트 검증과 Memory Runtime 테스트. |
 | 공식 플러그인 패키지 | 검증됨 | 10개 패키지 Manifest, 카탈로그 정렬과 패키지 검증 통과; 브라우저 보조 미디어 패키지는 아직 T2 계약 예제이며 실제 상류에 연결하지 않습니다. |
 | Windows Native | Bundle 및 복구 smoke | Bundle, 서비스 계획, 리소스 검사와 복구 후 시작은 통과했지만 서비스 등록, ACL 쓰기와 자동 롤백은 아직 보류입니다. 설치 실패 시 적용된 작업 진단과 명시적 플랫폼 보상 콜백 계약을 제공하며, 현재는 운영자가 기록된 상태에 따라 복구해야 합니다. |
-| Docker | CI 증거 | Linux CI에서 hardened 이미지, bootstrap/readiness/백업 복구를 실행하며 로컬 Docker와 업그레이드는 보류. |
+| Docker | CI 및 제어된 WSL 대상 1개 | Linux CI에서 hardened 이미지와 bootstrap/readiness/백업 복구를 실행했고, WSL Docker 대상 1개도 시작·볼륨 복구·로그인 검사를 통과했으며 운영 업그레이드는 보류. |
 | Linux Native / NAS | 단일 대상 검증 | 제어된 Linux systemd 설치, 서비스 계정, readiness 및 정리 실행을 한 번 검증했으며 NAS, 호스트 간 저장소와 복구는 보류. |
 | SQLite | 검증됨 | Schema v1 gate, migration ledger, 범위 데이터와 백업/복구 테스트. |
 | PostgreSQL | Adapter/CI fixture | 범위 adapter와 CI smoke는 있으나 기본 Compose와 NAS 운영 매트릭스는 보류. |
