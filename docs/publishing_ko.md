@@ -4,6 +4,8 @@
 
 게시는 재현 가능한 패키지 작업이며 자동 승인이 아닙니다. 패키지는 깨끗한 checkout, 버전이 지정된 SDK, 패키지 내부 상대 entrypoint, 현지화 리소스, 라이선스, checksum, SBOM 및 서명된 release record로 빌드해야 합니다.
 
+Manifest가 `ui.entry`를 선언하면 배포 패키지는 해당 경로를 패키지 내부의 일반 파일로 포함해야 합니다. 게시 전 패키지 검증은 누락된 UI 진입점, 심볼릭 링크, 절대 경로와 패키지 외부로 벗어나는 경로를 거부합니다.
+
 ## 패키지 gate
 
 - SDK 버전에 맞춰 manifest와 선언된 capability를 검증합니다.

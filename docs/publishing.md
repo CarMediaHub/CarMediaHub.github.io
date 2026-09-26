@@ -4,6 +4,8 @@ Status: v0 Draft
 
 Publishing is a reproducible package operation, not an automatic approval. A package must be built from a clean checkout with a versioned SDK, package-relative entrypoint, localization resources, license, checksum, SBOM, and a signed release record.
 
+When a Manifest declares `ui.entry`, the distributable package must contain that path as a regular package-relative file. The package verifier rejects missing UI entries, symbolic links, absolute paths, and traversal outside the package before publication.
+
 ## Package gates
 
 - Validate the manifest and declared capabilities against the SDK version.
