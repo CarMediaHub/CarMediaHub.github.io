@@ -9,7 +9,7 @@ This matrix separates automated contract evidence from real deployment evidence.
 | Official plugin packages | Verified | Ten package manifests, catalog alignment and package verification pass. |
 | Windows Native bundle | Bundle and recovery smoke | Bundle, service-plan, resource and restored-start checks pass; service registration, ACL writes, and automatic rollback remain pending. Install failures expose applied-action diagnostics and an explicit platform compensation-hook contract; operators must still recover according to the recorded state. |
 | Docker | CI evidence | Linux CI builds the hardened image and exercises bootstrap/readiness/backup restore; local Docker and upgrade drills remain pending. |
-| Linux/NAS | Contract only | Explicit config and platform roles exist; target-specific install, service identity, storage and recovery remain pending. |
+| Linux Native / NAS | Single-target verification | One controlled Linux systemd install, service identity, readiness and cleanup run is verified; NAS, cross-host storage and recovery remain pending. |
 | SQLite | Verified | Schema v1 gate, migration ledger, scoped data and backup/restore tests. |
 | PostgreSQL | Adapter/CI fixture | Scoped adapter and CI PostgreSQL smoke exist; default Compose and NAS production matrix are pending. |
 | MySQL | Core adapter/contract fixture | Explicit Core-owned adapter and scope tests exist; real MySQL service, backup and NAS matrix are pending. |
